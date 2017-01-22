@@ -36,7 +36,7 @@
 
 #>
 [CmdletBinding()]
-[OutputType([psobject])]
+[OutputType([psobject[]])]
 param(
     [Parameter(Mandatory=$true,
                Position=0)]
@@ -49,11 +49,12 @@ param(
     $Path = "/"
 )
 begin {
-
     #region Helper Functions
+
+
 function Get-ODChildItemsRecurse {
     [CmdletBinding()]
-    [OutputType([psobject])]
+    [OutputType([psobject[]])]
     param (
         [Parameter(Mandatory=$true,
                    Position=0)]
@@ -70,7 +71,6 @@ function Get-ODChildItemsRecurse {
         [string]
         $SelectProperties = 'name,size,lastModifiedDateTime,id'
     )
-
     process {
         Get-ODChildItems -AccessToken $AccessToken -Path $Path -SelectProperties $SelectProperties | ForEach-Object{
             if ($_.folder -ne $null) {
@@ -83,6 +83,7 @@ function Get-ODChildItemsRecurse {
         }
     }
 }
+
 
 function New-ODItemDownloadUri {
     [CmdletBinding()]
@@ -123,11 +124,12 @@ function New-ODItemDownloadUri {
         return ($ODRootURI + "/shares/$encodedSharingUri/root/content")
     }
 }
+
+
     #endregion
 
     $access_token = (Get-ODAuthentication -ClientID $ClientId).access_token
 }
-
 process {
     $leafItems = Get-ODChildItemsRecurse -AccessToken $access_token -Path $Path
     $leafItems | ForEach-Object{
