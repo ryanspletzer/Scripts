@@ -48,7 +48,9 @@ param(
     [string]
     $Path = "/"
 )
+begin {
 
+    #region Helper Functions
 function Get-ODChildItemsRecurse {
     [CmdletBinding()]
     [OutputType([psobject])]
@@ -121,11 +123,16 @@ function New-ODItemDownloadUri {
         return ($ODRootURI + "/shares/$encodedSharingUri/root/content")
     }
 }
+    #endregion
 
-$access_token = (Get-ODAuthentication -ClientID $ClientId).access_token
-$leafItems = Get-ODChildItemsRecurse -AccessToken $access_token -Path $Path
-$leafItems | ForEach-Object{
-    $downloadUri = New-ODItemDownloadUri -AccessToken $access_token -ItemId $_.id -Type view
-    Add-Member -InputObject $_ -MemberType NoteProperty -Name "downloadUri" -Value $downloadUri -Force
-    Write-Output -InputObject $_
+    $access_token = (Get-ODAuthentication -ClientID $ClientId).access_token
+}
+
+process {
+    $leafItems = Get-ODChildItemsRecurse -AccessToken $access_token -Path $Path
+    $leafItems | ForEach-Object{
+        $downloadUri = New-ODItemDownloadUri -AccessToken $access_token -ItemId $_.id -Type view
+        Add-Member -InputObject $_ -MemberType NoteProperty -Name "downloadUri" -Value $downloadUri -Force
+        Write-Output -InputObject $_
+    }
 }
