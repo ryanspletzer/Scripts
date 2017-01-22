@@ -49,8 +49,6 @@ param(
     $Path = "/"
 )
 
-$access_token = (Get-ODAuthentication -ClientID $ClientId).access_token
-
 function Get-ODChildItemsRecurse {
     [CmdletBinding()]
     [OutputType([psobject])]
@@ -82,4 +80,52 @@ function Get-ODChildItemsRecurse {
             }
         }
     }
+}
+
+function New-ODItemDownloadUri {
+    [CmdletBinding()]
+    [OutputType([string])]
+    param (
+        [Parameter(Mandatory=$true,
+                   Position=0)]
+        [string]
+        $AccessToken,
+
+        [Parameter(Mandatory=$true,
+                   Position=1)]
+        [string]
+        $ItemId,
+
+        [Parameter(Mandatory=$false,
+                   Position=2)]
+        [ValidateSet('view','edit','embed')]
+        [string]
+        $Type = 'view'
+    )
+    begin {
+        $ODRootURI = 'https://api.onedrive.com/v1.0'
+    }
+    process {
+        $body = @"
+{
+    "type": "$type"
+}
+"@
+        $relativeUri = "/drive/items/$ItemId/action.createLink"
+        $shortSharingUri = (Invoke-RestMethod -Method POST -Uri ($ODRootURI + $relativeUri) -Body $body -Headers @{
+            Authorization = "Bearer " + $AccessToken 
+        } -ContentType "application/json").link.webUrl
+        $sharingUri = (Invoke-WebRequest -Uri $shortSharingUri).BaseResponse.ResponseUri.OriginalString
+        $base64Value = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($sharingUri))
+        $encodedSharingUri = "u!" + $base64Value.TrimEnd('=').Replace('/','_').Replace('+','-')
+        return ($ODRootURI + "/shares/$encodedSharingUri/root/content")
+    }
+}
+
+$access_token = (Get-ODAuthentication -ClientID $ClientId).access_token
+$leafItems = Get-ODChildItemsRecurse -AccessToken $access_token -Path $Path
+$leafItems | ForEach-Object{
+    $downloadUri = New-ODItemDownloadUri -AccessToken $access_token -ItemId $_.id -Type view
+    Add-Member -InputObject $_ -MemberType NoteProperty -Name "downloadUri" -Value $downloadUri -Force
+    Write-Output -InputObject $_
 }
