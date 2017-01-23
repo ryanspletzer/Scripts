@@ -22,7 +22,9 @@ $registrations | ForEach-Object{
     $currentRegistration = $_
     if ($currentRegistration.Uri -eq $null) {
         if ($OneDriveItems -ne $null) {
-            $oneDriveItem = $OneDriveItems | Where-Object{$_.name -eq $currentRegistration.FileName}
+            $oneDriveItem = $OneDriveItems | Where-Object{
+                $_.name -eq $currentRegistration.Filename
+            }
             if ($oneDriveItem -ne $null) {
                 $currentRegistration.Uri = $oneDriveItem.downloadUri
             } else {
@@ -37,7 +39,9 @@ $registrations | ForEach-Object{
             if ($_.Uri -eq $null) {
                 $currentHotfix = $_
                 if ($OneDriveItems -ne $null) {
-                    $oneDriveItem = $OneDriveItems | Where-Object{$_.name -eq $currentHotfix.Id}
+                    $oneDriveItem = $OneDriveItems | Where-Object{
+                        $_.name -eq $currentHotfix.Id
+                    }
                     if ($oneDriveItem -ne $null) {
                         $currentHotfix.Uri = $oneDriveItem.downloadUri
                     } else {
