@@ -9,7 +9,10 @@ Configuration TestLabGuide {
         xDnsServer (v1.5.0 or later):            https://github.com/PowerShell/xDnsServer
 #>
     param (
-        [Parameter()] [ValidateNotNull()] [PSCredential] $Credential = (Get-Credential -Credential 'Administrator')
+        [Parameter()]
+        [ValidateNotNull()]
+        [PSCredential]
+        $Credential = (Get-Credential -Credential 'Administrator')
     )
     Import-DscResource -Module xComputerManagement, xNetworking, xActiveDirectory;
     Import-DscResource -Module xSmbShare, PSDesiredStateConfiguration;
@@ -27,7 +30,7 @@ Configuration TestLabGuide {
             xIPAddress 'PrimaryIPAddress' {
                 IPAddress      = $node.IPAddress;
                 InterfaceAlias = $node.InterfaceAlias;
-                SubnetMask     = $node.SubnetMask;
+                PrefixLength   = $node.PrefixLength;
                 AddressFamily  = $node.AddressFamily;
             }
 
@@ -218,7 +221,7 @@ Configuration TestLabGuide {
         xIPAddress 'SecondaryIPAddress' {
             IPAddress      = $node.SecondaryIPAddress;
             InterfaceAlias = $node.SecondaryInterfaceAlias;
-            SubnetMask     = $node.SecondarySubnetMask;
+            PrefixLength   = $node.SecondaryPrefixLength;
             AddressFamily  = $node.AddressFamily;
         }
 

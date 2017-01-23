@@ -4,7 +4,7 @@
             NodeName = '*';
             InterfaceAlias = 'Ethernet';
             DefaultGateway = '10.0.0.254';
-            SubnetMask = 24;
+            PrefixLength = 24;
             AddressFamily = 'IPv4';
             DnsServerAddress = '10.0.0.1';
             DomainName = 'corp.contoso.com';
@@ -14,15 +14,15 @@
             PSDscAllowDomainUser = $true; # Removes 'It is not recommended to use domain credential for node X' messages
             Lability_SwitchName = 'Corpnet';
             Lability_ProcessorCount = 1;
-            Lability_StartupMemory = 4GB;
-            Lability_Media = '2016TP5_x64_Standard_EN';
+            Lability_StartupMemory = 2GB;
+            Lability_Media = '2016_x64_Standard_EN_Eval';
         }
         @{
             NodeName = 'DC1';
             IPAddress = '10.0.0.1';
             DnsServerAddress = '127.0.0.1';
             Role = 'DC';
-            Lability_ProcessorCount = 2;
+            Lability_ProcessorCount = 1;
         }
         @{
             NodeName = 'EDGE1';
@@ -32,7 +32,7 @@
             SecondaryDnsServerAddress = '131.107.0.1';
             SecondaryInterfaceAlias = 'Ethernet 2';
             SecondaryDnsConnectionSuffix = 'isp.example.com';
-            SecondarySubnetMask = 24;
+            SecondaryPrefixLength = 24;
             Role = 'EDGE';
             ## Windows (2012 R2 and lower) sees the two NICs in reverse order, e.g. first switch is 'Ethernet 2' and second is 'Ethernet'!? -- Not true anymore with 2016 TP5
             Lability_SwitchName = 'Corpnet','Internet';
