@@ -37,7 +37,7 @@
 #>
 [CmdletBinding()]
 [OutputType([psobject[]])]
-param(
+param (
     [Parameter(Mandatory=$true,
                Position=0)]
     [string]
@@ -49,6 +49,11 @@ param(
     $Path = "/"
 )
 begin {
+
+if ((Get-Module -Name OneDrive -ListAvailable) -eq $null) {
+    Install-Module OneDrive -Force
+}
+
     #region Helper Functions
 
 
