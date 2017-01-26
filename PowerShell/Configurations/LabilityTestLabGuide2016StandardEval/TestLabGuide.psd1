@@ -34,7 +34,7 @@
             SecondaryDnsConnectionSuffix = 'isp.example.com';
             SecondaryPrefixLength = 24;
             Role = 'EDGE';
-            ## Windows (2012 R2 and lower) sees the two NICs in reverse order, e.g. first switch is 'Ethernet 2' and second is 'Ethernet'!? -- Not true anymore with 2016 TP5
+            ## Windows sees the two NICs in reverse order, e.g. first switch is 'Ethernet 2' and second is 'Ethernet'!?
             Lability_SwitchName = 'Corpnet','Internet';
         }
         @{
