@@ -92,9 +92,12 @@ Configuration TestLabGuide {
         foreach ($feature in @(
                 'AD-Domain-Services',
                 'GPMC',
-                'RSAT-AD-Tools',
-                'DHCP',
-                'RSAT-DHCP'
+                'RSAT-AD-PowerShell',
+                'RSAT-AD-AdminCenter',
+                'RSAT-ADDS-Tools',
+                'RSAT-ADLDS',
+                'DHCP'#,
+                #'RSAT-DHCP' # Not available in Server Core
             )) {
             WindowsFeature $feature.Replace('-','') {
                 Ensure = 'Present';
