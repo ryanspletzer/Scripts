@@ -15,7 +15,7 @@
             Lability_SwitchName = 'Corpnet';
             Lability_ProcessorCount = 1;
             Lability_StartupMemory = 2GB;
-            Lability_Media = '2012R2_x64_Standard_EN_Eval';
+            Lability_Media = '2012R2_x64_Standard_Core_EN_Eval';
         }
         @{
             NodeName = 'DC1';
