@@ -848,7 +848,7 @@
             MediaType       = "ISO"
             OperatingSystem = "Windows"
             Uri             = $null
-            Checksum        = ""
+            Checksum        = "E39EA2AF41B3710682FE3BBDAC35EC9A"
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
                 CustomBootstrap = @(
@@ -870,7 +870,7 @@
             MediaType       = "ISO"
             OperatingSystem = "Windows"
             Uri             = $null
-            Checksum        = ""
+            Checksum        = "6FFB9B81FDE69EA4B5A2764F93D8B245"
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
                 CustomBootstrap = @(
