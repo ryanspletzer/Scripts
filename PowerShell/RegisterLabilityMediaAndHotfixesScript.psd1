@@ -838,7 +838,53 @@
                 )
             }
             Hotfixes = @()
+        },
+        @{
+            Id              = "WIN10_x64_Enterprise_LTSB_EN"
+            FileName        = "en_windows_10_enterprise_2016_ltsb_x86_dvd_9060010.iso"
+            Description     = "Windows 10 64bit Enterprise 2016 English Evaluation"
+            Architecture    = "x64"
+            ImageName       = "Windows 10 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = ""
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+                CustomBootstrap = @(
+                    "## Unattend.xml will set the Administrator password, but it won't enable the account on client OSes",
+                    "NET USER Administrator /active:yes;",
+                    "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force;",
+                    "## Kick-start PowerShell remoting on clients to permit applying DSC configurations",
+                    "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
+                )
+            }
+            Hotfixes = @()
+        },
+        @{
+            Id              = "WIN10_x86_Enterprise_LTSB_EN"
+            FileName        = "en_windows_10_enterprise_version_1607_updated_jan_2017_x86_dvd_9719039.iso"
+            Description     = "Windows 10 32bit Enterprise 2016 English Evaluation"
+            Architecture    = "x86"
+            ImageName       = "Windows 10 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = ""
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+                CustomBootstrap = @(
+                    "## Unattend.xml will set the Administrator password, but it won't enable the account on client OSes",
+                    "NET USER Administrator /active:yes;",
+                    "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine -Force;",
+                    "## Kick-start PowerShell remoting on clients to permit applying DSC configurations",
+                    "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
+                )
+            }
+            Hotfixes = @()
         }
         #endregion
     )
 }
+
+$area
