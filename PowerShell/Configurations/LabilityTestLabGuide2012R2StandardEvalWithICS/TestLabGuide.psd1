@@ -15,7 +15,7 @@
             Lability_SwitchName = 'Corpnet';
             Lability_ProcessorCount = 1;
             Lability_StartupMemory = 2GB;
-            Lability_Media = '2012R2_x64_Standard_EN_Eval';
+            Lability_Media = '2012R2_x64_Standard_EN_V5_Eval';
         }
         @{
             NodeName = 'DC1';
@@ -35,7 +35,7 @@
             SecondaryPrefixLength = 24;
             Role = 'EDGE';
             ## Windows sees the two NICs in reverse order, e.g. first switch is 'Ethernet 2' and second is 'Ethernet'!?
-            Lability_SwitchName = 'Corpnet','Internet';
+            Lability_SwitchName = 'ICS','Internet','Corpnet';
         }
         @{
             NodeName = 'APP1';
@@ -65,7 +65,8 @@
             Network = @(
                 @{ Name = 'Corpnet'; Type = 'Internal'; }
                 @{ Name = 'Internet'; Type = 'Internal'; }
-                # @{ Name = 'External'; Type = 'External'; NetAdapterName = 'Ethernet'; AllowManagementOS = $true; }
+                @{ Name = 'ICS'; Type = 'Internal';}
+                @{ Name = 'External'; Type = 'External'; NetAdapterName = 'Ethernet'; AllowManagementOS = $true; }
                 <#
                     IPAddress: The desired IP address.
                     InterfaceAlias: Alias of the network interface for which the IP address should be set. <- Use NetAdapterName
@@ -78,11 +79,11 @@
                 ## Download published version from the PowerShell Gallery
                 @{ Name = 'xComputerManagement'; MinimumVersion = '1.3.0.0'; Provider = 'PSGallery'; }
                 ## If not specified, the provider defaults to the PSGallery.
-                @{ Name = 'xSmbShare'; MinimumVersion = '1.1.0.0'; }
-                @{ Name = 'xNetworking'; MinimumVersion = '2.7.0.0'; }
-                @{ Name = 'xActiveDirectory'; MinimumVersion = '2.9.0.0'; }
-                @{ Name = 'xDnsServer'; MinimumVersion = '1.5.0.0'; }
-                @{ Name = 'xDhcpServer'; MinimumVersion = '1.3.0.0'; }
+                #@{ Name = 'xSmbShare'; MinimumVersion = '1.1.0.0'; }
+                #@{ Name = 'xNetworking'; MinimumVersion = '2.7.0.0'; }
+                #@{ Name = 'xActiveDirectory'; MinimumVersion = '2.9.0.0'; }
+                #@{ Name = 'xDnsServer'; MinimumVersion = '1.5.0.0'; }
+                #@{ Name = 'xDhcpServer'; MinimumVersion = '1.3.0.0'; }
                 ## The 'GitHub# provider can download modules directly from a GitHub repository, for example:
                 ## @{ Name = 'Lability'; Provider = 'GitHub'; Owner = 'VirtualEngine'; Repository = 'Lability'; Branch = 'dev'; }
             );
