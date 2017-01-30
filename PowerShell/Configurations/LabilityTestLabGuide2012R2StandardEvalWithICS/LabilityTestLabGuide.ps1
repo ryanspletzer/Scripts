@@ -16,7 +16,7 @@ TestLabGuide -OutputPath D:\TestLab\Configurations -ConfigurationData .\TestLabG
 <#
     Set the lab VM defaults, create the lab and start the VMs #>
 Get-LabVMDefault
-Set-LabVMDefault -SystemLocale en-US -InputLocale 0409:00000409 -UserLocale en-US -RegisteredOrganization 'Contoso' -StartupMemory 2GB
+Set-LabVMDefault -SystemLocale en-US -InputLocale 0409:00000409 -UserLocale en-US -RegisteredOrganization 'Contoso' -StartupMemory 4GB
 Start-LabConfiguration -ConfigurationData .\TestLabGuide.psd1 -Path D:\TestLab\Configurations -Verbose -Force
 
 ## ADD ADDITIONAL NIC
