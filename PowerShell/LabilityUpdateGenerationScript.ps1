@@ -58,26 +58,11 @@ param (
                Position=4)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
-        ($_.StartsWith('http://') -or $_.StartsWith("https://")) -and 
-        $_.EndsWith('.msu')
-    })]
-    [string[]]
-    $NetFxQualityRollupUris = @(
-        "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu", # Dec 2016
-        "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu",
-        "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu",
-        "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-    ),
-
-    [Parameter(Mandatory=$false,
-               Position=4)]
-    [ValidateNotNullOrEmpty()]
-    [ValidateScript({
         (Test-Path -Path $_ -PathType Leaf) -and
         ($_.EndsWith(".ps1"))
     })]
     [string]
-    $ConfigurationScript = ".\Configurations\LabilityTestLabGuide2012R2StandardEvalWithICS\TestLabGuide.ps1",
+    $ConfigurationScript = ".\Configurations\Lability2012R2StandardEvalUpdateGeneration\TestLabGuide.ps1",
 
     [Parameter(Mandatory=$false,
                Position=5)]
@@ -87,7 +72,7 @@ param (
         ($_.EndsWith(".psd1"))
     })]
     [string]
-    $ConfigurationData = ".\Configurations\LabilityTestLabGuide2012R2StandardEvalWithICS\TestLabGuide.psd1",
+    $ConfigurationData = ".\Configurations\Lability2012R2StandardEvalUpdateGeneration\TestLabGuide.psd1",
 
     [Parameter(Mandatory=$false,
                Position=6)]
@@ -112,6 +97,16 @@ $customData = @{}
 switch -Wildcard ($LabilityLabMediaId) {
     "2016*Nano*" {
         $specificExcludedUpdates = $importedExcludedUpdates.'2016Nano'
+        $customData = @{
+            SetupComplete = "CoreCLR"
+            PackagePath   = "\NanoServer\Packages"
+            PackageLocale = "en-US"
+            WimPath       = "\NanoServer\NanoServer.wim"
+            Package       = @(
+                "Microsoft-NanoServer-Guest-Package",
+                "Microsoft-NanoServer-DSC-Package"
+            )
+        }
         break
     }
     "2016*" {
@@ -247,7 +242,10 @@ $getWSUSUpdateUrlsSB = {
 $allWSUSOfflineDownloads = Select-String -Path $wsusOfflineDownloadLogPath -Pattern "(http://download.windowsupdate.com)[-a-zA-z0-9./]+(.cab)\b" -AllMatches | %{ $_.Matches.Value}
 $trimmedUpdateList = TrimExcluded -Updates $allWSUSOfflineDownloads -ExcludedUpdates $specificExcludedUpdates
 $hotfixArray = PackHotfixArray -Updates $trimmedUpdateList
-$hotfixArray = PackHotfixArray -Updates $WMFUpdateUri -HotfixArray $hotfixArray
+if (($LabilityLabMediaId -like "2012R2*") -or
+    ($LabilityLabMediaId -like "WIN81*")) {
+    $hotfixArray = PackHotfixArray -Updates $WMFUpdateUri -HotfixArray $hotfixArray
+}
 
 do
 {
