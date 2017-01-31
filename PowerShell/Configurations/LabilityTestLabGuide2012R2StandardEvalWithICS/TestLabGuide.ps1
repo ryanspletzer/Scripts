@@ -4,7 +4,7 @@ Configuration TestLabGuide {
         xComputerManagement (v1.4.0.0 or later): https://github.com/PowerShell/xComputerManagement
 #>
     param ()
-    Import-DscResource -Module xComputerManagement
+    Import-DscResource -Module xComputerManagement, xNetworking
 
     node $AllNodes.Where({$true}).NodeName {
         LocalConfigurationManager {
@@ -16,6 +16,13 @@ Configuration TestLabGuide {
 
         xComputer 'Hostname' {
             Name = $node.NodeName;
+        }
+
+        xNetConnectionProfile 'EthernetPrivate' {
+            InterfaceAlias = 'Ethernet'
+            NetworkCategory = 'Private'
+            IPv4Connectivity = 'Internet'
+            IPv6Connectivity = 'NoTraffic'
         }
     }
 }
