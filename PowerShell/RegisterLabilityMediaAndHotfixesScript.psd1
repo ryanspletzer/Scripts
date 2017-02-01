@@ -1,6 +1,7 @@
 ﻿@{
     Registrations = @(
         #region Custom
+
         #region Windows Server 2016
         @{
             Id              = "2016_x64_Standard_EN"
@@ -15,7 +16,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Standard_Core_EN"
@@ -30,7 +31,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_DataCenter_EN"
@@ -45,7 +46,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_DataCenter_Core_EN"
@@ -60,7 +61,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Standard_Nano_EN"
@@ -82,7 +83,7 @@
                     "Microsoft-NanoServer-DSC-Package"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Datacenter_Nano_EN"
@@ -104,9 +105,10 @@
                     "Microsoft-NanoServer-DSC-Package"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         #endregion
+
         #region Windows Server 2012 R2
         @{
             Id              = "2012R2_x64_Standard_EN"
@@ -121,49 +123,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Standard_EN_V51"
+            Id              = "2012R2_x64_Standard_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -175,52 +138,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Standard_Core_EN"
@@ -235,49 +153,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Standard_Core_EN_V51"
+            Id              = "2012R2_x64_Standard_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -289,52 +168,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_EN"
@@ -349,49 +183,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Datacenter_EN_V51"
+            Id              = "2012R2_x64_Datacenter_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -403,52 +198,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_Core_EN"
@@ -463,49 +213,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Datacenter_Core_EN_V51"
+            Id              = "2012R2_x64_Datacenter_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -517,54 +228,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         #endregion
+
         #region Windows 8.1
         @{
             Id              = "WIN81_x64_Enterprise_EN"
@@ -579,49 +246,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "WIN81_x64_Enterprise_EN_V51"
+            Id              = "WIN81_x64_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x64_dvd_6054382.iso"
             Description     = "Windows 8.1 with Update 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -633,52 +261,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN"
@@ -693,46 +276,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows10.0-KB3151900-x86.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN_V51"
@@ -747,54 +291,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows10.0-KB3151900-x86.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1-KB3191564-x86.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1-KB3191564-x86.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         #endregion
+
         #region Windows 10
         @{
             Id              = "WIN10_x64_Enterprise_EN"
@@ -816,7 +316,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x64_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x86_Enterprise_EN"
@@ -838,7 +338,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x86_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x64_Enterprise_LTSB_EN"
@@ -860,7 +360,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x64_Enterprise_LTSB_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x86_Enterprise_LTSB_EN"
@@ -882,11 +382,14 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x64_Enterprise_LTSB_EN_Eval.Hotfixes.xml'
         }
         #endregion
+
         #endregion
+
         #region Eval
+
         #region Windows Server 2016
         @{
             Id              = "2016_x64_Standard_EN_Eval"
@@ -901,12 +404,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Standard_Core_EN_Eval"
@@ -921,12 +419,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_DataCenter_EN_Eval"
@@ -941,12 +434,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_DataCenter_Core_EN_Eval"
@@ -961,12 +449,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Standard_Nano_EN_Eval"
@@ -988,12 +471,7 @@
                     "Microsoft-NanoServer-DSC-Package"
                 )
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2016_x64_Datacenter_Nano_EN"
@@ -1015,14 +493,10 @@
                     "Microsoft-NanoServer-DSC-Package"
                 )
             }
-            Hotfixes = @(
-                @{ # January 26 2017 CU
-                    Id  = "windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x64_eba0675fd22087449c80b4d26df6b7035e9fb91f.msu"
-                }
-            )
+            Hotfixes = '.\2016_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         #endregion
+
         #region Windows Server 2012 R2
         @{
             Id              = "2012R2_x64_Standard_EN"
@@ -1037,49 +511,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Standard_EN_V51"
+            Id              = "2012R2_x64_Standard_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -1091,52 +526,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Standard_Core_EN"
@@ -1151,49 +541,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                },
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                },
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Standard_Core_EN_V51"
+            Id              = "2012R2_x64_Standard_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -1205,52 +556,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_EN"
@@ -1265,49 +571,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Datacenter_EN_V51"
+            Id              = "2012R2_x64_Datacenter_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -1319,52 +586,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_Core_EN"
@@ -1379,49 +601,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "2012R2_x64_Datacenter_Core_EN_V51"
+            Id              = "2012R2_x64_Datacenter_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
             Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -1433,54 +616,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         #endregion
+
         #region Windows 8.1
         @{
             Id              = "WIN81_x64_Enterprise_EN"
@@ -1495,49 +634,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "WIN81_x64_Enterprise_EN_V51"
+            Id              = "WIN81_x64_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x64_dvd_6054382.iso"
             Description     = "Windows 8.1 with Update 64bit English with WMF 5.1"
             Architecture    = "x64"
@@ -1549,52 +649,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows8.1-KB3151864-x64.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-                }
-                #endregion
-            )
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN"
@@ -1609,46 +664,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows10.0-KB3151900-x86.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                }
-                #endregion
-            )
+            Hotfixes = $null
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN_V51"
@@ -1663,54 +679,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = @(
-                #region Update Rollups
-                @{ # July 2016 Rollup KB3172614
-                    Id  = 'windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/updt/2016/07/windows8.1-kb3172614-x86_d11c233c8598b734de72665e0d0a3f2ef007b91f.msu'
-                },
-                @{ # August 2016 Rollup KB3179574
-                    Id  = 'windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                    Uri = 'http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/08/windows8.1-kb3179574-x86_8b229e05915452a38a4b22bd15783b11c9b34c9f.msu'
-                },
-                @{ # December 2016 Rollup KB3205401
-                    Id  = 'windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                    Uri = 'http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x86_d5c630d02f0637aed32bf84d9086d2c21f40974f.msu'
-                }
-                #endregion
-                #region .NET Framework 4.6.2
-                @{
-                    Id  = "Windows10.0-KB3151900-x86.cab"
-                    Uri = $null
-                }
-                #endregion
-                #region .NET Framework Monthly Rollups - December 2016 KB3205404 (4 Updates)
-                @{ # KB3205378
-                    Id  = "windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_30390c422203c74bdb41cc16fa796f2b643ae1f1.msu"
-                },
-                @{ # KB3210132
-                    Id  = "windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_0779132bda3eb60e10aec47647ee86770ddc4f95.msu"
-                },
-                @{ # KB3210135
-                    Id  = "windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_c30336e451b9c87437060653ad42706f528c88b0.msu"
-                },
-                @{ # KB3210137
-                    Id  = "windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_0c14af1d2e32174e6c138d63630fdb95339c046e.msu"
-                },
-                #endregion
-                #region WMF 5.1
-                @{
-                    Id  = "Win8.1-KB3191564-x86.msu"
-                    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1-KB3191564-x86.msu"
-                }
-                #endregion
-            )
+            Hotfixes = $null
         },
         #endregion
+
         #region Windows 10
         @{
             Id              = "WIN10_x64_Enterprise_EN"
@@ -1732,7 +704,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x64_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x86_Enterprise_EN"
@@ -1754,7 +726,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x86_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x64_Enterprise_LTSB_EN"
@@ -1776,7 +748,7 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x64_Enterprise_LTSB_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN10_x86_Enterprise_LTSB_EN"
@@ -1798,11 +770,10 @@
                     "Enable-PSRemoting -SkipNetworkProfileCheck -Force;"
                 )
             }
-            Hotfixes = @()
+            Hotfixes = '.\WIN10_x86_Enterprise_LTSB_EN_Eval.Hotfixes.xml'
         }
         #endregion
+
         #endregion
     )
 }
-
-$area

@@ -16,10 +16,10 @@ param (
 )
 
 Import-Module -Name Lability
-$RegistrationData = (Resolve-Path -Path $RegistrationData).Path
-$registrations = (Import-LocalizedData -BaseDirectory (Split-Path -Path $RegistrationData -Parent) -FileName (Split-Path $RegistrationData -Leaf)).Registrations
+$registrations = (Import-PowerShellDataFile -Path $RegistrationData).Registrations
 $registrations | ForEach-Object{
     $currentRegistration = $_
+    Write-Verbose -Message "Current Registration: $($currentRegistration.Id)"
     if ($currentRegistration.Uri -eq $null) {
         if ($OneDriveItems -ne $null) {
             $oneDriveItem = $OneDriveItems | Where-Object{
@@ -34,8 +34,9 @@ $registrations | ForEach-Object{
             $currentRegistration.Uri = Read-Host -Prompt "Please provide download URI for $($currentRegistration.Id)"
         }
     }
-    if ($currentRegistration.Hotfixes.Count -gt 0) {
-        $currentRegistration.Hotfixes | ForEach-Object {
+    if ($null -ne $currentRegistration.Hotfixes) {
+        [hashtable[]]$currentRegistrationHotfixes = (Import-Clixml -Path ($currentRegistration.Hotfixes)) | ForEach-Object{ @{Id=$_.Id;Uri=$_.Uri}}
+        $currentRegistrationHotfixes | ForEach-Object {
             if ($_.Uri -eq $null) {
                 $currentHotfix = $_
                 if ($OneDriveItems -ne $null) {
@@ -53,9 +54,10 @@ $registrations | ForEach-Object{
             }
         }
     }
+    $currentRegistration.Hotfixes = $currentRegistrationHotfixes
 }
 
 $registrations | ForEach-Object {
     $currentRegistration = $_
-    Register-LabMedia @currentRegistration
+    Register-LabMedia @currentRegistration -Force
 }
