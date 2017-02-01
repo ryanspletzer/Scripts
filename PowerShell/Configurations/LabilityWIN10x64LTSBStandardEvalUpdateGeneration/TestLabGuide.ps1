@@ -21,8 +21,6 @@ Configuration TestLabGuide {
         xNetConnectionProfile 'EthernetPrivate' {
             InterfaceAlias   = 'Ethernet'
             NetworkCategory  = 'Private'
-            IPv4Connectivity = 'Internet'
-            IPv6Connectivity = 'NoTraffic'
         }
 
         xFirewall 'Network Discovery (Pub WSD-Out)' {
