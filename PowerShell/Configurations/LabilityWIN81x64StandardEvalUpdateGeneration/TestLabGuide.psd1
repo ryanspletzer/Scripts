@@ -9,7 +9,7 @@
             Lability_SwitchName = 'ICS';
             Lability_ProcessorCount = 1;
             Lability_StartupMemory = 4GB;
-            Lability_Media = 'WIN81_x64_Standard_EN_V5_Eval';
+            Lability_Media = 'WIN81_x64_Enterprise_EN_V5_Eval ';
         }
         @{
             NodeName = 'EDGE1';
