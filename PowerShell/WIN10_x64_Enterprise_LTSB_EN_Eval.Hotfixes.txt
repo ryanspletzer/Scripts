@@ -1,0 +1,32 @@
+@{
+    Id  = "windows10.0-kb3074679-x64_b2c2faa803e9a47aec38696bb3798f19d22de195.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows10.0-kb3074679-x64_b2c2faa803e9a47aec38696bb3798f19d22de195.cab"
+}
+@{
+    Id  = "windows10.0-kb3074680-x64_2c01350668f1eb7390ce6d19e72b358e92b74457.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows10.0-kb3074680-x64_2c01350668f1eb7390ce6d19e72b358e92b74457.cab"
+}
+@{
+    Id  = "windows10.0-kb3125217-x64_94d4773d1e8fb9bfa8847627c71b9f4088d1fc5e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2016/03/windows10.0-kb3125217-x64_94d4773d1e8fb9bfa8847627c71b9f4088d1fc5e.cab"
+}
+@{
+    Id  = "windows10.0-kb3173427-x64_d95e56e499e2c281a1f59585221dc891253414c7.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2016/06/windows10.0-kb3173427-x64_d95e56e499e2c281a1f59585221dc891253414c7.cab"
+}
+@{
+    Id  = "windows10.0-kb3173427-x64_d95e56e499e2c281a1f59585221dc891253414c7.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2016/06/windows10.0-kb3173427-x64_d95e56e499e2c281a1f59585221dc891253414c7.cab"
+}
+@{
+    Id  = "windows10.0-kb3161102-x64_5d8bf62de2a4e651f8523d63589d0d2961bb2ad1.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/07/windows10.0-kb3161102-x64_5d8bf62de2a4e651f8523d63589d0d2961bb2ad1.cab"
+}
+@{
+    Id  = "windows10.0-kb3210721-x64_b724dfc9c7e7cc2603293231ae0bcdc85e12c0f2.msu"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/12/windows10.0-kb3210721-x64_b724dfc9c7e7cc2603293231ae0bcdc85e12c0f2.msu"
+}
+@{
+    Id  = "windows10.0-kb3214628-x64_36ad115ff8ca58f8e3b833f004eabd23a9a92464.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2017/01/windows10.0-kb3214628-x64_36ad115ff8ca58f8e3b833f004eabd23a9a92464.cab"
+}
