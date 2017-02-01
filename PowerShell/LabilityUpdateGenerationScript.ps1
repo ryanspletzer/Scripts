@@ -14,9 +14,6 @@ register
 make live machine (work out bugs / add to known problem childs. rinse and repeat)
 #>
 
-#TODO: Enabling network discovery as part of DSC config
-#TODO: Ignore Malicious Software Removal Tool
-
 param (
     [Parameter(Mandatory=$true,
                Position=0)]
@@ -306,4 +303,15 @@ Import-Clixml -Path .\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml
     }
     $ht
 })
+#>
+
+<#
+Extract current updates as hashtable array for re-registration
+[hashtable[]] $testArray = (Get-LabMedia -Id 2016_x64_Standard_EN_Eval).Hotfixes | %{
+    $ht = @{
+        Id  = $_.Id
+        Uri = $_.Uri
+    }
+    $ht
+}
 #>
