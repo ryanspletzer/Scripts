@@ -1,0 +1,620 @@
+@{
+    Id  = "windows8.1-kb2937592-x64_eb8d2ba8642639247cdbefb9dfef0571dd8dbe9f.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2014/02/windows8.1-kb2937592-x64_eb8d2ba8642639247cdbefb9dfef0571dd8dbe9f.cab"
+}
+@{
+    Id  = "windows8.1-kb2938439-x64_93c0c79fef6211aac8d625dcf5e27813ce5590bb.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2014/03/windows8.1-kb2938439-x64_93c0c79fef6211aac8d625dcf5e27813ce5590bb.cab"
+}
+@{
+    Id  = "windows8.1-kb2934018-x64_0b702918265e22a8638cadfcb147e012325b0d09.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2014/04/windows8.1-kb2934018-x64_0b702918265e22a8638cadfcb147e012325b0d09.cab"
+}
+@{
+    Id  = "windows8.1-kb2922229-x64_df36a522807f0fb89daf592104ab73eed5ca86a5.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/03/windows8.1-kb2922229-x64_df36a522807f0fb89daf592104ab73eed5ca86a5.cab"
+}
+@{
+    Id  = "windows8.1-kb2959977-x64_80d1f06c80cc3d7844cfd8727fb5247ebad70991.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/04/windows8.1-kb2959977-x64_80d1f06c80cc3d7844cfd8727fb5247ebad70991.cab"
+}
+@{
+    Id  = "windows8.1-kb2957189-x64_a8a4c62c4e9d208efe45b85ed24fca88df487279.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/05/windows8.1-kb2957189-x64_a8a4c62c4e9d208efe45b85ed24fca88df487279.cab"
+}
+@{
+    Id  = "windows8.1-kb2965161-x64_870d39bda6633b36d28065240c6ec363c5ecaa33.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/05/windows8.1-kb2965161-x64_870d39bda6633b36d28065240c6ec363c5ecaa33.cab"
+}
+@{
+    Id  = "windows8.1-kb2973351-x64_f833e109ced732bcd012ba269f039325af3662d4.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/06/windows8.1-kb2973351-x64_f833e109ced732bcd012ba269f039325af3662d4.cab"
+}
+@{
+    Id  = "windows8.1-kb2973906-x64_951c1b0e21943b6fb6fcfec37f49bfe61115159b.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/06/windows8.1-kb2973906-x64_951c1b0e21943b6fb6fcfec37f49bfe61115159b.cab"
+}
+@{
+    Id  = "windows8.1-kb2975625-x64_224260ae305d4356695431f8b2d58cd287c67d5c.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/06/windows8.1-kb2975625-x64_224260ae305d4356695431f8b2d58cd287c67d5c.cab"
+}
+@{
+    Id  = "windows8.1-kb2966828-x64_1d75fda184661d15ce90a958c482ed8082dc2f35.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/07/windows8.1-kb2966828-x64_1d75fda184661d15ce90a958c482ed8082dc2f35.cab"
+}
+@{
+    Id  = "windows8.1-kb2976897-x64_2fe12cec23b5092d7dc2156cb1ba55aaf6133ce8.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/07/windows8.1-kb2976897-x64_2fe12cec23b5092d7dc2156cb1ba55aaf6133ce8.cab"
+}
+@{
+    Id  = "windows8.1-kb2894852-v2-x64_0fba43b2aa19b2dcea1013a48594f4d6cdde49cb.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows8.1-kb2894852-v2-x64_0fba43b2aa19b2dcea1013a48594f4d6cdde49cb.cab"
+}
+@{
+    Id  = "windows8.1-kb2894856-v2-x64_a361ef4cef6c490d624c3fb177b2137905e40c40.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows8.1-kb2894856-v2-x64_a361ef4cef6c490d624c3fb177b2137905e40c40.cab"
+}
+@{
+    Id  = "windows8.1-kb2993651-x64_3c9471da64cc67c86777d1570111d764b0125e4f.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/08/windows8.1-kb2993651-x64_3c9471da64cc67c86777d1570111d764b0125e4f.cab"
+}
+@{
+    Id  = "windows8.1-kb2968296-x64_f53d611632f0019d2eca8ac0c07e4b14168963fe.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/09/windows8.1-kb2968296-x64_f53d611632f0019d2eca8ac0c07e4b14168963fe.cab"
+}
+@{
+    Id  = "windows8.1-kb2972103-v2-x64_bf51b1c1736b88a1b4d0f2d08e4de90b14ed8ecb.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/09/windows8.1-kb2972103-v2-x64_bf51b1c1736b88a1b4d0f2d08e4de90b14ed8ecb.cab"
+}
+@{
+    Id  = "windows8.1-kb2977292-x64_e3e2556dd7a6cb5dfc406e7399419ffd97699ed6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/09/windows8.1-kb2977292-x64_e3e2556dd7a6cb5dfc406e7399419ffd97699ed6.cab"
+}
+@{
+    Id  = "windows8.1-kb2982998-v2-x64_d7ebb6cf561a9a346c4e331d691629e90ad42e73.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb2982998-v2-x64_d7ebb6cf561a9a346c4e331d691629e90ad42e73.cab"
+}
+@{
+    Id  = "windows8.1-kb2992611-x64_083da877dabb7775303a42bc5630be2f3fe15bca.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb2992611-x64_083da877dabb7775303a42bc5630be2f3fe15bca.cab"
+}
+@{
+    Id  = "windows8.1-kb3003743-x64_15522c8ae45af50da96e5fb65a8bf8b5b5b364ab.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb3003743-x64_15522c8ae45af50da96e5fb65a8bf8b5b5b364ab.cab"
+}
+@{
+    Id  = "windows8.1-kb3010788-x64_89b2b80ead019afe136902a53a8ce67b73cad2e6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb3010788-x64_89b2b80ead019afe136902a53a8ce67b73cad2e6.cab"
+}
+@{
+    Id  = "windows8.1-kb3011780-x64_631b5c61b3047616f390252ea052f2ce7fe3b664.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/11/windows8.1-kb3011780-x64_631b5c61b3047616f390252ea052f2ce7fe3b664.cab"
+}
+@{
+    Id  = "windows8.1-kb3004361-x64_a0a5860f79eb1c8b76f97c2a14248cb519b6f1d0.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows8.1-kb3004361-x64_a0a5860f79eb1c8b76f97c2a14248cb519b6f1d0.cab"
+}
+@{
+    Id  = "windows8.1-kb3020393-x64_43e42a61a3d72ea4239e3a57ee71ca519a40aae6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows8.1-kb3020393-x64_43e42a61a3d72ea4239e3a57ee71ca519a40aae6.cab"
+}
+@{
+    Id  = "windows8.1-kb3021674-x64_5a9635459cadceeae7f61a73ef899ebb99d3d648.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows8.1-kb3021674-x64_5a9635459cadceeae7f61a73ef899ebb99d3d648.cab"
+}
+@{
+    Id  = "windows8.1-kb3022777-x64_eb75535687d39f07ab37f1f95a4403e0ee067d39.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/12/windows8.1-kb3022777-x64_eb75535687d39f07ab37f1f95a4403e0ee067d39.cab"
+}
+@{
+    Id  = "windows8.1-kb3000483-x64_f304492d42d53e5621d846cf32527a07f45042e1.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/01/windows8.1-kb3000483-x64_f304492d42d53e5621d846cf32527a07f45042e1.cab"
+}
+@{
+    Id  = "windows8.1-kb3019978-x64_fd77f36d51e48efd80b4fb1b95c3b5425e707ab8.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/01/windows8.1-kb3019978-x64_fd77f36d51e48efd80b4fb1b95c3b5425e707ab8.cab"
+}
+@{
+    Id  = "windows8.1-kb3037576-x64_684f74eb38d78fac0dde70305b976269e186e190.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/03/windows8.1-kb3037576-x64_684f74eb38d78fac0dde70305b976269e186e190.cab"
+}
+@{
+    Id  = "windows8.1-kb3045999-x64_0b7668d0cb45018b5fc0d3e894db839c43622a33.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/03/windows8.1-kb3045999-x64_0b7668d0cb45018b5fc0d3e894db839c43622a33.cab"
+}
+@{
+    Id  = "windows8.1-kb3047234-x64_5c972c072885d258f3bf2af20020e16c6984e9b4.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/03/windows8.1-kb3047234-x64_5c972c072885d258f3bf2af20020e16c6984e9b4.cab"
+}
+@{
+    Id  = "windows8.1-kb3055642-x64_59cd30d9c50c52ac6cc2d1adb723160ef6957d2e.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/04/windows8.1-kb3055642-x64_59cd30d9c50c52ac6cc2d1adb723160ef6957d2e.cab"
+}
+@{
+    Id  = "windows8.1-kb3081320-x64_4494494bb01eb85db0ba22d531c11dca44ff05b8.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windows8.1-kb3081320-x64_4494494bb01eb85db0ba22d531c11dca44ff05b8.cab"
+}
+@{
+    Id  = "windows8.1-kb3092601-x64_842c333d489ca201a01cbfe5dce6ad24218d94c6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windows8.1-kb3092601-x64_842c333d489ca201a01cbfe5dce6ad24218d94c6.cab"
+}
+@{
+    Id  = "windows8.1-kb3097992-x64_642e3f2c5d1a3cf111549bd4be469ed34f722add.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windows8.1-kb3097992-x64_642e3f2c5d1a3cf111549bd4be469ed34f722add.cab"
+}
+@{
+    Id  = "windows8.1-kb3102939-x64_0a8347473afddef3cfc794a6eaf170f91852a1c1.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/10/windows8.1-kb3102939-x64_0a8347473afddef3cfc794a6eaf170f91852a1c1.cab"
+}
+@{
+    Id  = "windows8.1-kb3109103-x64_ab8fd7330b6ad8781258f12d668c21b20f98d6b9.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2015/11/windows8.1-kb3109103-x64_ab8fd7330b6ad8781258f12d668c21b20f98d6b9.cab"
+}
+@{
+    Id  = "windows8.1-kb3115858-x64_14c9efe23a1a186fa0c1c26163b5d14d5a96662d.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3115858-x64_14c9efe23a1a186fa0c1c26163b5d14d5a96662d.cab"
+}
+@{
+    Id  = "windows8.1-kb3126041-x64_91f5d3e77c59198fbd8ced41adf93688d7fe0de1.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3126041-x64_91f5d3e77c59198fbd8ced41adf93688d7fe0de1.cab"
+}
+@{
+    Id  = "windows8.1-kb3126434-x64_af45c9c317c41e559388fde3c83d50edba5bd675.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3126434-x64_af45c9c317c41e559388fde3c83d50edba5bd675.cab"
+}
+@{
+    Id  = "windows8.1-kb3126587-x64_c96c573ee82705317bfc9c0dc87b6a1016ea9394.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3126587-x64_c96c573ee82705317bfc9c0dc87b6a1016ea9394.cab"
+}
+@{
+    Id  = "windows8.1-kb3126593-x64_9e51aa19bcd15cc3c242abdf66f2c9a0bc2cfb1a.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3126593-x64_9e51aa19bcd15cc3c242abdf66f2c9a0bc2cfb1a.cab"
+}
+@{
+    Id  = "windows8.1-kb3127222-x64_c7dba11ff75523e060f9df1748732f410e67379b.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3127222-x64_c7dba11ff75523e060f9df1748732f410e67379b.cab"
+}
+@{
+    Id  = "windows8.1-kb3133043-x64_3736edb5ae210e1ce8786de0321de631faee78a5.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3133043-x64_3736edb5ae210e1ce8786de0321de631faee78a5.cab"
+}
+@{
+    Id  = "windows8.1-kb3134222-x64_4fe1b053c0b347eb26640389e171ded2a83f079a.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/01/windows8.1-kb3134222-x64_4fe1b053c0b347eb26640389e171ded2a83f079a.cab"
+}
+@{
+    Id  = "windows8.1-kb3135985-x64_b40dbc460ef232c5e68a38a7fa574c681b3a8e0a.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows8.1-kb3135985-x64_b40dbc460ef232c5e68a38a7fa574c681b3a8e0a.cab"
+}
+@{
+    Id  = "windows8.1-kb3138910-x64_f0d2a6e4f8a5fb200765841c262ad274ed87acbc.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows8.1-kb3138910-x64_f0d2a6e4f8a5fb200765841c262ad274ed87acbc.cab"
+}
+@{
+    Id  = "windows8.1-kb3138962-x64_59645a7a0856ede2e3b4a1b637ab266feab18694.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows8.1-kb3138962-x64_59645a7a0856ede2e3b4a1b637ab266feab18694.cab"
+}
+@{
+    Id  = "windows8.1-kb3139398-x64_80ea83cef2429c5fdc9742c52f2933ed39b6089d.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/02/windows8.1-kb3139398-x64_80ea83cef2429c5fdc9742c52f2933ed39b6089d.cab"
+}
+@{
+    Id  = "windows8.1-kb3146723-x64_a4bc61d3868546e9ad862b4fbd1f108534e05bf8.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/03/windows8.1-kb3146723-x64_a4bc61d3868546e9ad862b4fbd1f108534e05bf8.cab"
+}
+@{
+    Id  = "windows8.1-kb3146963-x64_79444bad9b4e7fe53fffdc2a0d9c8b61a72756be.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/03/windows8.1-kb3146963-x64_79444bad9b4e7fe53fffdc2a0d9c8b61a72756be.cab"
+}
+@{
+    Id  = "windows8.1-kb3149090-x64_87655ec80366a98956fbffc36d35eddb3d1b7d86.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/03/windows8.1-kb3149090-x64_87655ec80366a98956fbffc36d35eddb3d1b7d86.cab"
+}
+@{
+    Id  = "windows8.1-kb3150220-x64_654210005f8c2517f8210c228bcf70dc5dfdb1bf.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/04/windows8.1-kb3150220-x64_654210005f8c2517f8210c228bcf70dc5dfdb1bf.cab"
+}
+@{
+    Id  = "windows8.1-kb3155784-x64_1fa94b5b28bba02f73cc3e5f25728e14edd48107.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/04/windows8.1-kb3155784-x64_1fa94b5b28bba02f73cc3e5f25728e14edd48107.cab"
+}
+@{
+    Id  = "windows8.1-kb3156019-x64_9ef5bfb0d74ce5b68c7c9446718d9bc04b5e2efa.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/04/windows8.1-kb3156019-x64_9ef5bfb0d74ce5b68c7c9446718d9bc04b5e2efa.cab"
+}
+@{
+    Id  = "windows8.1-kb3156059-x64_11d2d91d15a02d79779f46abd4137ff78373bc4c.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/04/windows8.1-kb3156059-x64_11d2d91d15a02d79779f46abd4137ff78373bc4c.cab"
+}
+@{
+    Id  = "windows8.1-kb3161561-x64_ed92df30a5b3b1e9b30acf8bf87923056bdd34bc.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windows8.1-kb3161561-x64_ed92df30a5b3b1e9b30acf8bf87923056bdd34bc.cab"
+}
+@{
+    Id  = "windows8.1-kb3161949-x64_ae8dcf9a49b52f13979cb45e8ce0ba34889c98c9.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windows8.1-kb3161949-x64_ae8dcf9a49b52f13979cb45e8ce0ba34889c98c9.cab"
+}
+@{
+    Id  = "windows8.1-kb3161951-x64_9fb954d178e31dab7fb2bd330deb9d7aaba57c4e.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windows8.1-kb3161951-x64_9fb954d178e31dab7fb2bd330deb9d7aaba57c4e.cab"
+}
+@{
+    Id  = "windows8.1-kb3162343-x64_3c206340cbe222f402645ce71b66eb1f11bbfe20.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/05/windows8.1-kb3162343-x64_3c206340cbe222f402645ce71b66eb1f11bbfe20.cab"
+}
+@{
+    Id  = "windows8.1-kb3174644-x64_bc0827f7345e82c3b73377c5222aaf83d75ba0fc.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windows8.1-kb3174644-x64_bc0827f7345e82c3b73377c5222aaf83d75ba0fc.cab"
+}
+@{
+    Id  = "windows8.1-kb3175024-x64_77a1e6f0b2c9c243f4e25e5edfcd98995ffdf330.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windows8.1-kb3175024-x64_77a1e6f0b2c9c243f4e25e5edfcd98995ffdf330.cab"
+}
+@{
+    Id  = "windows8.1-kb3184471-x64_a5ad3b6566eae7410ca6dc8bf62b00cee5a0cbf6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/08/windows8.1-kb3184471-x64_a5ad3b6566eae7410ca6dc8bf62b00cee5a0cbf6.cab"
+}
+@{
+    Id  = "windows8.1-kb3178539-x64_d963288a62d98c87271d0d7b6055456bbd307c81.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/09/windows8.1-kb3178539-x64_d963288a62d98c87271d0d7b6055456bbd307c81.cab"
+}
+@{
+    Id  = "windows8.1-kb3187754-v2-x64_22551461fcd0b64162143114ae5ab7f8e96aa743.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/09/windows8.1-kb3187754-v2-x64_22551461fcd0b64162143114ae5ab7f8e96aa743.cab"
+}
+@{
+    Id  = "windows8.1-kb3192392-x64_af80ec8e7cab019d370a0317c83edb30f42b6679.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/10/windows8.1-kb3192392-x64_af80ec8e7cab019d370a0317c83edb30f42b6679.cab"
+}
+@{
+    Id  = "windows8.1-kb3205400-x64_f3c954bf49e81877893c58acb4172bb8a2e00d6c.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/11/windows8.1-kb3205400-x64_f3c954bf49e81877893c58acb4172bb8a2e00d6c.cab"
+}
+@{
+    Id  = "windows8.1-kb3205378-x64_114d54a7015c3df7c7e0f617e2fc5bde9eeed881.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205378-x64_114d54a7015c3df7c7e0f617e2fc5bde9eeed881.cab"
+}
+@{
+    Id  = "windows8.1-kb3205401-x64_321b77e058ef0377d84e6f0d25b360a05a363ad3.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3205401-x64_321b77e058ef0377d84e6f0d25b360a05a363ad3.cab"
+}
+@{
+    Id  = "windows8.1-kb3210132-x64_4ca53151ae29f2d5cdcad416856fa93aa1aeb82e.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210132-x64_4ca53151ae29f2d5cdcad416856fa93aa1aeb82e.cab"
+}
+@{
+    Id  = "windows8.1-kb3210135-x64_a661e1718f68d7b02ce60e25722ee360aefb6620.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_a661e1718f68d7b02ce60e25722ee360aefb6620.cab"
+}
+@{
+    Id  = "windows8.1-kb3210137-x64_6d06edf487f8651e7d2b18c74e8c4f46e7af9eda.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210137-x64_6d06edf487f8651e7d2b18c74e8c4f46e7af9eda.cab"
+}
+@{
+    Id  = "windows8.1-kb3214628-x64_e60f757beedb4c86a692b3bb9d2a79fb7ee6467f.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2017/01/windows8.1-kb3214628-x64_e60f757beedb4c86a692b3bb9d2a79fb7ee6467f.cab"
+}
+@{
+    Id  = "windows8.1-kb2894853-x64_c28f483818a0a1f7421079f2d1419603ec1b4d4a.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2014/01/windows8.1-kb2894853-x64_c28f483818a0a1f7421079f2d1419603ec1b4d4a.cab"
+}
+@{
+    Id  = "windows8.1-kb2976536-x64_137ac623a008e992d85c92269bae711a2d001e98.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2014/11/windows8.1-kb2976536-x64_137ac623a008e992d85c92269bae711a2d001e98.cab"
+}
+@{
+    Id  = "windows8.1-kb3025417-x64_cbe6e40da0eb319c4ab43810c23d7f5fbf1a16d4.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2015/03/windows8.1-kb3025417-x64_cbe6e40da0eb319c4ab43810c23d7f5fbf1a16d4.cab"
+}
+@{
+    Id  = "windows8.1-kb3162835-x64_7489d804b3e546e1878ed9e6bb715d74a7bcac97.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2016/06/windows8.1-kb3162835-x64_7489d804b3e546e1878ed9e6bb715d74a7bcac97.cab"
+}
+@{
+    Id  = "windows8.1-kb3177723-x64_6f7a343396b93d1a0edbb2d7acd3ad559bea3aae.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2016/07/windows8.1-kb3177723-x64_6f7a343396b93d1a0edbb2d7acd3ad559bea3aae.cab"
+}
+@{
+    Id  = "windows8.1-kb3182203-x64_dc32941fd9f342a86f2452895a32eaaba2184d6d.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/uprl/2016/08/windows8.1-kb3182203-x64_dc32941fd9f342a86f2452895a32eaaba2184d6d.cab"
+}
+@{
+    Id  = "windows8.1-kb2919355-x64_4cb78e5851de430f5ee77449bfc646235ea93d32.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2014/02/windows8.1-kb2919355-x64_4cb78e5851de430f5ee77449bfc646235ea93d32.cab"
+}
+@{
+    Id  = "windows8.1-kb2932046-x64_9488604ee580a1fbd27b0460ef65714ad920e22e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2014/02/windows8.1-kb2932046-x64_9488604ee580a1fbd27b0460ef65714ad920e22e.cab"
+}
+@{
+    Id  = "windows8.1-kb2975061-x64_5518f613588d91d3fff4747bac3c811255b720e7.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2014/07/windows8.1-kb2975061-x64_5518f613588d91d3fff4747bac3c811255b720e7.cab"
+}
+@{
+    Id  = "windows8.1-kb3173424-x64_b019e816baa20ca253d01ef345adc8cc792b7fde.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2016/06/windows8.1-kb3173424-x64_b019e816baa20ca253d01ef345adc8cc792b7fde.cab"
+}
+@{
+    Id  = "windows8.1-kb2876331-x64_f84e3a6c86e0a9bc4108d8b38d7349d0e0798c79.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2013/10/windows8.1-kb2876331-x64_f84e3a6c86e0a9bc4108d8b38d7349d0e0798c79.cab"
+}
+@{
+    Id  = "windows8.1-kb2928120-x64_855ad0295dbad07b5b8d5f23f902c7a48e620b2c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/04/windows8.1-kb2928120-x64_855ad0295dbad07b5b8d5f23f902c7a48e620b2c.cab"
+}
+@{
+    Id  = "windows8.1-kb2961858-x64_66429795c25083b2178f11a5dd7e272c5da45934.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/04/windows8.1-kb2961858-x64_66429795c25083b2178f11a5dd7e272c5da45934.cab"
+}
+@{
+    Id  = "windows8.1-kb2961899-x64_680995bae3159ddf94ab0da16509639001cd5222.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/04/windows8.1-kb2961899-x64_680995bae3159ddf94ab0da16509639001cd5222.cab"
+}
+@{
+    Id  = "windows8.1-kb2962073-x64_a36861df75b07b596b51910686bd822cd91000d0.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/04/windows8.1-kb2962073-x64_a36861df75b07b596b51910686bd822cd91000d0.cab"
+}
+@{
+    Id  = "windows8.1-kb2962140-x64_4ef2aefb9877fe72c25ed168a4f3b3758ba45717.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/05/windows8.1-kb2962140-x64_4ef2aefb9877fe72c25ed168a4f3b3758ba45717.cab"
+}
+@{
+    Id  = "windows8.1-kb2973201-x64_4a1624136027c0de72fbc4665cfac94b91dfcd79.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/06/windows8.1-kb2973201-x64_4a1624136027c0de72fbc4665cfac94b91dfcd79.cab"
+}
+@{
+    Id  = "windows8.1-kb2973408-x64_af99ab5dfaad33e962197285b55aeb2462be946b.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/06/windows8.1-kb2973408-x64_af99ab5dfaad33e962197285b55aeb2462be946b.cab"
+}
+@{
+    Id  = "windows8.1-kb2966826-x64_8cac47f186ad0b79c2bf86fac1e6ef0ce64038dd.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/07/windows8.1-kb2966826-x64_8cac47f186ad0b79c2bf86fac1e6ef0ce64038dd.cab"
+}
+@{
+    Id  = "windows8.1-kb2972213-x64_5283534b6ae766d15feba8fb558c85d1cc1dc838.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/08/windows8.1-kb2972213-x64_5283534b6ae766d15feba8fb558c85d1cc1dc838.cab"
+}
+@{
+    Id  = "windows8.1-kb2973114-x64_d91d0bc1bb2cc0b183dffe0b4fcbaf78280a3fae.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/08/windows8.1-kb2973114-x64_d91d0bc1bb2cc0b183dffe0b4fcbaf78280a3fae.cab"
+}
+@{
+    Id  = "windows8.1-kb2978122-x64_61259b9ef53834c4b0a6f5584f4943613e47db8f.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2014/10/windows8.1-kb2978122-x64_61259b9ef53834c4b0a6f5584f4943613e47db8f.cab"
+}
+@{
+    Id  = "windows8.1-kb3023266-x64_dad371a7f62293a764dd892d5ca0463e7f7e116e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/01/windows8.1-kb3023266-x64_dad371a7f62293a764dd892d5ca0463e7f7e116e.cab"
+}
+@{
+    Id  = "windows8.1-kb3030377-x64_87d46acf9b8b0de4e8d2261f05d53e7cf4cc92fa.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/02/windows8.1-kb3030377-x64_87d46acf9b8b0de4e8d2261f05d53e7cf4cc92fa.cab"
+}
+@{
+    Id  = "windows8.1-kb3035126-x64_01667251d25ac56e0707df329e382cfb1e94cc49.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/02/windows8.1-kb3035126-x64_01667251d25ac56e0707df329e382cfb1e94cc49.cab"
+}
+@{
+    Id  = "windows8.1-kb3045685-x64_b88ee2dca80420c21ed122772f0cba298082a6fe.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/03/windows8.1-kb3045685-x64_b88ee2dca80420c21ed122772f0cba298082a6fe.cab"
+}
+@{
+    Id  = "windows8.1-kb3045755-x64_285f418c25f7c7d3ee6c0bbbdcb18020e99052b7.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/03/windows8.1-kb3045755-x64_285f418c25f7c7d3ee6c0bbbdcb18020e99052b7.cab"
+}
+@{
+    Id  = "windows8.1-kb3023219-x64_a34fa026c6699fe492b4c04dfcbb243f64824104.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/04/windows8.1-kb3023219-x64_a34fa026c6699fe492b4c04dfcbb243f64824104.cab"
+}
+@{
+    Id  = "windows8.1-kb3059317-x64_53d78356964c6fcbf78a6b4254574edbe36877b5.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/05/windows8.1-kb3059317-x64_53d78356964c6fcbf78a6b4254574edbe36877b5.cab"
+}
+@{
+    Id  = "windows8.1-kb3062760-x64_c76199a93e0de85c1898f128f2036b7d67de341c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/05/windows8.1-kb3062760-x64_c76199a93e0de85c1898f128f2036b7d67de341c.cab"
+}
+@{
+    Id  = "windows8.1-kb3004365-v2-x64_cb72fc5fc2dd5fb247469f9302495c81f54646b9.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/06/windows8.1-kb3004365-v2-x64_cb72fc5fc2dd5fb247469f9302495c81f54646b9.cab"
+}
+@{
+    Id  = "windows8.1-kb3046339-x64_457d1033163ed41973923ff8664390adef3056d8.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/06/windows8.1-kb3046339-x64_457d1033163ed41973923ff8664390adef3056d8.cab"
+}
+@{
+    Id  = "windows8.1-kb3046359-x64_69fb24cedbb11f531e4c66228675c655d8b542c0.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/06/windows8.1-kb3046359-x64_69fb24cedbb11f531e4c66228675c655d8b542c0.cab"
+}
+@{
+    Id  = "windows8.1-kb3061512-x64_30db8b5b5239de797f4d7af64c9c57572a9faaa8.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/06/windows8.1-kb3061512-x64_30db8b5b5239de797f4d7af64c9c57572a9faaa8.cab"
+}
+@{
+    Id  = "windows8.1-kb3067505-x64_a7c28a6488de340ae72c6789a613e5ecd627cf44.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/06/windows8.1-kb3067505-x64_a7c28a6488de340ae72c6789a613e5ecd627cf44.cab"
+}
+@{
+    Id  = "windows8.1-kb3046017-x64_6f80cae2289d25a37b2d06522245cad05921a33d.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3046017-x64_6f80cae2289d25a37b2d06522245cad05921a33d.cab"
+}
+@{
+    Id  = "windows8.1-kb3071756-x64_a3914a24109577149a5eda07144fe736912ae0e4.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3071756-x64_a3914a24109577149a5eda07144fe736912ae0e4.cab"
+}
+@{
+    Id  = "windows8.1-kb3075220-x64_53cc5afdd13f15ba5144e56dedc22b372fcef63f.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3075220-x64_53cc5afdd13f15ba5144e56dedc22b372fcef63f.cab"
+}
+@{
+    Id  = "windows8.1-kb3076895-x64_7e55b1904683a0a2baa6f68327387aa8aa9ef6bd.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3076895-x64_7e55b1904683a0a2baa6f68327387aa8aa9ef6bd.cab"
+}
+@{
+    Id  = "windows8.1-kb3076949-x64_358e1f8faf5b9778b7e65e6906236b9d3ae11445.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/07/windows8.1-kb3076949-x64_358e1f8faf5b9778b7e65e6906236b9d3ae11445.cab"
+}
+@{
+    Id  = "windows8.1-kb3072307-x64_5ea0c28454c1bc24c5b448ccaaeb050ee762e600.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3072307-x64_5ea0c28454c1bc24c5b448ccaaeb050ee762e600.cab"
+}
+@{
+    Id  = "windows8.1-kb3074545-x64_9b81dbc73fc99ed8432eb5d7dffd87eb70e5272e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3074545-x64_9b81dbc73fc99ed8432eb5d7dffd87eb70e5272e.cab"
+}
+@{
+    Id  = "windows8.1-kb3082089-x64_08cd5c63aabd9d1862197a057914b87f51a26cd8.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3082089-x64_08cd5c63aabd9d1862197a057914b87f51a26cd8.cab"
+}
+@{
+    Id  = "windows8.1-kb3083992-x64_e52398958512e4024f21d7b75582bbfd97fadd19.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3083992-x64_e52398958512e4024f21d7b75582bbfd97fadd19.cab"
+}
+@{
+    Id  = "windows8.1-kb3084135-x64_1585fa1306b5b3d4b27895a8f6ec3cda87f3c75e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3084135-x64_1585fa1306b5b3d4b27895a8f6ec3cda87f3c75e.cab"
+}
+@{
+    Id  = "windows8.1-kb3086255-x64_1c97751fb6c946381f53cd0cf24b962a73faa0ca.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/08/windows8.1-kb3086255-x64_1c97751fb6c946381f53cd0cf24b962a73faa0ca.cab"
+}
+@{
+    Id  = "windows8.1-kb3042058-x64_a0b664a36f9be300675d74bfa92ba6a84b0e5e81.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/09/windows8.1-kb3042058-x64_a0b664a36f9be300675d74bfa92ba6a84b0e5e81.cab"
+}
+@{
+    Id  = "windows8.1-kb3098000-x64_a8e50e81573520192ac08c0390ee98cd102b7d08.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/10/windows8.1-kb3098000-x64_a8e50e81573520192ac08c0390ee98cd102b7d08.cab"
+}
+@{
+    Id  = "windows8.1-kb3108381-x64_8c073843a514f79aedd5969a881a3a34e60bcba4.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows8.1-kb3108381-x64_8c073843a514f79aedd5969a881a3a34e60bcba4.cab"
+}
+@{
+    Id  = "windows8.1-kb3108604-x64_e86fe6d35558ed3bdb9916c85236b9a3f237f19c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/11/windows8.1-kb3108604-x64_e86fe6d35558ed3bdb9916c85236b9a3f237f19c.cab"
+}
+@{
+    Id  = "windows8.1-kb3109560-x64_37a21afb69159123703b6f8026adfb20ec7b0e55.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windows8.1-kb3109560-x64_37a21afb69159123703b6f8026adfb20ec7b0e55.cab"
+}
+@{
+    Id  = "windows8.1-kb3110329-x64_d684647aa6143ff34e428717a2afbf9dd2272804.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windows8.1-kb3110329-x64_d684647aa6143ff34e428717a2afbf9dd2272804.cab"
+}
+@{
+    Id  = "windows8.1-kb3121461-x64_37f61d9afa6898c2861bb854abcb3a22d97fee9e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windows8.1-kb3121461-x64_37f61d9afa6898c2861bb854abcb3a22d97fee9e.cab"
+}
+@{
+    Id  = "windows8.1-kb3121918-x64_41b9c7cc92dc3e36a86f8f530aa680e9e738908d.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windows8.1-kb3121918-x64_41b9c7cc92dc3e36a86f8f530aa680e9e738908d.cab"
+}
+@{
+    Id  = "windows8.1-kb3122651-x64_f60714967745c76a6227b7c093c56e21c06b7329.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2015/12/windows8.1-kb3122651-x64_f60714967745c76a6227b7c093c56e21c06b7329.cab"
+}
+@{
+    Id  = "windows8.1-kb3139914-x64_9f7dcf9091a8562409252c67893df3e90cd22b66.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/02/windows8.1-kb3139914-x64_9f7dcf9091a8562409252c67893df3e90cd22b66.cab"
+}
+@{
+    Id  = "windows8.1-kb3135456-x64_b9a4585fa285eaf11c037cd477a34e6befae6f1d.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/03/windows8.1-kb3135456-x64_b9a4585fa285eaf11c037cd477a34e6befae6f1d.cab"
+}
+@{
+    Id  = "windows8.1-kb3142026-x64_d42114239024878a48364cf9bcb4f28143a28baf.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/03/windows8.1-kb3142026-x64_d42114239024878a48364cf9bcb4f28143a28baf.cab"
+}
+@{
+    Id  = "windows8.1-kb3153704-x64_342164a9fd88c6d019f8c728c5489f14801f5f3c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/04/windows8.1-kb3153704-x64_342164a9fd88c6d019f8c728c5489f14801f5f3c.cab"
+}
+@{
+    Id  = "windows8.1-kb3155178-x64_0898a475e8bb5b8a0435ee4d27f8a650f13d283e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/04/windows8.1-kb3155178-x64_0898a475e8bb5b8a0435ee4d27f8a650f13d283e.cab"
+}
+@{
+    Id  = "windows8.1-kb3156017-x64_5ae9472776b5e408a48f767f816ae5c093388cac.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/04/windows8.1-kb3156017-x64_5ae9472776b5e408a48f767f816ae5c093388cac.cab"
+}
+@{
+    Id  = "windows8.1-kb3159398-x64_6e5eb79e13e00ce8311148b88bdbfe78706d5d70.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/05/windows8.1-kb3159398-x64_6e5eb79e13e00ce8311148b88bdbfe78706d5d70.cab"
+}
+@{
+    Id  = "windows8.1-kb3161958-x64_cf930ec036aa830611a373753a763d54d3fc0c71.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/05/windows8.1-kb3161958-x64_cf930ec036aa830611a373753a763d54d3fc0c71.cab"
+}
+@{
+    Id  = "windows8.1-kb3164294-x64_25d2f19e2e7bcee0139a9c10782f44976363985c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/05/windows8.1-kb3164294-x64_25d2f19e2e7bcee0139a9c10782f44976363985c.cab"
+}
+@{
+    Id  = "windows8.1-kb3169704-x64_eb42d0da78a6180cd333b66dc51701d80a6816ab.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/06/windows8.1-kb3169704-x64_eb42d0da78a6180cd333b66dc51701d80a6816ab.cab"
+}
+@{
+    Id  = "windows8.1-kb3170455-x64_0c4001dcd1ffecea73e5b05754602a85a515f747.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/06/windows8.1-kb3170455-x64_0c4001dcd1ffecea73e5b05754602a85a515f747.cab"
+}
+@{
+    Id  = "windows8.1-kb3172729-x64_720c001256e3655bca6730d8d7aab2cf4f190f7d.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/07/windows8.1-kb3172729-x64_720c001256e3655bca6730d8d7aab2cf4f190f7d.cab"
+}
+@{
+    Id  = "windows8.1-kb3177186-x64_17188c80fdf3e86e26cba412590cd615750f0a30.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windows8.1-kb3177186-x64_17188c80fdf3e86e26cba412590cd615750f0a30.cab"
+}
+@{
+    Id  = "windows8.1-kb3184122-x64_be97a454471a99684706a66325bf301995a4c743.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windows8.1-kb3184122-x64_be97a454471a99684706a66325bf301995a4c743.cab"
+}
+@{
+    Id  = "windows8.1-kb3184943-x64_8819c133928eb3495aca726b814d0f1daa73c1a7.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/08/windows8.1-kb3184943-x64_8819c133928eb3495aca726b814d0f1daa73c1a7.cab"
+}
+@{
+    Id  = "windows8.1-kb3197873-x64_f99ea528307bb492e28fa5e1082f1f70c5e74b96.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/11/windows8.1-kb3197873-x64_f99ea528307bb492e28fa5e1082f1f70c5e74b96.cab"
+}
+@{
+    Id  = "windows8.1-kb3204802-x64_a4d4cbd344696e07ec6e6bf767f18a77901b0183.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/12/windows8.1-kb3204802-x64_a4d4cbd344696e07ec6e6bf767f18a77901b0183.cab"
+}
+@{
+    Id  = "windows8.1-kb2904266-x64_72f9d068fa95ed79f6e8f1455ee698b151b8637c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2013/12/windows8.1-kb2904266-x64_72f9d068fa95ed79f6e8f1455ee698b151b8637c.cab"
+}
+@{
+    Id  = "windows8.1-kb2939153-x64_bb3226037086dd041c6f35a7b9db368fae52795c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2014/05/windows8.1-kb2939153-x64_bb3226037086dd041c6f35a7b9db368fae52795c.cab"
+}
+@{
+    Id  = "windows8.1-kb2981580-x64_94b84c9e4c3a9cfbcb1a682a2a59c43ccf4de3c1.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2014/08/windows8.1-kb2981580-x64_94b84c9e4c3a9cfbcb1a682a2a59c43ccf4de3c1.cab"
+}
+@{
+    Id  = "windows8.1-kb3038936-x64_384e84d370de49310681ab5fb7db1081c89d1f6c.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2015/07/windows8.1-kb3038936-x64_384e84d370de49310681ab5fb7db1081c89d1f6c.cab"
+}
+@{
+    Id  = "windows8.1-kb3148851-x64_630c206117db1e91d20b29987258e086b81ae23b.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/03/windows8.1-kb3148851-x64_630c206117db1e91d20b29987258e086b81ae23b.cab"
+}
+@{
+    Id  = "windows8.1-kb3153731-x64_7ede42373494d28de399f7fc2ef8177dbbd7aa9e.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/04/windows8.1-kb3153731-x64_7ede42373494d28de399f7fc2ef8177dbbd7aa9e.cab"
+}
+@{
+    Id  = "windows8.1-kb3192321-x64_81e88ea0e26a7175b67ca8629644682e576233ac.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/09/windows8.1-kb3192321-x64_81e88ea0e26a7175b67ca8629644682e576233ac.cab"
+}
+@{
+    Id  = "windows8.1-kb3203884-x64_aefa367b8ea189621880e509a40b6acc45fffdd2.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/11/windows8.1-kb3203884-x64_aefa367b8ea189621880e509a40b6acc45fffdd2.cab"
+}
+@{
+    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
+    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
+}
