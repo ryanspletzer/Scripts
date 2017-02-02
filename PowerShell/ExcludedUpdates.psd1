@@ -21,6 +21,7 @@
         'kb2928120',
         'kb3205401',
         'kb2961899',
+        'kb2962073',
         'kb2934520' #NET452 We exclude in favor of NET461
     )
     WIN81x86 = @()
