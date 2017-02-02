@@ -47,7 +47,7 @@ Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Windows-Subsystem-Linux' -
 
 # TODO: Add to list
 Write-Host -Object "Installing miscellaneous applications..."
-Start-Process -FilePath "\\resources.intranet.dow.com\Putty\putty-0.67-installer.msi" -ArgumentList /passive -Wait
+Install-Packege -Name bitvise-ssh-client -Force
 Install-Package -Name git.install -Force # Invoke Installer Manually
 Install-Package -Name notepadplusplus.install -Force
 Install-Package -Name GoogleChrome -Force # Invoke Installer Manually
