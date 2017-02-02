@@ -21,7 +21,7 @@ param (
     [string]
     $LabilityLabMediaId = "2012R2_x64_Standard_EN_V5_Eval",
 
-    [Parameter(Mandatory=$true,
+    [Parameter(Mandatory=$false,
                Position=1)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
@@ -31,7 +31,7 @@ param (
     [string]
     $WSUSOfflineDownloadLogPath = "D:\Users\$env:USERNAME\Utilities\wsusoffline\log\download.log",
 
-    [Parameter(Mandatory=$true,
+    [Parameter(Mandatory=$false,
                Position=2)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
@@ -77,8 +77,14 @@ param (
     [string]
     $ComputerName = "EDGE1",
 
-    [Parameter(Mandatory=$false,
+    [Parameter(Mandatory=$true,
                Position=7)]
+    [ValidateNotNull()]
+    [pscredential]
+    $Credential = (Get-Credential),
+
+    [Parameter(Mandatory=$false,
+               Position=8)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
         (Test-Path -Path $_ -PathType Leaf)
@@ -246,10 +252,15 @@ if (($LabilityLabMediaId -like "2012R2*") -or
 
 do
 {
-    Stop-Lab -ConfigurationData $ConfigurationData -Verbose
-    Remove-LabConfiguration -ConfigurationData $ConfigurationData -Verbose
+    try {
+        Stop-Lab -ConfigurationData $ConfigurationData -Verbose -ErrorAction SilentlyContinue
+        Remove-LabConfiguration -ConfigurationData $ConfigurationData -ErrorAction SilentlyContinue
+        Start-Sleep -Seconds 10
+    } catch {
+        
+    }
     $image = Get-LabImage -Id $LabilityLabMediaId
-    Remove-Item -Path $image.ImagePath -Force
+    Remove-Item -Path $image.ImagePath -Force -ErrorAction SilentlyContinue
     $media = Get-LabMedia -Id $LabilityLabMediaId
     $registerLabMediaParams = @{
         Id              = $media.Id
@@ -267,8 +278,9 @@ do
     Register-LabMedia @registerLabMediaParams -Force
     . $ConfigurationScript
     TestLabGuide -OutputPath D:\TestLab\Configurations -ConfigurationData $ConfigurationData
-    Start-LabConfiguration -ConfigurationData $ConfigurationData -Path D:\TestLab\Configurations -Verbose -Force
+    Start-LabConfiguration -ConfigurationData $ConfigurationData -Path D:\TestLab\Configurations -Credential $Credential -Verbose -Force
     Start-Lab -ConfigurationData $ConfigurationData
+    Start-Sleep -Seconds 900
     $session = new-pssession -ComputerName $ComputerName -Credential (Get-credential -Message "Enable Network on VM for remote powershell session.")
     $recommendedUpdates = Invoke-Command -Session $session -ScriptBlock $getWSUSUpdateUrlsSB
     $trimmedRecommendedUpdates = $recommendedUpdates | Where-Object{$_.EndsWith(".cab")}
