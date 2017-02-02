@@ -15,7 +15,7 @@ Configuration SQLSA {
         $TestUser2Credential
     )
     Import-DscResource -Module PSDesiredStateConfiguration
-    Import-DscResource -Module xSQLServer
+    Import-DscResource -Module xSQLServer, xComputerManagement
 
     Node $AllNodes.NodeName {
 
@@ -43,8 +43,9 @@ Configuration SQLSA {
                 InstanceName = $Node.InstanceName
                 Features = $Node.Features
             }
-            xSQLServerPowerPlan ($Node.Nodename) {
-                Ensure = "Present"
+            xPowerPlan ($Node.Nodename) {
+                IsSingleInstance = 'Yes'
+                Name = 'High Performance'
             }
             xSQLServerMemory ($Node.Nodename) {
                 DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
@@ -55,11 +56,14 @@ Configuration SQLSA {
                 MaxMemory ="1024"
             }
             xSQLServerMaxDop ($Node.Nodename) {
+                SQLInstanceName = "\"
                 DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
                 Ensure = "Present"
                 DynamicAlloc = $true
             }
             xSQLServerLogin ($Node.Nodename+"TestUser1") {
+                SQLServer = $Node.NodeName
+                SQLInstanceName = "\"
                 DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
                 Ensure = "Present"
                 Name = "TestUser1"
@@ -67,6 +71,8 @@ Configuration SQLSA {
                 LoginType = "SQLLogin"
             }
             xSQLServerLogin ($Node.Nodename+"TestUser2") {
+                SQLServer = $Node.NodeName
+                SQLInstanceName = "\"
                 DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
                 Ensure = "Present"
                 Name = "TestUser2"
@@ -74,26 +80,34 @@ Configuration SQLSA {
                 LoginType = "SQLLogin"
             }
             xSQLServerDatabaseRole ($Node.Nodename) {
+                SQLServer = $Node.Nodename
+                SQLInstanceName = "\"
                 DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
                 Ensure = "Present"
                 Name = "TestUser1"
                 Database = "model"
                 Role ="db_Datareader"
             }
-            xSQLServerDatabasePermissions ($Node.Nodename) {
+            xSQLServerDatabasePermission ($Node.Nodename) {
+                SQLServer = $Node.Nodename
+                SQLInstanceName = $Node.Nodename
                 Database = "Model"
                 Name = "TestUser1"
                 Permissions ="SELECT","DELETE"
+                PermissionState = "GRANT"
             }
             xSQLServerDatabase ($Node.Nodename) {
-                Database = "TestDB"
+                SQLServer = $Node.Nodename
+                SQLInstanceName = "\"
+                Name = "TestDB"
                 Ensure = "Present"
             }
-            xSQLDatabaseRecoveryModel ($Node.Nodename) {
+            xSQLServerDatabaseRecoveryModel ($Node.Nodename) {
+                SQLServer = $Node.Nodename
+                SQLInstanceName = "\"
                 DependsOn = ("[xSQLServerDatabase]" + $Node.NodeName)
-                DatabaseName = "TestDB"
-                RecoveryModel = "Full"
-                SqlServerInstance ="$($Node.NodeName)\$($Node.SQLInstanceName)"  
+                Name = "TestDB"
+                RecoveryModel = "Full"  
             }
             xSQLServerDatabaseOwner ($Node.Nodename) {
                 DependsOn = ("[xSQLServerDatabase]" + $Node.NodeName)

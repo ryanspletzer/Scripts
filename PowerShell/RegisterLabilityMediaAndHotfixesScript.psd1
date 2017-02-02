@@ -246,7 +246,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x64_Enterprise_EN_V5"
@@ -261,7 +261,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN"
@@ -634,7 +634,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x64_Standard_EN_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x64_Enterprise_EN_V5"
@@ -649,7 +649,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN"
