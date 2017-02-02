@@ -20,12 +20,15 @@ $registrations = (Import-PowerShellDataFile -Path $RegistrationData).Registratio
 $registrations | ForEach-Object{
     $currentRegistration = $_
     Write-Verbose -Message "Current Registration: $($currentRegistration.Id)"
-    if ($currentRegistration.Uri -eq $null) {
-        if ($OneDriveItems -ne $null) {
+    # $null in Registration Data File means we're looking for user to supply media Uri here
+    if ($null -eq $currentRegistration.Uri) {
+        # Checking if it was supplied in OneDriveItems
+        # See .\OneDriveStaticLinkGeneratorScript.ps1 and OneDrive PS Module: https://www.powershellgallery.com/packages/OneDrive/1.0.3
+        if ($null -ne $OneDriveItems) {
             $oneDriveItem = $OneDriveItems | Where-Object{
                 $_.name -eq $currentRegistration.Filename
             }
-            if ($oneDriveItem -ne $null) {
+            if ($null -ne $oneDriveItem) {
                 $currentRegistration.Uri = $oneDriveItem.downloadUri
             } else {
                 $currentRegistration.Uri = Read-Host -Prompt "Please provide download URI for $($currentRegistration.Id)"
@@ -35,26 +38,9 @@ $registrations | ForEach-Object{
         }
     }
     if ($null -ne $currentRegistration.Hotfixes) {
-        [hashtable[]]$currentRegistrationHotfixes = (Import-Clixml -Path ($currentRegistration.Hotfixes)) | ForEach-Object{ @{Id=$_.Id;Uri=$_.Uri}}
-        $currentRegistrationHotfixes | ForEach-Object {
-            if ($_.Uri -eq $null) {
-                $currentHotfix = $_
-                if ($OneDriveItems -ne $null) {
-                    $oneDriveItem = $OneDriveItems | Where-Object{
-                        $_.name -eq $currentHotfix.Id
-                    }
-                    if ($oneDriveItem -ne $null) {
-                        $currentHotfix.Uri = $oneDriveItem.downloadUri
-                    } else {
-                        $currentHotfix.Uri = Read-Host -Prompt "Please provide download URI for $($currentRegistration.Id)"
-                    }
-                } else {
-                    $currentHotfix.Uri = Read-Host -Prompt "Please provide download URI for $($currentRegistration.Id)"
-                }
-            }
-        }
+        [hashtable[]]$currentRegistrationHotfixes = (Import-Clixml -Path ($currentRegistration.Hotfixes)) | ForEach-Object{ @{Id=$_.Id;Uri=$_.Uri}}        
+        $currentRegistration.Hotfixes = $currentRegistrationHotfixes
     }
-    $currentRegistration.Hotfixes = $currentRegistrationHotfixes
 }
 
 $registrations | ForEach-Object {
