@@ -77,8 +77,14 @@ param (
     [string]
     $ComputerName = "EDGE1",
 
-    [Parameter(Mandatory=$false,
+    [Parameter(Mandatory=$true,
                Position=7)]
+    [ValidateNotNull()]
+    [pscredential]
+    $Credential = (Get-Credential),
+
+    [Parameter(Mandatory=$false,
+               Position=8)]
     [ValidateNotNullOrEmpty()]
     [ValidateScript({
         (Test-Path -Path $_ -PathType Leaf)
