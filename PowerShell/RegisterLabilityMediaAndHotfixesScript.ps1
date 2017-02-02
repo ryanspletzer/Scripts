@@ -44,6 +44,5 @@ $registrations | ForEach-Object{
 }
 
 $registrations | ForEach-Object {
-    $currentRegistration = $_
-    Register-LabMedia @currentRegistration -Force
+    Register-LabMedia @_ -Force
 }
