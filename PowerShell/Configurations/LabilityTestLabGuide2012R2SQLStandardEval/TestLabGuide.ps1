@@ -9,7 +9,7 @@ Configuration TestLabGuide {
         xDnsServer (v1.5.0 or later):            https://github.com/PowerShell/xDnsServer
 #>
     param (
-        [Parameter()]
+        [Parameter(Mandatory)]
         [ValidateNotNull()]
         [PSCredential]
         $Credential = (Get-Credential -Credential 'Administrator')
@@ -160,11 +160,20 @@ Configuration TestLabGuide {
 
     } #end nodes DC
     
-    node $AllNodes.Where({$_.Role -in 'SQL'}).NodeName {
+    node $AllNodes.Where({$_.Role -in 'CLIENT','SQL','SB'}).NodeName {
         ## Flip credential into username@domain.com
         $upn = '{0}@{1}' -f $Credential.UserName, $node.DomainName;
         $domainCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ($upn, $Credential.Password);
 
+        xComputer 'DomainMembership' {
+            Name = $node.NodeName;
+            DomainName = $node.DomainName;
+            Credential = $domainCredential;
+        }
+    } #end nodes DomainJoined
+
+    node $AllNodes.Where({$_.Role -in 'SQL'}).NodeName {
+        <#
         xSqlServerSetup ($Node.NodeName) {
             SourcePath = $Node.SourcePath
             SetupCredential = $DomainInstallCredential
@@ -188,10 +197,12 @@ Configuration TestLabGuide {
             InstanceName = $Node.InstanceName
             Features = $Node.Features
         }
+
         xPowerPlan ($Node.Nodename) {
             IsSingleInstance = 'Yes'
             Name = 'High Performance'
         }
+
         xSQLServerMemory ($Node.Nodename) {
             DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure = "Present"
@@ -200,12 +211,14 @@ Configuration TestLabGuide {
             MinMemory = "256"
             MaxMemory ="1024"
         }
+
         xSQLServerMaxDop ($Node.Nodename) {
             SQLInstanceName = "\"
             DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure = "Present"
             DynamicAlloc = $true
         }
+
         xSQLServerLogin ($Node.Nodename+"TestUser1") {
             SQLServer = $Node.NodeName
             SQLInstanceName = "\"
@@ -215,6 +228,7 @@ Configuration TestLabGuide {
             LoginCredential = $TestUser1Credential
             LoginType = "SQLLogin"
         }
+
         xSQLServerLogin ($Node.Nodename+"TestUser2") {
             SQLServer = $Node.NodeName
             SQLInstanceName = "\"
@@ -224,6 +238,7 @@ Configuration TestLabGuide {
             LoginCredential = $TestUser2Credential
             LoginType = "SQLLogin"
         }
+
         xSQLServerDatabaseRole ($Node.Nodename) {
             SQLServer = $Node.Nodename
             SQLInstanceName = "\"
@@ -233,6 +248,7 @@ Configuration TestLabGuide {
             Database = "model"
             Role ="db_Datareader"
         }
+
         xSQLServerDatabasePermission ($Node.Nodename) {
             SQLServer = $Node.Nodename
             SQLInstanceName = $Node.Nodename
@@ -241,12 +257,14 @@ Configuration TestLabGuide {
             Permissions ="SELECT","DELETE"
             PermissionState = "GRANT"
         }
+
         xSQLServerDatabase ($Node.Nodename) {
             SQLServer = $Node.Nodename
             SQLInstanceName = "\"
             Name = "TestDB"
             Ensure = "Present"
         }
+
         xSQLServerDatabaseRecoveryModel ($Node.Nodename) {
             SQLServer = $Node.Nodename
             SQLInstanceName = "\"
@@ -254,14 +272,17 @@ Configuration TestLabGuide {
             Name = "TestDB"
             RecoveryModel = "Full"  
         }
+
         xSQLServerDatabaseOwner ($Node.Nodename) {
             DependsOn = ("[xSQLServerDatabase]" + $Node.NodeName)
             Database = "TestDB"
             Name = "TestUser2"
         }
+        #>
+
     } #end nodes SQL
 
-    node $AllNodes.Where({$_.Role -in 'EDGE'}).NodeName {
+    node $AllNodes.Where({$_.Role -in 'SB'}).NodeName {
 
-    }
+    } #end nodes SB
 } #end Configuration Example
