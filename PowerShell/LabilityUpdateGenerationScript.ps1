@@ -281,7 +281,7 @@ do
     Start-LabConfiguration -ConfigurationData $ConfigurationData -Path D:\TestLab\Configurations -Credential $Credential -Verbose -Force
     Start-Lab -ConfigurationData $ConfigurationData
     Start-Sleep -Seconds 900
-    $session = new-pssession -ComputerName $ComputerName -Credential (Get-credential -Message "Enable Network on VM for remote powershell session.")
+    $session = new-pssession -ComputerName $ComputerName -Credential $Credential
     $recommendedUpdates = Invoke-Command -Session $session -ScriptBlock $getWSUSUpdateUrlsSB
     $trimmedRecommendedUpdates = $recommendedUpdates | Where-Object{$_.EndsWith(".cab")}
     $trimmedRecommendedUpdates = TrimExcluded -Updates $trimmedRecommendedUpdates -ExcludedUpdates $specificExcludedUpdates

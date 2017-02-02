@@ -276,10 +276,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "WIN81_x86_Enterprise_EN_V51"
+            Id              = "WIN81_x86_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x86_dvd_6050710.iso"
             Description     = "Windows 8.1 with Update 32bit English with WMF 5.1"
             Architecture    = "x64"
@@ -291,7 +291,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_Eval.Hotfixes.xml'
         },
         #endregion
 
@@ -664,10 +664,10 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = $null
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_Eval.Hotfixes.xml'
         },
         @{
-            Id              = "WIN81_x86_Enterprise_EN_V51"
+            Id              = "WIN81_x86_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x86_dvd_6050710.iso"
             Description     = "Windows 8.1 with Update 32bit English with WMF 5.1"
             Architecture    = "x64"
@@ -679,7 +679,7 @@
             CustomData = @{
                 WindowsOptionalFeature = @('NetFx3')
             }
-            Hotfixes = $null
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_Eval.Hotfixes.xml'
         },
         #endregion
 
