@@ -99,7 +99,7 @@ $specificExcludedUpdates = [string[]]@()
 $customData = @{}
 switch -Wildcard ($LabilityLabMediaId) {
     "2016*Nano*" {
-        $specificExcludedUpdates = $importedExcludedUpdates.'2016Nano'
+        $specificExcludedUpdates = $importedExcludedUpdates.'2016'
         $customData = @{
             SetupComplete = "CoreCLR"
             PackagePath   = "\NanoServer\Packages"
