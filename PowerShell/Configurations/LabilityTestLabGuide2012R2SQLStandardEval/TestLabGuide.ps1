@@ -190,21 +190,23 @@ Configuration TestLabGuide {
 
     node $AllNodes.Where({$_.Role -in 'SQL'}).NodeName {
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
+        $sqlInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainName)\$($SQLInstallCredential.UserName)", $SQLInstallCredential.Password);
+        $sqlAdminLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainName)\$($SQLAdminCredential.UserName)", $SQLAdminCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
             Credential       = $domainAdministratorUpnCredential
             GroupName        = 'Administrators'
             Ensure           = 'Present'
-            MembersToInclude = $SQLInstallCredential.UserName,$SQLAdminCredential.UserName
+            MembersToInclude = $sqlInstallLogonCredential.UserName,$sqlAdminLogonCredential.UserName
         }
 
         xSqlServerSetup ($Node.NodeName) {
             DependsOn           = ("[Group]" + $Node.NodeName + "LocalAdministrators")
             SourcePath          = $Node.SourcePath
-            SetupCredential     = $SQLInstallCredential
+            SetupCredential     = $sqlInstallLogonCredential
             InstanceName        = $Node.InstanceName
             Features            = $Node.Features
-            SQLSysAdminAccounts = $SQLAdminCredential.UserName
+            SQLSysAdminAccounts = $sqlAdminLogonCredential.UserName
             InstallSharedDir    = "C:\Program Files\Microsoft SQL Server"
             InstallSharedWOWDir = "C:\Program Files (x86)\Microsoft SQL Server"
             InstanceDir         = "C:\Program Files\Microsoft SQL Server"
