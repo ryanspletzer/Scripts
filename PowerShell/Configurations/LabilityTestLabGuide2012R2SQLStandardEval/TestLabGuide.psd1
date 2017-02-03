@@ -17,8 +17,8 @@
             Lability_StartupMemory = 4GB;
             Lability_Media = '2012R2_x64_Standard_EN_V5_Eval';
             DomainAdministratorUserName = 'Administrator'
-            SQLAdminUserName = 'CORP\SQLAdmin'
-            SQLInstallUserName = 'CORP\SQLInstall'
+            SQLAdminUserName = 'SQLAdmin'
+            SQLInstallUserName = 'SQLInstall'
         }
         @{
             NodeName = 'DC1';
