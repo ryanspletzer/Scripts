@@ -14,8 +14,11 @@
             PSDscAllowDomainUser = $true; # Removes 'It is not recommended to use domain credential for node X' messages
             Lability_SwitchName = 'Corpnet';
             Lability_ProcessorCount = 1;
-            Lability_StartupMemory = 2GB;
+            Lability_StartupMemory = 4GB;
             Lability_Media = '2012R2_x64_Standard_EN_V5_Eval';
+            DomainAdministratorUserName = 'Administrator'
+            SQLAdminUserName = 'CORP\SQLAdmin'
+            SQLInstallUserName = 'CORP\SQLInstall'
         }
         @{
             NodeName = 'DC1';
@@ -28,6 +31,11 @@
             NodeName = 'SQL1';
             IPAddress = '10.0.0.3';
             Role = 'SQL';
+            Features = "SQLENGINE,IS"
+            SourcePath = 'C:\Resources\SQLServerISO';
+            SQLTestUser1UserName = 'SQLTestUser1'
+            SQLTestUser2UserName = 'SQLTestUser2'
+            InstanceName = "MSSQLSERVER";
             Lability_Resource= @('SQLServerISO')
         }
         @{
