@@ -44,6 +44,7 @@ Configuration TestLabGuide {
     node $AllNodes.Where({$true}).NodeName {
         LocalConfigurationManager {
             RebootNodeIfNeeded   = $true;
+            ActionAfterReboot = 'ContinueConfiguration';
             AllowModuleOverwrite = $true;
             ConfigurationMode = 'ApplyOnly';
             CertificateID = $Node.Thumbprint;
@@ -189,9 +190,10 @@ Configuration TestLabGuide {
     } #end nodes DomainJoined
 
     node $AllNodes.Where({$_.Role -in 'SQL'}).NodeName {
+        $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Credential.UserName)@$($node.DomainName)", $DomainAdministratorCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
-            Credential = $DomainAdministratorCredential
+            Credential = $domainAdministratorUpnCredential
             GroupName = 'Administrators'
             Ensure = 'Present'
             MembersToInclude = $SQLInstallCredential.UserName,$SQLAdminCredential.UserName
@@ -274,6 +276,7 @@ Configuration TestLabGuide {
         }
 
         xSQLServerDatabasePermission ($Node.Nodename) {
+            DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
             SQLServer = $Node.Nodename
             SQLInstanceName = $Node.Nodename
             Database = "Model"
@@ -283,6 +286,7 @@ Configuration TestLabGuide {
         }
 
         xSQLServerDatabase ($Node.Nodename) {
+            DependsOn = ("[xSqlServerSetup]" + $Node.NodeName)
             SQLServer = $Node.Nodename
             SQLInstanceName = "\"
             Name = "TestDB"
