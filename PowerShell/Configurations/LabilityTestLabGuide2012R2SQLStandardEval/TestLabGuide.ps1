@@ -255,10 +255,19 @@ Configuration TestLabGuide {
         }
 
         xSQLServerMaxDop ($Node.Nodename) {
+            SQLServer       = $Node.NodeName
             SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             DynamicAlloc    = $true
+        }
+
+        xSQLServerLogin ($Node.Nodename+$SQLAdminCredential.UserName) {
+            SQLServer       = $Node.NodeName
+            SQLInstanceName = $Node.InstanceName
+            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
+            Ensure          = "Present"
+            Name            = $sqlAdminLogonCredential.UserName
         }
 
         xSQLServerLogin ($Node.Nodename+$SQLTestUser1Credential.UserName) {
@@ -286,7 +295,7 @@ Configuration TestLabGuide {
             SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
-            Name            = $SQLTestUser2Credential.UserName
+            Name            = $SQLTestUser1Credential.UserName
             Database        = "model"
             Role            = "db_Datareader"
         }
@@ -294,9 +303,9 @@ Configuration TestLabGuide {
         xSQLServerDatabasePermission ($Node.Nodename) {
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             SQLServer       = $Node.Nodename
-            SQLInstanceName = $Node.Nodename
+            SQLInstanceName = $Node.InstanceName
             Database        = "Model"
-            Name            = $SQLTestUser2Credential.UserName
+            Name            = $SQLTestUser1Credential.UserName
             Permissions     = "SELECT","DELETE"
             PermissionState = "GRANT"
         }
