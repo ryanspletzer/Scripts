@@ -255,7 +255,7 @@ Configuration TestLabGuide {
         }
 
         xSQLServerMaxDop ($Node.Nodename) {
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             DynamicAlloc    = $true
@@ -263,7 +263,7 @@ Configuration TestLabGuide {
 
         xSQLServerLogin ($Node.Nodename+$SQLTestUser1Credential.UserName) {
             SQLServer       = $Node.NodeName
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             Name            = $SQLTestUser1Credential.UserName
@@ -273,7 +273,7 @@ Configuration TestLabGuide {
 
         xSQLServerLogin ($Node.Nodename+$SQLTestUser2Credential.UserName) {
             SQLServer       = $Node.NodeName
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             Name            = $SQLTestUser2Credential.UserName
@@ -283,7 +283,7 @@ Configuration TestLabGuide {
 
         xSQLServerDatabaseRole ($Node.Nodename) {
             SQLServer       = $Node.Nodename
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             Name            = $SQLTestUser2Credential.UserName
@@ -304,14 +304,14 @@ Configuration TestLabGuide {
         xSQLServerDatabase ($Node.Nodename) {
             DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
             SQLServer       = $Node.Nodename
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             Name            = "TestDB"
             Ensure          = "Present"
         }
 
         xSQLServerDatabaseRecoveryModel ($Node.Nodename) {
             SQLServer       = $Node.Nodename
-            SQLInstanceName = "\"
+            SQLInstanceName = $Node.InstanceName
             DependsOn       = ("[xSQLServerDatabase]" + $Node.NodeName)
             Name            = "TestDB"
             RecoveryModel   = "Full"  
