@@ -105,6 +105,9 @@ Configuration TestLabGuide {
     } #end nodes ALL
   
     node $AllNodes.Where({$_.Role -in 'DC'}).NodeName {
+        $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
+        $sqlInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLInstallCredential.UserName)@$($Node.DomainName)", $SQLInstallCredential.Password);
+        $sqlAdminUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLAdminCredential.UserName)@$($Node.DomainName)", $SQLAdminCredential.Password);
 
         xComputer 'Hostname' {
             Name = $Node.NodeName;
@@ -157,11 +160,22 @@ Configuration TestLabGuide {
             DependsOn          = '[xDhcpServerScope]DhcpScope10_0_0_0';
         }
         
+        xADUser $DomainAdministratorCredential.UserName { 
+            DomainName  = $Node.DomainName;
+            UserName    = $DomainAdministratorCredential.UserName;
+            Description = 'SQL Install Account';
+            Password    = $DomainAdministratorCredential;
+            UserPrincipalName = $domainAdministratorUpnCredential.UserName;
+            Ensure      = 'Present';
+            DependsOn   = '[xADDomain]ADDomain';
+        }
+
         xADUser $SQLInstallCredential.UserName { 
             DomainName  = $Node.DomainName;
             UserName    = $SQLInstallCredential.UserName;
             Description = 'SQL Install Account';
-            Password    = $SQLAdminCredential;
+            Password    = $SQLInstallCredential;
+            UserPrincipalName = $sqlInstallUpnCredential.UserName;
             Ensure      = 'Present';
             DependsOn   = '[xADDomain]ADDomain';
         }
@@ -171,6 +185,7 @@ Configuration TestLabGuide {
             UserName    = $SQLAdminCredential.UserName;
             Description = 'SQL Admin Account';
             Password    = $SQLAdminCredential;
+            UserPrincipalName = $sqlAdminUpnCredential.UserName;
             Ensure      = 'Present';
             DependsOn   = '[xADDomain]ADDomain';
         }
@@ -190,23 +205,23 @@ Configuration TestLabGuide {
 
     node $AllNodes.Where({$_.Role -in 'SQL'}).NodeName {
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
-        $sqlInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainName)\$($SQLInstallCredential.UserName)", $SQLInstallCredential.Password);
-        $sqlAdminLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainName)\$($SQLAdminCredential.UserName)", $SQLAdminCredential.Password);
+        $sqlInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLInstallCredential.UserName)@$($Node.DomainName)", $SQLInstallCredential.Password);
+        $sqlAdminUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLAdminCredential.UserName)@$($Node.DomainName)", $SQLAdminCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
             Credential       = $domainAdministratorUpnCredential
             GroupName        = 'Administrators'
             Ensure           = 'Present'
-            MembersToInclude = $sqlInstallLogonCredential.UserName,$sqlAdminLogonCredential.UserName
+            MembersToInclude = $sqlInstallUpnCredential.UserName,$sqlAdminUpnCredential.UserName
         }
 
         xSqlServerSetup ($Node.NodeName) {
             DependsOn           = ("[Group]" + $Node.NodeName + "LocalAdministrators")
             SourcePath          = $Node.SourcePath
-            SetupCredential     = $sqlInstallLogonCredential
+            SetupCredential     = $sqlInstallUpnCredential
             InstanceName        = $Node.InstanceName
             Features            = $Node.Features
-            SQLSysAdminAccounts = $sqlAdminLogonCredential.UserName
+            SQLSysAdminAccounts = $sqlAdminUpnCredential.UserName
             InstallSharedDir    = "C:\Program Files\Microsoft SQL Server"
             InstallSharedWOWDir = "C:\Program Files (x86)\Microsoft SQL Server"
             InstanceDir         = "C:\Program Files\Microsoft SQL Server"
