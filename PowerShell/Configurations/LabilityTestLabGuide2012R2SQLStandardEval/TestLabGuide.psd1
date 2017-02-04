@@ -8,6 +8,7 @@
             AddressFamily = 'IPv4';
             DnsServerAddress = '10.0.0.1';
             DomainName = 'corp.contoso.com';
+            DomainNameShort = "CORP"
             PSDscAllowPlainTextPassword = $true;
             #CertificateFile = "$env:AllUsersProfile\Lability\Certificates\LabClient.cer";
             #Thumbprint = 'AAC41ECDDB3B582B133527E4DE0D2F8FEB17AAB2';
