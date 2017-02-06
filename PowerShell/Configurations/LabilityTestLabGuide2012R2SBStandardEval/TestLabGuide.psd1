@@ -41,7 +41,7 @@
         }
         @{
             NodeName = 'SB1';
-            IPAddress = '10.0.0.3';
+            IPAddress = '10.0.0.4';
             Role = 'SB';
         }
     );
