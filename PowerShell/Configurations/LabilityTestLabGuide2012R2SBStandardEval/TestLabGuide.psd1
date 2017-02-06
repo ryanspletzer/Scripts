@@ -65,6 +65,7 @@
             DSCResource = @(
                 ## Download published version from the PowerShell Gallery
                 @{ Name = 'xComputerManagement'; MinimumVersion = '1.3.0.0'; Provider = 'PSGallery'; }
+                @{ Name = 'xCertificate'; MinimumVersion = '2.3.0.0'; }
                 ## If not specified, the provider defaults to the PSGallery.
                 @{ Name = 'xSmbShare'; MinimumVersion = '1.1.0.0'; }
                 @{ Name = 'xNetworking'; MinimumVersion = '2.7.0.0'; }
