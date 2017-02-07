@@ -33,7 +33,17 @@ Configuration TestLabGuide {
         [Parameter()]
         [ValidateNotNull()]
         [PSCredential]
-        $SQLTestUser2Credential = $(Get-Credential -UserName $ConfigurationData.AllNodes.Where({$_.Role -in "SQL"}).SQLTestUser2UserName -Message "Credentials for SQL TestUser2 Account")
+        $SQLTestUser2Credential = $(Get-Credential -UserName $ConfigurationData.AllNodes.Where({$_.Role -in "SQL"}).SQLTestUser2UserName -Message "Credentials for SQL TestUser2 Account"),
+
+        [Parameter()]
+        [ValidateNotNull()]
+        [PSCredential]
+        $SBInstallCredential = (Get-Credential -UserName $ConfigurationData.AllNodes.Where({$true}).SBInstallUserName -Message "Credentials for Service Bus Install Account"),
+
+        [Parameter()]
+        [ValidateNotNull()]
+        [PSCredential]
+        $SBServiceCredential = (Get-Credential -UserName $ConfigurationData.AllNodes.Where({$true}).SBServiceUserName -Message "Credentials for Service Bus Service Account")
     )
     
     Import-DscResource -Module xComputerManagement, xNetworking, xActiveDirectory;
@@ -108,6 +118,8 @@ Configuration TestLabGuide {
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
         $sqlInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLInstallCredential.UserName)@$($Node.DomainName)", $SQLInstallCredential.Password);
         $sqlAdminUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLAdminCredential.UserName)@$($Node.DomainName)", $SQLAdminCredential.Password);
+        $sbInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SBInstallCredential.UserName)@$($Node.DomainName)", $SBInstallCredential.Password);
+        $sbServiceUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SBServiceCredential.UserName)@$($Node.DomainName)", $SBServiceCredential.Password);
 
         xComputer 'Hostname' {
             Name = $Node.NodeName;
@@ -190,6 +202,26 @@ Configuration TestLabGuide {
             DependsOn   = '[xADDomain]ADDomain';
         }
         
+        xADUser $SBInstallCredential.UserName { 
+            DomainName  = $Node.DomainName;
+            UserName    = $SBInstallCredential.UserName;
+            Description = 'Service Bus Install Account';
+            Password    = $SBInstallCredential;
+            UserPrincipalName = $sbInstallUpnCredential.UserName;
+            Ensure      = 'Present';
+            DependsOn   = '[xADDomain]ADDomain';
+        }
+
+        xADUser $SBServiceCredential.UserName { 
+            DomainName  = $Node.DomainName;
+            UserName    = $SBServiceCredential.UserName;
+            Description = 'Service Bus Install Account';
+            Password    = $SBServiceCredential;
+            UserPrincipalName = $sbServiceUpnCredential.UserName;
+            Ensure      = 'Present';
+            DependsOn   = '[xADDomain]ADDomain';
+        }
+
     } #end nodes DC
     
     node $AllNodes.Where({$_.Role -in 'SQL','SB'}).NodeName {
@@ -207,6 +239,7 @@ Configuration TestLabGuide {
         $domainAdministratorLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($DomainAdministratorCredential.UserName)", $DomainAdministratorCredential.Password);
         $sqlInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($SQLInstallCredential.UserName)", $SQLInstallCredential.Password);
         $sqlAdminLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($SQLAdminCredential.UserName)", $SQLAdminCredential.Password);
+        $sbInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($SBInstallCredential.UserName)", $SBInstallCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
             Credential       = $domainAdministratorLogonCredential
@@ -290,6 +323,23 @@ Configuration TestLabGuide {
             LoginType       = "SQLLogin"
         }
 
+        xSQLServerLogin ($Node.Nodename+$SBInstallCredential.UserName) {
+            SQLServer       = $Node.NodeName
+            SQLInstanceName = $Node.InstanceName
+            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
+            Ensure          = "Present"
+            Name            = $sbInstallLogonCredential.UserName
+        }
+
+        xSQLServerRole ($Node.Nodename+$SBInstallCredential.UserName) {
+            SQLServer       = $Node.NodeName
+            SQLInstanceName = $Node.InstanceName
+            DependsOn       = ("[xSqlServerLogin]" + ($Node.Nodename+$SBInstallCredential.UserName))
+            Name = $sbInstallLogonCredential.UserName
+            ServerRole = 'dbcreator','securityadmin'
+            Ensure = 'Present'
+        }
+
         xSQLServerDatabaseRole ($Node.Nodename) {
             SQLServer       = $Node.Nodename
             SQLInstanceName = $Node.InstanceName
@@ -335,6 +385,6 @@ Configuration TestLabGuide {
     } #end nodes SQL
 
     node $AllNodes.Where({$_.Role -in 'SB'}).NodeName {
-
+        
     } #end nodes SB
 } #end Configuration Example
