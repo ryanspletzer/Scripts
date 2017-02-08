@@ -141,7 +141,7 @@ Configuration TestLabGuide {
         }
         
         xADDomain 'ADDomain' {
-            DomainName = $Node.DomainName;
+            DomainName                    = $Node.DomainName;
             SafemodeAdministratorPassword = $DomainAdministratorCredential;
             DomainAdministratorCredential = $DomainAdministratorCredential;
             DependsOn                     = '[WindowsFeature]ADDomainServices';
@@ -228,10 +228,18 @@ Configuration TestLabGuide {
         ## Flip credential into username@domain.com
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
 
+        xWaitForADDomain 'WaitForDomain' {
+            DomainName           = $Node.DomainName
+            RetryIntervalSec     = 60
+            RetryCount           = 60
+            DomainUserCredential = $domainAdministratorUpnCredential
+        }
+
         xComputer 'DomainMembership' {
             Name       = $Node.NodeName;
             DomainName = $Node.DomainName;
             Credential = $domainAdministratorUpnCredential;
+            DependsOn  = '[xWaitForADDomain]WaitForDomain';
         }
     } #end nodes DomainJoined
 
@@ -242,6 +250,7 @@ Configuration TestLabGuide {
         $sbInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($SBInstallCredential.UserName)", $SBInstallCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
+            DependsOn        = '[xComputer]DomainMembership'
             Credential       = $domainAdministratorLogonCredential
             GroupName        = 'Administrators'
             Ensure           = 'Present'
