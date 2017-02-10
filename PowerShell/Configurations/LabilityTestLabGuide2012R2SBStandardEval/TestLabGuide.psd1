@@ -16,7 +16,7 @@
             Lability_SwitchName = 'Corpnet';
             Lability_ProcessorCount = 1;
             Lability_StartupMemory = 4GB;
-            Lability_Media = '2012R2_x64_Standard_EN_V5_Eval';
+            Lability_Media = '2012R2_x64_Standard_EN_V5_1_Eval';
             DomainAdministratorUserName = 'Administrator'
             SQLAdminUserName = 'SQLAdmin'
             SQLInstallUserName = 'SQLInstall'
@@ -53,7 +53,7 @@
             EnvironmentPrefix = 'SB-';
             Media = @();
             Network = @(
-                @{ Name = 'Corpnet'; Type = 'Internal'; }
+                @{ Name = 'Corpnet'; Type = 'Private'; }
                 #@{ Name = 'Internet'; Type = 'Internal'; }
                 @{ Name = 'ICS'; Type = 'Internal'; }
                 # @{ Name = 'External'; Type = 'External'; NetAdapterName = 'Ethernet'; AllowManagementOS = $true; }
