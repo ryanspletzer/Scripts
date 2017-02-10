@@ -1391,6 +1391,6 @@
     Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_a661e1718f68d7b02ce60e25722ee360aefb6620.cab"
 }
 @{
-    Id  = "Win8.1AndW2K12R2-KB3134758-x64.msu"
-    Uri = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1AndW2K12R2-KB3134758-x64.msu"
+    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
+    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
 }

@@ -128,7 +128,7 @@
         @{
             Id              = "2012R2_x64_Standard_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARD"
             MediaType       = "ISO"
@@ -139,6 +139,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "2012R2_x64_Standard_EN_V5_1"
+            FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
+            Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERSTANDARD"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "78BFF6565F178ED08AB534397FE44845"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Standard_Core_EN"
@@ -158,7 +173,7 @@
         @{
             Id              = "2012R2_x64_Standard_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARDCORE"
             MediaType       = "ISO"
@@ -169,6 +184,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "2012R2_x64_Standard_Core_EN_V5_1"
+            FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
+            Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERSTANDARDCORE"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "78BFF6565F178ED08AB534397FE44845"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_EN"
@@ -188,7 +218,7 @@
         @{
             Id              = "2012R2_x64_Datacenter_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTER"
             MediaType       = "ISO"
@@ -199,6 +229,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "2012R2_x64_Datacenter_EN_V5_1"
+            FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
+            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERDATACENTER"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "78BFF6565F178ED08AB534397FE44845"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
         },
         @{
             Id              = "2012R2_x64_Datacenter_Core_EN"
@@ -218,7 +263,7 @@
         @{
             Id              = "2012R2_x64_Datacenter_Core_EN_V5"
             FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTERCORE"
             MediaType       = "ISO"
@@ -229,6 +274,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "2012R2_x64_Datacenter_Core_EN_V5_1"
+            FileName        = "en_windows_server_2012_r2_with_update_x64_dvd_6052708.iso"
+            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERDATACENTERCORE"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "78BFF6565F178ED08AB534397FE44845"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
         },
         #endregion
 
@@ -251,7 +311,7 @@
         @{
             Id              = "WIN81_x64_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x64_dvd_6054382.iso"
-            Description     = "Windows 8.1 with Update 64bit English with WMF 5.1"
+            Description     = "Windows 8.1 with Update 64bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -262,6 +322,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\WIN81_x64_Enterprise_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "WIN81_x64_Enterprise_EN_V5_1"
+            FileName        = "en_windows_8.1_enterprise_with_update_x64_dvd_6054382.iso"
+            Description     = "Windows 8.1 with Update 64bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows 8.1 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "115D7C4203417E52C09D16B50043B10D"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\WIN81_x64_Enterprise_EN_V5_1_Eval.Hotfixes.xml'
         },
         @{
             Id              = "WIN81_x86_Enterprise_EN"
@@ -281,7 +356,7 @@
         @{
             Id              = "WIN81_x86_Enterprise_EN_V5"
             FileName        = "en_windows_8.1_enterprise_with_update_x86_dvd_6050710.iso"
-            Description     = "Windows 8.1 with Update 32bit English with WMF 5.1"
+            Description     = "Windows 8.1 with Update 32bit English with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -292,6 +367,21 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "WIN81_x86_Enterprise_EN_V5_1"
+            FileName        = "en_windows_8.1_enterprise_with_update_x86_dvd_6050710.iso"
+            Description     = "Windows 8.1 with Update 32bit English with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows 8.1 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = $null
+            Checksum        = "CE18DE710A9C025323B8DEE823BFBE7B"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_1_Eval.Hotfixes.xml'
         },
         #endregion
 
@@ -501,7 +591,7 @@
         @{
             Id              = "2012R2_x64_Standard_EN_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard 64bit English Evaluation"
+            Description     = "Windows Server 2012 R2 Standard 64bit English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARD"
             MediaType       = "ISO"
@@ -516,7 +606,7 @@
         @{
             Id              = "2012R2_x64_Standard_EN_V5_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 Standard 64bit English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARD"
             MediaType       = "ISO"
@@ -529,9 +619,24 @@
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
+            Id              = "2012R2_x64_Standard_EN_V5_1_Eval"
+            FileName        = "2012R2_x64_EN_Eval.iso"
+            Description     = "Windows Server 2012 R2 Standard 64bit English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERSTANDARD"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
+            Checksum        = "5B5E08C490AD16B59B1D9FAB0DEF883A"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
+        },
+        @{
             Id              = "2012R2_x64_Standard_Core_EN_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English"
+            Description     = "Windows Server 2012 R2 Standard Core 64bit English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARDCORE"
             MediaType       = "ISO"
@@ -546,7 +651,7 @@
         @{
             Id              = "2012R2_x64_Standard_Core_EN_V5_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Standard Core 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 Standard Core 64bit English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERSTANDARDCORE"
             MediaType       = "ISO"
@@ -559,9 +664,24 @@
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
+            Id              = "2012R2_x64_Standard_Core_EN_V5_1_Eval"
+            FileName        = "2012R2_x64_EN_Eval.iso"
+            Description     = "Windows Server 2012 R2 Standard Core 64bit English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERSTANDARDCORE"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
+            Checksum        = "5B5E08C490AD16B59B1D9FAB0DEF883A"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
+        },
+        @{
             Id              = "2012R2_x64_Datacenter_EN_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English"
+            Description     = "Windows Server 2012 R2 Datacenter 64bit English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTER"
             MediaType       = "ISO"
@@ -576,7 +696,7 @@
         @{
             Id              = "2012R2_x64_Datacenter_EN_V5_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 Datacenter 64bit English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTER"
             MediaType       = "ISO"
@@ -589,9 +709,24 @@
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
         @{
+            Id              = "2012R2_x64_Datacenter_EN_V5_1_Eval"
+            FileName        = "2012R2_x64_EN_Eval.iso"
+            Description     = "Windows Server 2012 R2 Datacenter 64bit English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERDATACENTER"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
+            Checksum        = "5B5E08C490AD16B59B1D9FAB0DEF883A"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
+        },
+        @{
             Id              = "2012R2_x64_Datacenter_Core_EN_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English"
+            Description     = "Windows Server 2012 R2 Datacenter Core 64bit English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTERCORE"
             MediaType       = "ISO"
@@ -606,7 +741,7 @@
         @{
             Id              = "2012R2_x64_Datacenter_Core_EN_V5_Eval"
             FileName        = "2012R2_x64_EN_Eval.iso"
-            Description     = "Windows Server 2012 R2 with Update Datacenter 64bit English with WMF 5.1"
+            Description     = "Windows Server 2012 R2 Datacenter Core 64bit English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows Server 2012 R2 SERVERDATACENTERCORE"
             MediaType       = "ISO"
@@ -618,13 +753,28 @@
             }
             Hotfixes = '.\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml'
         },
+        @{
+            Id              = "2012R2_x64_Datacenter_Core_EN_V5_1_Eval"
+            FileName        = "2012R2_x64_EN_Eval.iso"
+            Description     = "Windows Server 2012 R2 Datacenter Core 64bit English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows Server 2012 R2 SERVERDATACENTERCORE"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/6/2/A/62A76ABB-9990-4EFC-A4FE-C7D698DAEB96/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_SERVER_EVAL_EN-US-IR3_SSS_X64FREE_EN-US_DV9.ISO"
+            Checksum        = "5B5E08C490AD16B59B1D9FAB0DEF883A"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\2012R2_x64_Standard_EN_V5_1_Eval.Hotfixes.xml'
+        },
         #endregion
 
         #region Windows 8.1
         @{
             Id              = "WIN81_x64_Enterprise_EN_Eval"
             FileName        = "WIN81_x64_ENT_EN_Eval.iso"
-            Description     = "Windows 8.1 with Update 64bit English"
+            Description     = "Windows 8.1 64bit Enterprise English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -640,7 +790,7 @@
         @{
             Id              = "WIN81_x64_Enterprise_EN_V5_Eval"
             FileName        = "WIN81_x64_ENT_EN_Eval.iso"
-            Description     = "Windows 8.1 with Update 64bit English with WMF 5.1"
+            Description     = "Windows 8.1 64bit Enterprise English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -654,9 +804,25 @@
             Hotfixes = '.\WIN81_x64_Enterprise_EN_V5_Eval.Hotfixes.xml'
         },
         @{
+            Id              = "WIN81_x64_Enterprise_EN_V5_1_Eval"
+            FileName        = "WIN81_x64_ENT_EN_Eval.iso"
+            Description     = "Windows 8.1 64bit Enterprise English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows 8.1 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/B/9/9/B999286E-0A47-406D-8B3D-5B5AD7373A4A/9600.17050.WINBLUE_REFRESH.140317-1640_X64FRE_ENTERPRISE_EVAL_EN-US-IR3_CENA_X64FREE_EN
+-US_DV9.ISO"
+            Checksum        = "EE63618E3BE220D86B993C1ABBCF32EB"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\WIN81_x64_Enterprise_EN_V5_1_Eval.Hotfixes.xml'
+        },
+        @{
             Id              = "WIN81_x86_Enterprise_EN_Eval"
             FileName        = "WIN81_x86_ENT_EN_Eval.iso"
-            Description     = "Windows 8.1 with Update 32bit English"
+            Description     = "Windows 8.1 32bit Enterprise English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -672,7 +838,7 @@
         @{
             Id              = "WIN81_x86_Enterprise_EN_V5_Eval"
             FileName        = "WIN81_x86_ENT_EN_Eval.iso"
-            Description     = "Windows 8.1 with Update 32bit English with WMF 5.1"
+            Description     = "Windows 8.1 32bit Enterprise English Evaluation with WMF 5"
             Architecture    = "x64"
             ImageName       = "Windows 8.1 Enterprise"
             MediaType       = "ISO"
@@ -684,6 +850,22 @@
                 WindowsOptionalFeature = @('NetFx3')
             }
             Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_Eval.Hotfixes.xml'
+        },
+        @{
+            Id              = "WIN81_x86_Enterprise_EN_V5_1_Eval"
+            FileName        = "WIN81_x86_ENT_EN_Eval.iso"
+            Description     = "Windows 8.1 32bit Enterprise English Evaluation with WMF 5.1"
+            Architecture    = "x64"
+            ImageName       = "Windows 8.1 Enterprise"
+            MediaType       = "ISO"
+            OperatingSystem = "Windows"
+            Uri             = "http://download.microsoft.com/download/B/9/9/B999286E-0A47-406D-8B3D-5B5AD7373A4A/9600.17050.WINBLUE_REFRESH.140317-1640_X86FRE_ENTERPRISE_EVAL_EN-US-IR3_CENA_X86FREE_EN
+-US_DV9.ISO"
+            Checksum        = "B2ACCD5F135C3EEDE256D398856AEEAD"
+            CustomData = @{
+                WindowsOptionalFeature = @('NetFx3')
+            }
+            Hotfixes = '.\WIN81_x86_Enterprise_EN_V5_1_Eval.Hotfixes.xml'
         },
         #endregion
 
@@ -735,7 +917,7 @@
         @{
             Id              = "WIN10_x64_Enterprise_LTSB_EN_Eval"
             FileName        = "WIN10_x64_ENT_LTSB_EN_Eval.iso"
-            Description     = "Windows 10 64bit Enterprise 2016 English Evaluation"
+            Description     = "Windows 10 64bit Enterprise LTSB English Evaluation"
             Architecture    = "x64"
             ImageName       = "Windows 10 Enterprise"
             MediaType       = "ISO"
@@ -757,7 +939,7 @@
         @{
             Id              = "WIN10_x86_Enterprise_LTSB_EN_Eval"
             FileName        = "WIN10_x86_ENT_LTSB_EN_Eval.iso"
-            Description     = "Windows 10 32bit Enterprise 2016 English Evaluation"
+            Description     = "Windows 10 32bit Enterprise LTSB English Evaluation"
             Architecture    = "x86"
             ImageName       = "Windows 10 Enterprise"
             MediaType       = "ISO"

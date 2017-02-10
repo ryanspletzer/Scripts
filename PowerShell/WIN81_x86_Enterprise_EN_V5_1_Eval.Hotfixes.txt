@@ -1499,6 +1499,6 @@
     Uri = "http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/05/windows8.1-kb3150513-x86-express_1cef42d36086b1fe7d8521d8b41ff4228f98c662.cab"
 }
 @{
-    Id  = "Win8.1-KB3134758-x86.msu"
-    Uri = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1-KB3134758-x86.msu"
+    Id  = "Win8.1-KB3191564-x86.msu"
+    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1-KB3191564-x86.msu"
 }

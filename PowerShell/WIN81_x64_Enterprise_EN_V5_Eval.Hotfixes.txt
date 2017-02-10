@@ -587,10 +587,6 @@
     Uri = "http://download.windowsupdate.com/d/msdownload/update/software/uprl/2016/11/windows8.1-kb3203884-x64_aefa367b8ea189621880e509a40b6acc45fffdd2.cab"
 }
 @{
-    Id  = "Win8.1AndW2K12R2-KB3191564-x64.msu"
-    Uri = "https://download.microsoft.com/download/6/F/5/6F5FF66C-6775-42B0-86C4-47D41F2DA187/Win8.1AndW2K12R2-KB3191564-x64.msu"
-}
-@{
     Id  = "windows8.1-kb2899189-x64_6e49cf51ffa83ff8838defc91ccbca80c83031c8.cab"
     Uri = "http://download.windowsupdate.com/c/msdownload/update/software/updt/2013/12/windows8.1-kb2899189-x64_6e49cf51ffa83ff8838defc91ccbca80c83031c8.cab"
 }
@@ -1557,4 +1553,8 @@
 @{
     Id  = "windows8.1-kb3150513-x64-express_d0781f7f99df6392780b3a9f500eee132f1f9935.cab"
     Uri = "http://download.windowsupdate.com/d/msdownload/update/software/updt/2016/05/windows8.1-kb3150513-x64-express_d0781f7f99df6392780b3a9f500eee132f1f9935.cab"
+}
+@{
+    Id  = "Win8.1AndW2K12R2-KB3134758-x64.msu"
+    Uri = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1AndW2K12R2-KB3134758-x64.msu"
 }
