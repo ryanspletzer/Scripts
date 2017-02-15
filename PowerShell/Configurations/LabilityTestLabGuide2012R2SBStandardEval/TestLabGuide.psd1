@@ -55,7 +55,7 @@
             Network = @(
                 @{ Name = 'Corpnet'; Type = 'Private'; }
                 #@{ Name = 'Internet'; Type = 'Internal'; }
-                @{ Name = 'ICS'; Type = 'Internal'; }
+                @{ Name = 'Internal'; Type = 'Internal'; }
                 # @{ Name = 'External'; Type = 'External'; NetAdapterName = 'Ethernet'; AllowManagementOS = $true; }
                 <#
                     IPAddress: The desired IP address.
