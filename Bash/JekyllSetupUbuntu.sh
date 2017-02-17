@@ -10,6 +10,7 @@ apt install ruby2.3 ruby2.3-dev ruby-switch
 ruby -v
 ruby-switch --set ruby2.3
 gem install execjs
+gem install bundler
 gem install jekyll
 sudo -u $currentUser -s
 exit
