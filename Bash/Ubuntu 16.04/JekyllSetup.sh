@@ -1,4 +1,4 @@
-currentUser=$USER
+#!/bin/sh
 sudo -s
 apt update
 apt upgrade
@@ -12,5 +12,4 @@ ruby-switch --set ruby2.3
 gem install execjs
 gem install bundler
 gem install jekyll
-sudo -u $currentUser -s
 exit

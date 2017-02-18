@@ -51,7 +51,7 @@ Install-Packege -Name bitvise-ssh-client -Force
 Install-Package -Name git.install -Force # Invoke Installer Manually
 Install-Package -Name notepadplusplus.install -Force
 Install-Package -Name GoogleChrome -Force # Invoke Installer Manually
-Install-Package -Name Firefox -Force # Invoke Installer Manually: 
+Install-Package -Name Firefox -Force # Invoke Installer Manually:
 Install-Package -Name Slack -Force
 Install-Package -Name visualstudiocode -Force
 Install-package -Name nodejs.install -Force
@@ -60,6 +60,7 @@ Install-Package -Name sysinternals -Force
 Install-Package -Name spotify -Force
 Install-Package -Name rdcman -Force
 Install-Package -Name steam -Force
+Install-Package -Name tigervnc-viewer -Force
 
 Write-Host -Object "Installing PowerShell modules of interest..."
 Install-Module -Name 'posh-git' -Force
