@@ -97,6 +97,9 @@ if (-not (Get-Package | Where-Object{$_.Name -like "Microsoft Project Profession
     Write-Host -Object "Project is already installed!"
 }
 
+# Changes perms to disallow your user account writing on the Common folder
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\16.0\Common -Name "UI Theme" -Value 4
+
 Write-Host -Object "Checking for SQL Server Management Studio..."
 if (-not (Get-Package | Where-Object{$_.Name -eq "SQL Server 2016 Management Studio"}).Count -gt 0) {
     Write-Host -Object "Installing SQL Server Management Studio."
