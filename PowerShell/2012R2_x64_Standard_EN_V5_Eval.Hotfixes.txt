@@ -1419,6 +1419,10 @@
     Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb2987107-x64_97d3b147938abf8fb8a59d9350ff946c27549a3e.cab"
 }
 @{
+    Id  = "windows8.1-kb3185319-v2-x64_0202d1ac5771282d69ab54a976128ea043d27009.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/09/windows8.1-kb3185319-v2-x64_0202d1ac5771282d69ab54a976128ea043d27009.cab"
+}
+@{
     Id  = "Win8.1AndW2K12R2-KB3134758-x64.msu"
     Uri = "https://download.microsoft.com/download/2/C/6/2C6E1B4A-EBE5-48A6-B225-2D2058A9CEFB/Win8.1AndW2K12R2-KB3134758-x64.msu"
 }
