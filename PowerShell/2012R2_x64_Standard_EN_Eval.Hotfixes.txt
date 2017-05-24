@@ -1390,3 +1390,35 @@
     Id  = "windows8.1-kb3210135-x64_a661e1718f68d7b02ce60e25722ee360aefb6620.cab"
     Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2016/12/windows8.1-kb3210135-x64_a661e1718f68d7b02ce60e25722ee360aefb6620.cab"
 }
+@{
+    Id  = "windows8.1-kb4019215-x64_03721f764c60d015b8a644a0c346959403ca60fd.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2017/05/windows8.1-kb4019215-x64_03721f764c60d015b8a644a0c346959403ca60fd.cab"
+}
+@{
+    Id  = "windows8.1-kb4014505-x64_9b3c8c1d796853c2261330bd411afcfab53bf9a6.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2017/04/windows8.1-kb4014505-x64_9b3c8c1d796853c2261330bd411afcfab53bf9a6.cab"
+}
+@{
+    Id  = "windows8.1-kb4014510-x64_018f5995860f2bbdbfad55abe6ec0d56b5c6202b.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2017/04/windows8.1-kb4014510-x64_018f5995860f2bbdbfad55abe6ec0d56b5c6202b.cab"
+}
+@{
+    Id  = "windows8.1-kb4014598-x64_7c2beed8cfd0e9381395f98df58b390d4d8c9c82.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/updt/2017/05/windows8.1-kb4014598-x64_7c2beed8cfd0e9381395f98df58b390d4d8c9c82.cab"
+}
+@{
+    Id  = "windows8.1-kb4014604-x64_e3b2c4efa659e581c5fe247b06c1c0fa4e5c06dc.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/updt/2017/05/windows8.1-kb4014604-x64_e3b2c4efa659e581c5fe247b06c1c0fa4e5c06dc.cab"
+}
+@{
+    Id  = "windows8.1-kb4019217-x64_ce093b36256e85e78c7c566ccffd8405fbc8fa0f.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/updt/2017/05/windows8.1-kb4019217-x64_ce093b36256e85e78c7c566ccffd8405fbc8fa0f.cab"
+}
+@{
+    Id  = "windows8.1-kb2987107-x64_97d3b147938abf8fb8a59d9350ff946c27549a3e.cab"
+    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/secu/2014/10/windows8.1-kb2987107-x64_97d3b147938abf8fb8a59d9350ff946c27549a3e.cab"
+}
+@{
+    Id  = "windows8.1-kb3185319-v2-x64_0202d1ac5771282d69ab54a976128ea043d27009.cab"
+    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/secu/2016/09/windows8.1-kb3185319-v2-x64_0202d1ac5771282d69ab54a976128ea043d27009.cab"
+}
