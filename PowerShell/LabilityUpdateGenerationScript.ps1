@@ -227,7 +227,7 @@ function PackHotfixArray {
     $HotfixArray
 }
 
-$getWSUSUpdateUrlsSB = {
+$getWSUSUpdateUrlsScriptBlock = {
     $updateSession = New-Object -ComObject Microsoft.Update.Session
     $updateSearcher = $updateSession.CreateUpdateSearcher()
     $updateSearchResults = $updateSearcher.Search("IsInstalled = 0")
@@ -282,7 +282,7 @@ do
     Start-Lab -ConfigurationData $ConfigurationData
     Start-Sleep -Seconds 900
     $session = new-pssession -ComputerName $ComputerName -Credential $Credential
-    $recommendedUpdates = Invoke-Command -Session $session -ScriptBlock $getWSUSUpdateUrlsSB
+    $recommendedUpdates = Invoke-Command -Session $session -ScriptBlock $getWSUSUpdateUrlsScriptBlock
     $trimmedRecommendedUpdates = $recommendedUpdates | Where-Object{$_.EndsWith(".cab")}
     $trimmedRecommendedUpdates = TrimExcluded -Updates $trimmedRecommendedUpdates -ExcludedUpdates $specificExcludedUpdates
     $hotfixArray = PackHotfixArray -Updates $trimmedRecommendedUpdates -HotfixArray $hotfixArray
