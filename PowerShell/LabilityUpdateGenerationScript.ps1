@@ -308,7 +308,7 @@ if ($OutFile) {
 # Reconstituting the object
 Import-Clixml -Path .\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml
 
-[hashtable[]] $testArray = ((Import-Clixml -Path .\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml) | %{
+[hashtable[]] $hotfixArray = ((Import-Clixml -Path .\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml) | %{
     $ht = @{
         Id  = $_.Id
         Uri = $_.Uri
@@ -319,7 +319,7 @@ Import-Clixml -Path .\2012R2_x64_Standard_EN_V5_Eval.Hotfixes.xml
 
 <#
 Extract current updates as hashtable array for re-registration
-[hashtable[]] $testArray = (Get-LabMedia -Id 2016_x64_Standard_EN_Eval).Hotfixes | %{
+[hashtable[]] $hotfixArray = (Get-LabMedia -Id 2016_x64_Standard_EN_Eval).Hotfixes | %{
     $ht = @{
         Id  = $_.Id
         Uri = $_.Uri
