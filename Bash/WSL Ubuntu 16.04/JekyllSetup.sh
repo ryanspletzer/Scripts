@@ -6,4 +6,4 @@ sudo gem install jekyll bundler
 sudo apt-get install -y python3-pip
 pip3 install --upgrade pip
 pip3 install pygments
-gem install pygments.rb
+sudo gem install pygments.rb
