@@ -3,6 +3,7 @@
 sudo apt-get update
 sudo apt-get install ruby ruby-dev make gcc
 sudo gem install jekyll bundler
+# Note: pygments doesn't work on Github Pages
 # sudo apt-get install -y python3-pip
 # pip3 install --upgrade pip
 # pip3 install pygments
