@@ -9,7 +9,7 @@ $psISE.CurrentPowerShellTab.VisibleVerticalAddOnTools.SelectedAddOnTool = $scrip
 #Script Browser End
 
 Set-Location -Path "D:\Scripts"
-. ((Split-Path -Path (Get-Module -Name posh-git -ListAvailable).Path -Parent)+"\profile.example.ps1")
+Import-Module -Name posh-git
 
 function Enter-ElevatedPSSession {
     #requires -Version 2.0
