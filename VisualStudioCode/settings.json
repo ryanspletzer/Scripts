@@ -1,6 +1,6 @@
 // Place your settings in this file to overwrite the default settings
 {
-    "editor.rulers": [80,100,116,120],
+    "editor.rulers": [80,100,108,116,120],
     "editor.renderIndentGuides": true,
     "editor.renderWhitespace": "boundary",
     "files.trimTrailingWhitespace": true,
