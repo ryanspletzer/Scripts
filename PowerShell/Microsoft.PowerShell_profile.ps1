@@ -114,3 +114,15 @@ function Invoke-NetView {
         [string[]](net view $Path /all | select -Skip 7 | ?{$_ -match 'disk*'} | %{$_ -match '^(.+?)\s+Disk*'|out-null;$matches[1]})
     }
 }
+
+function Open-GitRemoteUrl {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$false)]
+        [string]
+        $RemoteName = 'origin'
+    )
+    start (git remote get-url $RemoteName)
+}
+
+New-Alias -Name openremote -Value Open-GitRemoteUrl
