@@ -79,3 +79,15 @@ function Enter-ElevatedPSSession {
 }
 
 New-Alias -Name su -Value Enter-ElevatedPSSession
+
+function Open-GitRemoteUrl {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory=$false)]
+        [string]
+        $RemoteName = 'origin'
+    )
+    start (git remote get-url $RemoteName)
+}
+
+New-Alias -Name openremote -Value Open-GitRemoteUrl
