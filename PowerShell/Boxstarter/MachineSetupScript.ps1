@@ -26,9 +26,6 @@ powercfg.exe /change -standby-timeout-dc 0
 powercfg.exe /change -hibernate-timeout-ac 0
 powercfg.exe /change -hibernate-timeout-dc 0
 
-Write-Host -Object "Configuring System Clock to Set Time automatically"
-Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Parameters -Name Type -Value 'NTP'
-
 Write-Host -Object "Configuring System Clock to Set Time Zone automatically"
 Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate -Name Start -Value 4
 
