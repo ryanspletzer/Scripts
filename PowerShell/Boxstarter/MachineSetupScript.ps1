@@ -1,23 +1,41 @@
-# TODO: Parameterize Script for Certain Installer Paths / Tokens
+# Prereq: Execution Policy: Set-ExecutionPolicy Bypass
+# Prereq: Chocolatey: @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+# Note: Geforce Experience chocolatey package out of date, get manually
+# Note: Update PowerShell help manually (sometimes hangs during these scripts)
 # TODO: Perform symlink command for D:\Scripts -> D:\Users\<User>\Scripts
+[CmdletBinding()]
+param (
+    [Parameter(Mandatory=$false)]
+    [ValidateNotNullOrEmpty()]
+    [string]
+    $GitUserName = 'Ryan Spletzer',
 
-Write-Host -Object "Checking execution policy..."
-if (-not (Get-ExecutionPolicy) -eq 'Bypass') {
-    Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
-    Write-Host -Object "Execution policy has been changed to bypass."
-} else {
-    Write-Host -Object "Execution policy is already set to bypass."
-}
+    [Parameter(Mandatory=$false)]
+    [ValidateNotNullOrEmpty()]
+    [string]
+    $GitEmail = 'ryanspletzer@gmail.com'
+)
+
+Write-Host -Object "Configuring Power Options"
+powercfg.exe /change -monitor-timeout-ac 0
+powercfg.exe /change -monitor-timeout-dc 0
+powercfg.exe /change -disk-timeout-ac 0
+powercfg.exe /change -disk-timeout-dc 0
+powercfg.exe /change -standby-timeout-ac 0
+powercfg.exe /change -standby-timeout-dc 0
+powercfg.exe /change -hibernate-timeout-ac 0
+powercfg.exe /change -hibernate-timeout-dc 0
+
+Write-Host -Object "Configuring System Clock to Set Time automatically"
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\W32Time\Parameters -Name Type -Value 'NTP'
+
+Write-Host -Object "Configuring System Clock to Set Time Zone automatically"
+Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate -Name Start -Value 4
 
 Write-Host -Object "Configuring PowershellGet and Chocolatey package manager..."
-Get-PackageProvider -Name chocolatey -Force
-Set-PackageSource -Name chocolatey -Trusted -Force
-Set-PackageSource -Name PSGallery -Trusted -Force
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Set-PackageSource -Name PSGallery -Trusted -ForceBootstrap
 Write-Host -Object "Package managers set!"
-
-Write-Host -Object "Updating Help..."
-Update-Help
-Write-Host -Object "Help updated!"
 
 Write-Host -Object "Configuring Windows Explorer to show hidden folders and file extensions"
 $key = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
@@ -26,6 +44,11 @@ Set-ItemProperty -Path $key -Name HideFileExt -Value 0
 Get-Process -Name 'explorer' | Stop-Process | Invoke-Item
 $key = ''
 Write-Host -Object "Windows Explorer configured!"
+
+Write-Host -Object "Ensuring Public NetConnectionProfiles are set to Private..."
+Get-NetConnectionProfile |
+Where-Object -FilterScript { $_.NetworkCategory -eq "Public" } |
+Set-NetConnectionProfile -NetworkCategory Private
 
 Write-Host -Object  "Enabling remote desktop and PowerShell remoting..."
 Enable-PSRemoting -Force
@@ -38,92 +61,39 @@ Write-Host -Object "Remote desktop and PowerShell remoting enabled!"
 Write-Host -Object "Disabling PowerShell beeping..."
 Set-PSReadlineOption -BellStyle None
 
-Write-Host -Object "Enabling Windows Features"
-Write-Host -Object "Enabling Hyper-V (will restart)"
-Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Hyper-V-All' -Online
-# Invoke-Reboot
-Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Windows-Subsystem-Linux' -Online # After Developer Mode Enabled
-# Invoke-Reboot
-
-# TODO: Add to list
 Write-Host -Object "Installing miscellaneous applications..."
-Install-Packege -Name bitvise-ssh-client -Force
-Install-Package -Name git.install -Force # Invoke Installer Manually
-Install-Package -Name notepadplusplus.install -Force
-Install-Package -Name GoogleChrome -Force # Invoke Installer Manually
-Install-Package -Name Firefox -Force # Invoke Installer Manually:
-Install-Package -Name Slack -Force
-Install-Package -Name visualstudiocode -Force
-Install-package -Name nodejs.install -Force
-Install-Package -Name f.lux -Force
-Install-Package -Name sysinternals -Force
-Install-Package -Name spotify -Force
-Install-Package -Name rdcman -Force
-Install-Package -Name steam -Force
-Install-Package -Name tigervnc-viewer -Force
+choco install notepadplusplus --yes
+choco install firefox --yes
+choco install googlechrome --yes
+choco install visualstudiocode --yes
+choco install keepass --yes
+choco install sysinternals --yes
+choco install git --yes
+choco install rsat --yes
+choco install office365proplus --yes
+choco install sql-server-management-studio --yes
+choco install visualstudio2017community --yes
+# TODO: Add desired Visual Studio 2017 Workload packages (don't feel like you need to add kitchen sink up front though)
+choco install dotnetcore-sdk --yes
 
-Write-Host -Object "Installing PowerShell modules of interest..."
-Install-Module -Name 'posh-git' -Force
-
-Write-Host -Object "Checking for Visual Studio..."
-if (-not (Get-Package | Where-Object{$_.Name -like "*Visual Studio 2015*"}).Count -gt 0) {
-    Write-Host -Object "Installing Visual Studio."
-    # TODO: Visual Studio install via OneDrive
+Write-Host -Object "Checking git config user.name and user.email..."
+if ([String]::IsNullOrWhiteSpace($(& "${env:ProgramFiles}\Git\cmd\git.exe" config --global --get user.name)) -or
+    [String]::IsNullOrWhiteSpace($(& "${env:ProgramFiles}\Git\cmd\git.exe" config --global --get user.email))) {
+    Write-Host -Object "Setting git config user.name and user.email."
+    & "${env:ProgramFiles}\Git\cmd\git.exe" config --global user.name $GitUserName
+    & "${env:ProgramFiles}\Git\cmd\git.exe" config --global user.email $GitEmail
 } else {
-    Write-Host -Object "Visual Studio is already installed!"
+    Write-Host -Object "git config user.name and user.email is already set for this user."
 }
 
-Write-Host -Object "Checking for Microsoft Office..."
-if (-not (Get-Package | Where-Object{$_.Name -like "Microsoft Office Professional Plus 2016*"}).Count -gt 0) {
-    Write-Host -Object "Installing Microsoft Office."
-    # TODO: Microsoft Office install via OneDrive
+Write-Host -Object "Checking for posh-git PowerShell module..."
+Install-Module -Name posh-git -Force
+
+Write-Host -Object "Checking for presence of PowerShell profile files for user (primarily to import posh-git)..."
+if (-not (Test-Path -Path $profile)) {
+    Write-Host -Object "Creating PowerShell profiles for user (primarily to import posh-git)."
+    'Import-Module -Name posh-git' | Out-File -FilePath $profile
+    'Import-Module -Name posh-git' | Out-File -FilePath (Join-Path -Path (Split-Path -Path $profile -Parent) -ChildPath "Microsoft.PowerShellISE_profile.ps1")
 } else {
-    Write-Host -Object "Microsoft Office is already installed!"
+    Write-Host -Object "PowerShell profiles already exist for this user (if they don't have posh-git yet, have them hand-edit their profile)."
 }
-
-Write-Host -Object "Checking for Microsoft Visio..."
-if (-not (Get-Package | Where-Object{$_.Name -like "Microsoft Visio Professional 2016*"}).Count -gt 0) {
-    Write-Host -Object "Installing Visio."
-    # TODO: Visio install via OneDrive
-} else {
-    Write-Host -Object "Visio is already installed!"
-}
-
-Write-Host -Object "Checking for Microsoft Project..."
-if (-not (Get-Package | Where-Object{$_.Name -like "Microsoft Project Professional 2016*"}).Count -gt 0) {
-    Write-Host -Object "Installing Project."
-    # TODO: Project install via OneDrive
-} else {
-    Write-Host -Object "Project is already installed!"
-}
-
-# Changes perms to disallow your user account writing on the Common folder
-Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Office\16.0\Common -Name "UI Theme" -Value 4
-
-Write-Host -Object "Checking for SQL Server Management Studio..."
-if (-not (Get-Package | Where-Object{$_.Name -eq "SQL Server 2016 Management Studio"}).Count -gt 0) {
-    Write-Host -Object "Installing SQL Server Management Studio."
-    # TODO: SSMS install via OneDrive
-} else {
-    Write-Host -Object "SQL Server Management Studio is already installed!"
-}
-
-Write-Host -Object "Checking for .NET Framework 3.5.1 feature for Windows..."
-if (-not ((Get-WindowsOptionalFeature -Online -FeatureName NetFx3).State -eq 'Enabled')) {
-    Write-Host -Object "Installing .NET Framework 3.5.1 from latest Windows 10 media."
-    # TODO: .NET Framework 3.5.1 install via OneDrive
-    #$imagePath = ""
-    #$image = Mount-DiskImage -ImagePath $imagePath -Access ReadOnly -StorageType ISO -PassThru
-    #$driveLetter = ($image | Get-Volume).DriveLetter
-    #Enable-WindowsOptionalFeature -Online -FeatureName NetFx3 -Source "$driveLetter`:\sources\sxs" -LimitAccess
-    #Dismount-DiskImage -ImagePath $imagePath
-} else {
-    Write-Host -Object ".NET Framework 3.5.1 is already installed!"
-}
-
-Write-Host -Object "Installing Windows updates..."
-#Install-WindowsUpdate -acceptEula -SuppressReboots # TODO: check for boxstarter
-
-# TODO: Shortcut icons on taskbar
-
-Write-Host -Object "Done! (:"
