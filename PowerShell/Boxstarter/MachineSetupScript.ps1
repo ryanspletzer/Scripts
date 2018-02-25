@@ -94,3 +94,9 @@ if (-not (Test-Path -Path $profile)) {
 } else {
     Write-Host -Object "PowerShell profiles already exist for this user (if they don't have posh-git yet, have them hand-edit their profile)."
 }
+
+Write-Host -Object "Enabling Windows Features"
+Write-Host -Object "Enabling Windows Subsystem for Linux"
+Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Windows-Subsystem-Linux' -Online # After Developer Mode Enabled
+Write-Host -Object "Enabling Hyper-V (will restart)"
+Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Hyper-V-All' -Online
