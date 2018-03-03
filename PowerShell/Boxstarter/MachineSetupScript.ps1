@@ -50,6 +50,8 @@ Set-NetConnectionProfile -NetworkCategory Private
 Write-Host -Object  "Enabling remote desktop and PowerShell remoting..."
 Enable-PSRemoting -Force
 Set-Item -Path wsman:\localhost\client\trustedhosts -Value * -Force
+Enable-WSManCredSSP -Role Server -Force
+Enable-WSManCredSSP -Role Client -DelegateComputer * -Force
 Set-ItemProperty -Path 'HKLM:System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
 Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
 Set-ItemProperty -Path 'HKLM:System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
