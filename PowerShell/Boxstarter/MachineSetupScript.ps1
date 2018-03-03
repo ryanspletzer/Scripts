@@ -26,8 +26,8 @@ powercfg.exe /change -standby-timeout-dc 0
 powercfg.exe /change -hibernate-timeout-ac 0
 powercfg.exe /change -hibernate-timeout-dc 0
 
-Write-Host -Object "Configuring System Clock to Set Time Zone automatically"
-Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Services\tzautoupdate -Name Start -Value 4
+Write-Host -Object "Configuring System Clock to Set Time Zone to Eastern (setting automatically doesn't always work)"
+Set-TimeZone -Name "Eastern Standard Time"
 
 Write-Host -Object "Configuring PowershellGet and Chocolatey package manager..."
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
