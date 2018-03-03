@@ -100,3 +100,57 @@ Write-Host -Object "Enabling Windows Subsystem for Linux"
 Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Windows-Subsystem-Linux' -Online # After Developer Mode Enabled
 Write-Host -Object "Enabling Hyper-V (will restart)"
 Enable-WindowsOptionalFeature -FeatureName 'Microsoft-Hyper-V-All' -Online
+
+Write-Host -Object 'Checking for user folder path and sub folders on the D: drive and setting reg keys for folder mappings'
+$userShellFoldersRegKeyPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"  
+$shellFoldersRegKeyPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+$userShellFolderRegKeyPropertyMappings = @(
+    @{
+        'Desktop'     = @{
+            'FolderName'       = 'Desktop'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)"
+        }
+    },
+    @{
+        'Downloads'   = @{
+            'FolderName'       = 'Downloads'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)"
+        }
+    },
+    @{
+        'My Music'    = @{
+            'FolderName'       = 'Music'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)\OneDrive"
+        }
+    },
+    @{
+        'My Pictures' = @{
+            'FolderName'       = 'Pictures'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)\OneDrive"
+        }
+    },
+    @{
+        'Personal'    = @{
+            'FolderName'       = 'Documents'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)\OneDrive"
+        }
+    },
+    @{
+        'My Video'    = @{
+            'FolderName'       = 'Video'
+            'FolderParentPath' = "D:\Users\$($env:USERNAME)\OneDrive"
+        }
+    }
+)
+$userShellFolderRegKeyPropertyMappings | ForEach-Object -Process {
+    $regKeyName = $_.Keys | Select-Object -First 1
+    $currentItem = $_[$regKeyName]
+    if (-not (Test-Path -Path $currentItem.FolderParentPath -PathType Container)) {
+        New-Item -Path $currentItem.FolderParentPath -ItemType Directory
+    }
+    if (-not (Test-Path -Path $currentItem.FolderParentPath -PathType Container)) {
+        New-Item -Path "$($currentItem.FolderParentPath)\$($currentItem.FolderName)" -ItemType Directory
+    }
+    Set-ItemProperty -Path $userShellFoldersRegKeyPath -Name $regKeyName -Value "$($currentItem.FolderParentPath)\$($currentItem.FolderName)"
+    Set-ItemProperty -Path $shellFoldersRegKeyPath -Name $regKeyName -Value "$($currentItem.FolderParentPath)\$($currentItem.FolderName)"
+}
