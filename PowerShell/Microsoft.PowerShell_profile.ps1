@@ -1,4 +1,5 @@
 Set-Location -Path "D:\Scripts"
+Set-PSReadlineOption -BellStyle None
 Import-Module -Name posh-git
 
 function Global:Set-MaxWindowSize
