@@ -80,6 +80,16 @@ Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileEx
 Set-TaskbarOptions -Size Large -Dock Bottom -Combine Always -Lock # Prefer Large icons and always combining icons
 # Set-TaskbarOptions -Size Large -Dock Bottom -Combine Always -AlwaysShowIconsOn # Prefer icon tray
 
+#--- Set Time Server ---
+# Get
+$timeServer = Get-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers -Name '0' -ErrorAction SilentlyContinue
+# Test
+if ($timeServer -eq $null) {
+	# Set
+	New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers -Name '0' -PropertyType String -Value 'us.pool.ntp.org'
+}
+Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DateTime\Servers -Name '(default)' -Value '0'
+
 #--- Windows Subsystems/Features ---
 choco install Microsoft-Hyper-V-All -source windowsFeatures
 choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures
