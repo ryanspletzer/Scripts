@@ -126,6 +126,7 @@ choco install windows-sdk-10.1 --yes
 choco install atom --yes
 choco install awscli --yes
 Install-Module -Name AWSPowerShell -Force
+choco install drobo-dashboard --yes
 
 #--- Configure CredSSP Client ---
 Write-Host -Object "Enabling WSManCredSSP as a client for *.ads.autodesk.com"
