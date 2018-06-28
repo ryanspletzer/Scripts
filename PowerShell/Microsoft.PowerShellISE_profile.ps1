@@ -1,15 +1,9 @@
-#Script Browser Begin
-#Version: 1.3.2
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\System.Windows.Interactivity.dll'
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\ScriptBrowser.dll'
-Add-Type -Path 'C:\Program Files (x86)\Microsoft Corporation\Microsoft Script Browser\BestPractices.dll'
-$scriptBrowser = $psISE.CurrentPowerShellTab.VerticalAddOnTools.Add('Script Browser', [ScriptExplorer.Views.MainView], $true)
-$scriptAnalyzer = $psISE.CurrentPowerShellTab.VerticalAddOnTools.Add('Script Analyzer', [BestPractices.Views.BestPracticesView], $true)
-$psISE.CurrentPowerShellTab.VisibleVerticalAddOnTools.SelectedAddOnTool = $scriptBrowser
-#Script Browser End
-
-Set-Location -Path "D:\Scripts"
-Import-Module -Name posh-git
+$env:VAULT_ADDR = 'https://vault.aws.autodesk.com'
+$env:PACKER_LOG = 1
+$env:PACKER_LOG_PATH = 'packerlog.txt'
+$env:CLOUDPCCOMPUTERNAME = 'CPSCLW10-0081.ads.autodesk.com'
+$env:WORKSTATIONCOMPUTERNAME = 'NOVPC0SWSR3.ads.autodesk.com'
+Set-PSReadlineOption -BellStyle None
 
 function Enter-ElevatedPSSession {
     #requires -Version 2.0
