@@ -69,10 +69,8 @@ choco install keepass --yes
 choco install sysinternals --yes
 choco install git --yes
 choco install rsat --yes
-choco install office365proplus --yes
 choco install sql-server-management-studio --yes
-choco install visualstudio2017community --yes
-# TODO: Add desired Visual Studio 2017 Workload packages (don't feel like you need to add kitchen sink up front though)
+choco install visualstudio2017enterprise --yes
 choco install dotnetcore-sdk --yes
 
 Write-Host -Object "Checking git config user.name and user.email..."
