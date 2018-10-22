@@ -21,3 +21,5 @@ brew cask install zoom-outlook-plugin
 brew cask install microsoft-azure-storage-explorer
 brew install gnupg
 brew cask install keybase
+brew cask install homebrew/cask-drivers/drobo-dashboard
+brew cask install docker
