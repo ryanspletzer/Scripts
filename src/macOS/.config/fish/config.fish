@@ -1,4 +1,4 @@
-if not pgrep gpg-agent > nul
+if not pgrep gpg-agent > /dev/null
     eval 'gpg-agent --daemon'
 end
 
