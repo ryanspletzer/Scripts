@@ -30,6 +30,12 @@ brew cask install docker
 brew cask install steam
 brew cask install iterm2
 brew install fish
+brew install ykman
+brew install ykpers
+brew install yubico-piv-tool
+brew cask install yubico-yubikey-manager
+brew cask install yubico-yubikey-personalization-github
+brew cask install yubico-yubikey-piv-manager
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
 omf install agnoster
 brew install zsh
