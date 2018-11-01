@@ -17,6 +17,7 @@ brew cask install homebrew/cask-versions/powershell-preview
 brew cask install slack
 brew cask install visual-studio-code
 brew cask install visual-studio
+brew cask install azure-data-studio
 brew cask install postman
 brew cask install citrix-workspace
 brew cask install zoomus
