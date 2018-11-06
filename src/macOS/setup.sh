@@ -36,6 +36,7 @@ brew install yubico-piv-tool
 brew cask install yubico-yubikey-manager
 brew cask install yubico-yubikey-personalization-github
 brew cask install yubico-yubikey-piv-manager
+brew cask install microsoft-teams
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
 omf install agnoster
 brew install zsh
