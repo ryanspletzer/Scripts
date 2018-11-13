@@ -42,7 +42,7 @@ brew cask install microsoft-teams
 brew install bash
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 sudo bash -c 'echo /usr/local/bin/pwsh >> /etc/shells'
-chsh -s /usr/local/bin/bash
+chsh -s /usr/local/bin/pwsh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
 omf install agnoster
@@ -55,4 +55,6 @@ cd fonts
 cd ..
 rm -rf fonts
 sudo pwsh -Command "Set-PackageSource -Name PSGallery -Trusted -Force"
-sudo pwsh -Command "Install-Module -Name az, AWSPowerShell"
+sudo pwsh -Command "Install-Module -Name az, AWSPowerShell, posh-git"
+mkdir ~/.config/powershell
+cp ./.config/powershell/* ~/.config/powershell
