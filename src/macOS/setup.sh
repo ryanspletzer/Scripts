@@ -41,6 +41,7 @@ brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install bash
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+sudo bash -c 'echo /usr/local/bin/pwsh >> /etc/shells'
 chsh -s /usr/local/bin/bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 curl -L https://github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish
