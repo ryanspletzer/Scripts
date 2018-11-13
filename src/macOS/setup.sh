@@ -56,5 +56,6 @@ cd ..
 rm -rf fonts
 sudo pwsh -Command "Set-PackageSource -Name PSGallery -Trusted -Force"
 sudo pwsh -Command "Install-Module -Name az, AWSPowerShell, posh-git"
+sudo pwsh -Command "Update-Help"
 mkdir ~/.config/powershell
 cp ./.config/powershell/* ~/.config/powershell
