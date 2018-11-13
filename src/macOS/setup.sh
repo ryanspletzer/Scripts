@@ -55,4 +55,4 @@ cd fonts
 cd ..
 rm -rf fonts
 sudo pwsh -Command "Set-PackageSource -Name PSGallery -Trusted -Force"
-sudo pwsh -Command "Install-Module -Name AzureRM, AWSPowerShell"
+sudo pwsh -Command "Install-Module -Name az, AWSPowerShell"
