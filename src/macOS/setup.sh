@@ -5,6 +5,8 @@ mkdir ~/git
 defaults write com.apple.Finder AppleShowAllFiles true
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
+brew install awscli
+brew install azure-cli
 brew cask install google-chrome
 brew cask install firefox
 brew install git
@@ -51,3 +53,5 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+sudo pwsh -Command "Set-PackageSource -Name PSGallery -Trusted -Force"
+sudo pwsh -Command "Install-Module -Name AzureRM, AWSPowerShell"
