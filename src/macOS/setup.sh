@@ -40,6 +40,7 @@ brew cask install yubico-yubikey-personalization-github
 brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install bash
+gem install bundler jekyll
 sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 sudo bash -c 'echo /usr/local/bin/pwsh >> /etc/shells'
 chsh -s /usr/local/bin/pwsh
