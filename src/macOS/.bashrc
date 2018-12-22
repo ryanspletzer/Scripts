@@ -10,8 +10,6 @@ alias cls=clear
 export OSH=/Users/spletzr/.oh-my-bash
 
 # Ruby gems / Jekyll
-export GEM_HOME=$HOME/gems
-export PATH=$HOME/gems/bin:$PATH
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Set name of the theme to load. Optionally, if you set this to "random"

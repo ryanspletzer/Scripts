@@ -65,7 +65,14 @@ brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install lastpass-cli
 brew install ruby
-brew install rbenv
+
+cp ./.config/fish/* ~/.config/fish
+cp ./.config/powershell/* ~/.config/powershell
+cp ./.bash_profile ~/.bash_profile
+cp ./.bashrc ~/.bashrc
+cp ./.zshrc ~/.zshrc
+source ~/.bash_profile
 
 xcode-select --install
-gem install --user-install bundler jekyll
+gem install bundler
+gem install jekyll
