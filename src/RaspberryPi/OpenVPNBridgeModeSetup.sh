@@ -53,5 +53,11 @@ nano /lib/systemd/system/openvpn@.service
 # https://openvpn.net/community-resources/ethernet-bridging/
 iptables -A INPUT -i tap0 -j ACCEPT
 iptables -A INPUT -i br0 -j ACCEPT
+# https://wiki.debian.org/iptables
+iptables-save > /etc/iptables.up.rules
+touch /etc/network/if-pre-up.d/iptables
+echo '#!/bin/sh' >> /etc/network/if-pre-up.d/iptables
+echo '/sbin/iptables-restore < /etc/iptables.up.rules' >> /etc/network/if-pre-up.d/iptables
+chmod +x /etc/network/if-pre-up.d/iptables
 reboot
 # create specific client.conf for each client, distribute ca.crt, ta.key, client.crt, client.key, client.conf
