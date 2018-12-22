@@ -1,0 +1,3 @@
+# Add these lines to the bottom of the [Service] section -- this is not the whole file
+ExecStartPre=/etc/openvpn/openvpn-bridge start
+ExecStopPost=/etc/openvpn/openvpn-bridge stop

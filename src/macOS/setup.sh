@@ -39,6 +39,7 @@ brew install terraform
 brew install vault
 brew cask install google-chrome
 brew cask install firefox
+brew cask install tunnelblick
 #brew install bash-git-prompt
 brew cask install slack
 brew cask install visual-studio-code
@@ -64,6 +65,9 @@ brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install lastpass-cli
 brew install ruby
+
+mkdir ~/.tunnelblick
+mkdir ~/.tunnelblick/Home.tblk
 
 cp ./.config/fish/* ~/.config/fish
 cp ./.config/powershell/* ~/.config/powershell
