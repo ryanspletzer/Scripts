@@ -17,5 +17,6 @@ export GPG_TTY=$(tty)
 # Ruby gems / Jekyll
 export GEM_HOME=$HOME/gems
 export PATH=$HOME/gems/bin:$PATH
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 alias cls=clear
