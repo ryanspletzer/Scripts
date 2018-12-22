@@ -9,4 +9,8 @@ fi
 
 export GPG_TTY=$(tty)
 
+# Ruby gems / Jekyll
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
+
 alias cls=clear

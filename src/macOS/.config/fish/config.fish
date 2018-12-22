@@ -4,4 +4,8 @@ end
 
 set -x GPG_TTY (tty)
 
+# Ruby gems / Jekyll
+set -x GEM_HOME $HOME/gems
+set -x PATH=$HOME/gems/bin:$PATH
+
 alias cls=clear
