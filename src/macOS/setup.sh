@@ -31,7 +31,6 @@ sudo pwsh -Command "Set-PackageSource -Name PSGallery -Trusted -Force"
 sudo pwsh -Command "Install-Module -Name Az, AWSPowerShell, posh-git"
 sudo pwsh -Command "Update-Help"
 mkdir ~/.config/powershell
-cp ./.config/powershell/* ~/.config/powershell
 
 brew install awscli
 brew install azure-cli
