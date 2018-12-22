@@ -64,3 +64,6 @@ brew cask install yubico-yubikey-personalization-github
 brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install lastpass-cli
+
+xcode-select --install
+gem install --user-install bundler jekyll
