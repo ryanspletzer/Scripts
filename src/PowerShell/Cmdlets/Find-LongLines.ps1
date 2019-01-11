@@ -1,4 +1,4 @@
-function Find-TrailingWhitespace {
+function Find-LongLines {
     <#
         .SYNOPSIS
             Scans a given path and outputs the file paths and line numbers that contain long lines.
