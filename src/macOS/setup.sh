@@ -45,6 +45,7 @@ brew cask install slack
 brew cask install visual-studio-code
 brew cask install visual-studio
 brew cask install azure-data-studio
+brew install maven
 brew cask install postman
 brew cask install citrix-workspace
 brew cask install zoomus
@@ -65,6 +66,7 @@ brew cask install yubico-yubikey-piv-manager
 brew cask install microsoft-teams
 brew install lastpass-cli
 brew install ruby
+brew cask install spotify
 
 mkdir ~/.tunnelblick
 mkdir ~/.tunnelblick/Home.tblk
