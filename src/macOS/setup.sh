@@ -45,6 +45,7 @@ brew cask install slack
 brew cask install visual-studio-code
 brew cask install visual-studio
 brew cask install azure-data-studio
+brew cask install intellij-idea-ce
 brew install maven
 brew cask install postman
 brew cask install citrix-workspace
