@@ -1,0 +1,24 @@
+[credential]
+	helper = !/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
+[include]
+	path = /Users/spletzr/.adsk-git/config.include
+[user]
+	name = Ryan Spletzer
+	email = ryan.spletzer@autodesk.com
+	signingkey = 787AEF0BAE232359
+[gpg]
+	program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
+[url "https://github.com/ryanspletzer/trace-context.git"]
+	pushInsteadOf = https://github.com/ryanspletzer/trace-context.git
+[url "git@github.com/ryanspletzer/trace-context.git"]
+	pushInsteadOf = git@github.com/ryanspletzer/trace-context.git
+[url "https://https://github.com/ryanspletzer/Scripts.git"]
+	pushInsteadOf = https://https://github.com/ryanspletzer/Scripts.git
+[url "git@https://github.com/ryanspletzer/Scripts.git"]
+	pushInsteadOf = git@https://github.com/ryanspletzer/Scripts.git
+[url "https://github.com/ryanspletzer/ryanspletzer.github.io.git"]
+	pushInsteadOf = https://github.com/ryanspletzer/ryanspletzer.github.io.git
+[url "git@github.com/ryanspletzer/ryanspletzer.github.io.git"]
+	pushInsteadOf = git@github.com/ryanspletzer/ryanspletzer.github.io.git
