@@ -32,6 +32,7 @@ sudo pwsh -Command "Install-Module -Name Az, AWSPowerShell, posh-git"
 sudo pwsh -Command "Update-Help"
 mkdir ~/.config/powershell
 
+brew install coreutils
 brew install awscli
 brew install azure-cli
 brew install packer
