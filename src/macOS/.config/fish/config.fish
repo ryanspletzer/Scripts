@@ -10,3 +10,4 @@ set -x PATH $PATH /usr/local/lib/ruby/gems/2.5.0/bin
 set -x PATH $PATH /usr/local/opt/ruby/bin
 
 alias cls=clear
+alias openremote='open $(git remote get-url origin)'

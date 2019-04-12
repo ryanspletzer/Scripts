@@ -5,6 +5,7 @@ fi
 export GPG_TTY=$(tty)
 
 alias cls=clear
+alias openremote='open $(git remote get-url origin)'
 
 # Path to your oh-my-bash installation.
 export OSH=/Users/spletzr/.oh-my-bash
