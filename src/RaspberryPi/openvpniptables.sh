@@ -5,4 +5,3 @@ sleep 5
 systemctl stop openvpn
 sleep 5
 systemctl start openvpn
-sleep 5
