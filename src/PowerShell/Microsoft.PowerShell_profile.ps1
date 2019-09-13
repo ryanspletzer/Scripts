@@ -16,8 +16,9 @@ $GitPromptSettings.DefaultPromptPrefix = @'
 $($env:USERNAME + '@' + $env:COMPUTERNAME + ' ')
 '@
 $GitPromptSettings.DefaultPromptSuffix = @'
-$("`n" + ('>' * ($nestedPromptLevel + 1))) 
+$("`n" + ('>' * ($nestedPromptLevel + 1))) : 
 '@
+$global:GitPromptSettings.BeforeText = ' : ['
 
 function Enter-ElevatedPSSession {
     #requires -Version 2.0
