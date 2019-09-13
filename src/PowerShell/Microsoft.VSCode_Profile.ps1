@@ -7,6 +7,9 @@ Set-PSReadlineOption -BellStyle None
 Import-Module -Name posh-git
 
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.DefaultPromptSuffix = @'
+$("`n" + ('>' * ($nestedPromptLevel + 1)))
+'@
 
 function Invoke-NetView {
     [CmdletBinding()]
