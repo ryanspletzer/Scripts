@@ -12,6 +12,9 @@ if (Test-Path($ChocolateyProfile)) {
 Import-Module -Name posh-git
 
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+$GitPromptSettings.DefaultPromptSuffix = @'
+$("`n" + ('>' * ($nestedPromptLevel + 1)))
+'@
 
 function Enter-ElevatedPSSession {
     #requires -Version 2.0
