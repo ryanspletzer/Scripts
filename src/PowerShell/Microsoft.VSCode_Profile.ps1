@@ -5,6 +5,8 @@ $env:CLOUDPCCOMPUTERNAME = 'CPSCLW10-0081.ads.autodesk.com'
 $env:WORKSTATIONCOMPUTERNAME = 'NOVPC0SWSR3.ads.autodesk.com'
 Set-PSReadlineOption -BellStyle None
 
+$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
+
 function Invoke-NetView {
     [CmdletBinding()]
     [OutputType([string[]])]
