@@ -16,7 +16,7 @@ $GitPromptSettings.DefaultPromptPrefix = @'
 $($env:USERNAME + '@' + $env:COMPUTERNAME + ' ') : 
 '@
 $GitPromptSettings.DefaultPromptSuffix = @'
-$("`n" + ('>' * ($nestedPromptLevel + 1)))
+$("`n" + ('>' * ($nestedPromptLevel + 1))) 
 '@
 $global:GitPromptSettings.BeforeText = ' : ['
 
