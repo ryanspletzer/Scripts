@@ -4,6 +4,7 @@ $env:PACKER_LOG_PATH = 'packerlog.txt'
 $env:CLOUDPCCOMPUTERNAME = 'CPSCLW10-0081.ads.autodesk.com'
 $env:WORKSTATIONCOMPUTERNAME = 'NOVPC0SWSR3.ads.autodesk.com'
 Set-PSReadlineOption -BellStyle None
+Import-Module -Name posh-git
 
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
 
