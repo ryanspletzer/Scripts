@@ -4,15 +4,6 @@ $env:PACKER_LOG_PATH = 'packerlog.txt'
 $env:CLOUDPCCOMPUTERNAME = 'CPSCLW10-0081.ads.autodesk.com'
 $env:WORKSTATIONCOMPUTERNAME = 'NOVPC0SWSR3.ads.autodesk.com'
 Set-PSReadlineOption -BellStyle None
-Import-Module -Name posh-git
-
-$GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
-$GitPromptSettings.DefaultPromptPrefix = @'
-$($env:USERNAME + '@' + $env:COMPUTERNAME + ' ')
-'@
-$GitPromptSettings.DefaultPromptSuffix = @'
-$("`n" + ('>' * ($nestedPromptLevel + 1)))
-'@
 
 function Invoke-NetView {
     [CmdletBinding()]
