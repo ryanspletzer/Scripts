@@ -13,10 +13,10 @@ Import-Module -Name posh-git
 
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
 $GitPromptSettings.DefaultPromptPrefix = @'
-$($env:USERNAME + '@' + $env:COMPUTERNAME + ' ')
+$($env:USERNAME + '@' + $env:COMPUTERNAME + ' ') : 
 '@
 $GitPromptSettings.DefaultPromptSuffix = @'
-$("`n" + ('>' * ($nestedPromptLevel + 1))) : 
+$("`n" + ('>' * ($nestedPromptLevel + 1)))
 '@
 $global:GitPromptSettings.BeforeText = ' : ['
 
