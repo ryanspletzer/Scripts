@@ -1,8 +1,8 @@
 Configuration TestLabGuide {
 <#
     Requires the following custom DSC resources:
-        xComputerManagement (v1.4.0.0 or later): https://github.com/PowerShell/xComputerManagement
-        xNetworking/dev (v2.7.0.0 or later):     https://github.com/PowerShell/xNetworking
+        ComputerManagementDsc (v1.4.0.0 or later): https://github.com/PowerShell/xComputerManagement
+        NetworkingDSC (v2.7.0.0 or later):     https://github.com/PowerShell/xNetworking
         xActiveDirectory (v2.9.0.0 or later):    https://github.com/PowerShell/xActiveDirectory
         xSmbShare (v1.1.0.0 or later):           https://github.com/PowerShell/xSmbShare
         xDhcpServer (v1.3.0 or later):           https://github.com/PowerShell/xDhcpServer
@@ -14,7 +14,7 @@ Configuration TestLabGuide {
         [PSCredential]
         $Credential = (Get-Credential -Credential 'Administrator')
     )
-    Import-DscResource -Module xComputerManagement, xNetworking, xActiveDirectory;
+    Import-DscResource -Module ComputerManagementDsc, NetworkingDsc, xActiveDirectory;
     Import-DscResource -Module xSmbShare, PSDesiredStateConfiguration;
     Import-DscResource -Module xDHCPServer, xDnsServer;
 
@@ -27,39 +27,38 @@ Configuration TestLabGuide {
         }
 
         if (-not [System.String]::IsNullOrEmpty($node.IPAddress)) {
-            xIPAddress 'PrimaryIPAddress' {
+            IPAddress 'PrimaryIPAddress' {
                 IPAddress      = $node.IPAddress;
                 InterfaceAlias = $node.InterfaceAlias;
-                PrefixLength   = $node.PrefixLength;
                 AddressFamily  = $node.AddressFamily;
             }
 
             if (-not [System.String]::IsNullOrEmpty($node.DefaultGateway)) {
-                xDefaultGatewayAddress 'PrimaryDefaultGateway' {
+                DefaultGatewayAddress 'PrimaryDefaultGateway' {
                     InterfaceAlias = $node.InterfaceAlias;
                     Address = $node.DefaultGateway;
                     AddressFamily = $node.AddressFamily;
                 }
             }
-            
+
             if (-not [System.String]::IsNullOrEmpty($node.DnsServerAddress)) {
-                xDnsServerAddress 'PrimaryDNSClient' {
+                DnsServerAddress 'PrimaryDNSClient' {
                     Address        = $node.DnsServerAddress;
                     InterfaceAlias = $node.InterfaceAlias;
                     AddressFamily  = $node.AddressFamily;
                 }
             }
-            
+
             if (-not [System.String]::IsNullOrEmpty($node.DnsConnectionSuffix)) {
-                xDnsConnectionSuffix 'PrimaryConnectionSuffix' {
+                DnsConnectionSuffix 'PrimaryConnectionSuffix' {
                     InterfaceAlias = $node.InterfaceAlias;
                     ConnectionSpecificSuffix = $node.DnsConnectionSuffix;
                 }
             }
-            
+
         } #end if IPAddress
-        
-        xFirewall 'FPS-ICMP4-ERQ-In' {
+
+        Firewall 'FPS-ICMP4-ERQ-In' {
             Name = 'FPS-ICMP4-ERQ-In';
             DisplayName = 'File and Printer Sharing (Echo Request - ICMPv4-In)';
             Description = 'Echo request messages are sent as ping requests to other nodes.';
@@ -69,7 +68,7 @@ Configuration TestLabGuide {
             Profile = 'Any';
         }
 
-        xFirewall 'FPS-ICMP6-ERQ-In' {
+        Firewall 'FPS-ICMP6-ERQ-In' {
             Name = 'FPS-ICMP6-ERQ-In';
             DisplayName = 'File and Printer Sharing (Echo Request - ICMPv6-In)';
             Description = 'Echo request messages are sent as ping requests to other nodes.';
@@ -79,15 +78,15 @@ Configuration TestLabGuide {
             Profile = 'Any';
         }
     } #end nodes ALL
-  
+
     node $AllNodes.Where({$_.Role -in 'DC'}).NodeName {
         ## Flip credential into username@domain.com
         $domainCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Credential.UserName)@$($node.DomainName)", $Credential.Password);
 
-        xComputer 'Hostname' {
+        Computer 'Hostname' {
             Name = $node.NodeName;
         }
-        
+
         ## Hack to fix DependsOn with hypens "bug" :(
         foreach ($feature in @(
                 'AD-Domain-Services',
@@ -102,7 +101,7 @@ Configuration TestLabGuide {
                 IncludeAllSubFeature = $true;
             }
         }
-        
+
         xADDomain 'ADDomain' {
             DomainName = $node.DomainName;
             SafemodeAdministratorPassword = $Credential;
@@ -114,13 +113,14 @@ Configuration TestLabGuide {
             Ensure = 'Present';
             DependsOn = '[WindowsFeature]DHCP','[xADDomain]ADDomain';
         }
-        
+
         xDhcpServerScope 'DhcpScope10_0_0_0' {
             Name = 'Corpnet';
             IPStartRange = '10.0.0.100';
             IPEndRange = '10.0.0.200';
             SubnetMask = '255.255.255.0';
             LeaseDuration = '00:08:00';
+            ScopeId = '10.0.0.0';
             State = 'Active';
             AddressFamily = 'IPv4';
             DependsOn = '[WindowsFeature]DHCP';
@@ -134,8 +134,8 @@ Configuration TestLabGuide {
             AddressFamily = 'IPv4';
             DependsOn = '[xDhcpServerScope]DhcpScope10_0_0_0';
         }
-        
-        xADUser User1 { 
+
+        xADUser User1 {
             DomainName = $node.DomainName;
             UserName = 'User1';
             Description = 'Lability Test Lab user';
@@ -143,13 +143,13 @@ Configuration TestLabGuide {
             Ensure = 'Present';
             DependsOn = '[xADDomain]ADDomain';
         }
-        
+
         xADGroup DomainAdmins {
             GroupName = 'Domain Admins';
             MembersToInclude = 'User1';
             DependsOn = '[xADUser]User1';
         }
-        
+
         xADGroup EnterpriseAdmins {
             GroupName = 'Enterprise Admins';
             GroupScope = 'Universal';
@@ -158,20 +158,20 @@ Configuration TestLabGuide {
         }
 
     } #end nodes DC
-    
+
     ## INET1 is on the 'Internet' subnet and not domain-joined
     node $AllNodes.Where({$_.Role -in 'CLIENT','APP','EDGE'}).NodeName {
         ## Flip credential into username@domain.com
         $upn = '{0}@{1}' -f $Credential.UserName, $node.DomainName;
         $domainCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ($upn, $Credential.Password);
 
-        xComputer 'DomainMembership' {
+        Computer 'DomainMembership' {
             Name = $node.NodeName;
             DomainName = $node.DomainName;
             Credential = $domainCredential;
         }
     } #end nodes DomainJoined
-    
+
     node $AllNodes.Where({$_.Role -in 'APP'}).NodeName {
         ## Flip credential into username@domain.com
         $upn = '{0}@{1}' -f $Credential.UserName, $node.DomainName;
@@ -191,7 +191,7 @@ Configuration TestLabGuide {
                 Ensure = 'Present';
                 Name = $feature;
                 IncludeAllSubFeature = $true;
-                DependsOn = '[xComputer]DomainMembership';
+                DependsOn = '[Computer]DomainMembership';
             }
         }
 
@@ -218,20 +218,19 @@ Configuration TestLabGuide {
 
     node $AllNodes.Where({$_.Role -in 'EDGE'}).NodeName {
 
-        xIPAddress 'SecondaryIPAddress' {
+        IPAddress 'SecondaryIPAddress' {
             IPAddress      = $node.SecondaryIPAddress;
             InterfaceAlias = $node.SecondaryInterfaceAlias;
-            PrefixLength   = $node.SecondaryPrefixLength;
             AddressFamily  = $node.AddressFamily;
         }
 
-        xDnsServerAddress 'SecondaryDNSClient' {
+        DnsServerAddress 'SecondaryDNSClient' {
             Address        = $node.SecondaryDnsServerAddress;
             InterfaceAlias = $node.SecondaryInterfaceAlias;
             AddressFamily  = $node.AddressFamily
         }
-        
-        xDnsConnectionSuffix 'SecondarySuffix' {
+
+        DnsConnectionSuffix 'SecondarySuffix' {
             InterfaceAlias = $node.SecondaryInterfaceAlias;
             ConnectionSpecificSuffix = $node.SecondaryDnsConnectionSuffix;
         }
@@ -239,7 +238,7 @@ Configuration TestLabGuide {
     }
 
     node $AllNodes.Where({$_.Role -in 'INET'}).NodeName {
-        
+
         foreach ($feature in @(
                 'Web-Default-Doc',
                 'Web-Dir-Browsing',
@@ -267,6 +266,7 @@ Configuration TestLabGuide {
             IPEndRange = '131.107.0.150';
             SubnetMask = '255.255.255.0';
             LeaseDuration = '00:08:00';
+            ScopeId = '131.107.0.100';
             State = 'Active';
             AddressFamily = 'IPv4';
             DependsOn = '[WindowsFeature]DHCP';
@@ -287,12 +287,12 @@ Configuration TestLabGuide {
             Contents = 'Microsoft NCSI';
             DependsOn = '[WindowsFeature]WebDefaultDoc';
         }
-        
+
         xDnsServerPrimaryZone 'isp_example_com' {
             Name = 'isp.example.com';
             DependsOn = '[WindowsFeature]DNS';
         }
-        
+
         xDnsRecord 'inet1_isp_example_com' {
             Name = 'inet1';
             Target = '131.107.0.1';
@@ -300,12 +300,12 @@ Configuration TestLabGuide {
             Type = 'ARecord';
             DependsOn = '[xDnsServerPrimaryZone]isp_example_com';
         }
-        
+
         xDnsServerPrimaryZone 'contoso_com' {
             Name = 'contoso.com';
             DependsOn = '[WindowsFeature]DNS';
         }
-        
+
         xDnsRecord 'edge1_contoso_com' {
             Name = 'edge1';
             Target = '131.107.0.2';
@@ -313,12 +313,12 @@ Configuration TestLabGuide {
             Type = 'ARecord';
             DependsOn = '[xDnsServerPrimaryZone]contoso_com';
         }
-        
+
         xDnsServerPrimaryZone 'msftncsi_com' {
             Name = 'msftncsi.com';
             DependsOn = '[WindowsFeature]DNS';
         }
-        
+
         xDnsRecord 'www_msftncsi_com' {
             Name = 'www';
             Target = '131.107.0.1';
@@ -326,7 +326,7 @@ Configuration TestLabGuide {
             Type = 'ARecord';
             DependsOn = '[xDnsServerPrimaryZone]msftncsi_com';
         }
-        
+
         xDnsRecord 'dns_msftncsi_com' {
             Name = 'dns';
             Target = '131.107.255.255';

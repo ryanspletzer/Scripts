@@ -45,11 +45,11 @@ Configuration TestLabGuide {
         [PSCredential]
         $SBServiceCredential = (Get-Credential -UserName $ConfigurationData.AllNodes.Where({$true}).SBServiceUserName -Message "Credentials for Service Bus Service Account")
     )
-    
-    Import-DscResource -Module xComputerManagement, xNetworking, xActiveDirectory;
+
+    Import-DscResource -Module ComputerManagementDsc, NetworkingDsc, xActiveDirectory;
     Import-DscResource -Module xSmbShare, PSDesiredStateConfiguration;
     Import-DscResource -Module xDHCPServer, xDnsServer;
-    Import-DscResource -Module xSQLServer;
+    Import-DscResource -Module SQLServerDsc;
 
     node $AllNodes.Where({$true}).NodeName {
         LocalConfigurationManager {
@@ -61,39 +61,38 @@ Configuration TestLabGuide {
         }
 
         if (-not [System.String]::IsNullOrEmpty($Node.IPAddress)) {
-            xIPAddress 'PrimaryIPAddress' {
+            IPAddress 'PrimaryIPAddress' {
                 IPAddress      = $Node.IPAddress;
                 InterfaceAlias = $Node.InterfaceAlias;
-                PrefixLength   = $Node.PrefixLength;
                 AddressFamily  = $Node.AddressFamily;
             }
 
             if (-not [System.String]::IsNullOrEmpty($Node.DefaultGateway)) {
-                xDefaultGatewayAddress 'PrimaryDefaultGateway' {
+                DefaultGatewayAddress 'PrimaryDefaultGateway' {
                     InterfaceAlias = $Node.InterfaceAlias;
                     Address        = $Node.DefaultGateway;
                     AddressFamily  = $Node.AddressFamily;
                 }
             }
-            
+
             if (-not [System.String]::IsNullOrEmpty($Node.DnsServerAddress)) {
-                xDnsServerAddress 'PrimaryDNSClient' {
+                DnsServerAddress 'PrimaryDNSClient' {
                     Address        = $Node.DnsServerAddress;
                     InterfaceAlias = $Node.InterfaceAlias;
                     AddressFamily  = $Node.AddressFamily;
                 }
             }
-            
+
             if (-not [System.String]::IsNullOrEmpty($Node.DnsConnectionSuffix)) {
-                xDnsConnectionSuffix 'PrimaryConnectionSuffix' {
+                DnsConnectionSuffix 'PrimaryConnectionSuffix' {
                     InterfaceAlias           = $Node.InterfaceAlias;
                     ConnectionSpecificSuffix = $Node.DnsConnectionSuffix;
                 }
             }
-            
+
         } #end if IPAddress
-        
-        xFirewall 'FPS-ICMP4-ERQ-In' {
+
+        Firewall 'FPS-ICMP4-ERQ-In' {
             Name        = 'FPS-ICMP4-ERQ-In';
             DisplayName = 'File and Printer Sharing (Echo Request - ICMPv4-In)';
             Description = 'Echo request messages are sent as ping requests to other nodes.';
@@ -103,7 +102,7 @@ Configuration TestLabGuide {
             Profile     = 'Any';
         }
 
-        xFirewall 'FPS-ICMP6-ERQ-In' {
+        Firewall 'FPS-ICMP6-ERQ-In' {
             Name        = 'FPS-ICMP6-ERQ-In';
             DisplayName = 'File and Printer Sharing (Echo Request - ICMPv6-In)';
             Description = 'Echo request messages are sent as ping requests to other nodes.';
@@ -113,7 +112,7 @@ Configuration TestLabGuide {
             Profile     = 'Any';
         }
     } #end nodes ALL
-  
+
     node $AllNodes.Where({$_.Role -in 'DC'}).NodeName {
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
         $sqlInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SQLInstallCredential.UserName)@$($Node.DomainName)", $SQLInstallCredential.Password);
@@ -121,10 +120,10 @@ Configuration TestLabGuide {
         $sbInstallUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SBInstallCredential.UserName)@$($Node.DomainName)", $SBInstallCredential.Password);
         $sbServiceUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($SBServiceCredential.UserName)@$($Node.DomainName)", $SBServiceCredential.Password);
 
-        xComputer 'Hostname' {
+        Computer 'Hostname' {
             Name = $Node.NodeName;
         }
-        
+
         ## Hack to fix DependsOn with hypens "bug" :(
         foreach ($feature in @(
                 'AD-Domain-Services',
@@ -139,7 +138,7 @@ Configuration TestLabGuide {
                 IncludeAllSubFeature = $true;
             }
         }
-        
+
         xADDomain 'ADDomain' {
             DomainName                    = $Node.DomainName;
             SafemodeAdministratorPassword = $DomainAdministratorCredential;
@@ -151,13 +150,14 @@ Configuration TestLabGuide {
             Ensure    = 'Present';
             DependsOn = '[WindowsFeature]DHCP','[xADDomain]ADDomain';
         }
-        
+
         xDhcpServerScope 'DhcpScope10_0_0_0' {
             Name          = 'Corpnet';
             IPStartRange  = '10.0.0.100';
             IPEndRange    = '10.0.0.200';
             SubnetMask    = '255.255.255.0';
             LeaseDuration = '00:08:00';
+            ScopeId       = '10.0.0.0';
             State         = 'Active';
             AddressFamily = 'IPv4';
             DependsOn     = '[WindowsFeature]DHCP';
@@ -171,8 +171,8 @@ Configuration TestLabGuide {
             AddressFamily      = 'IPv4';
             DependsOn          = '[xDhcpServerScope]DhcpScope10_0_0_0';
         }
-        
-        xADUser $DomainAdministratorCredential.UserName { 
+
+        xADUser $DomainAdministratorCredential.UserName {
             DomainName  = $Node.DomainName;
             UserName    = $DomainAdministratorCredential.UserName;
             Description = 'SQL Install Account';
@@ -182,7 +182,7 @@ Configuration TestLabGuide {
             DependsOn   = '[xADDomain]ADDomain';
         }
 
-        xADUser $SQLInstallCredential.UserName { 
+        xADUser $SQLInstallCredential.UserName {
             DomainName  = $Node.DomainName;
             UserName    = $SQLInstallCredential.UserName;
             Description = 'SQL Install Account';
@@ -191,8 +191,8 @@ Configuration TestLabGuide {
             Ensure      = 'Present';
             DependsOn   = '[xADDomain]ADDomain';
         }
-        
-        xADUser $SQLAdminCredential.UserName { 
+
+        xADUser $SQLAdminCredential.UserName {
             DomainName  = $Node.DomainName;
             UserName    = $SQLAdminCredential.UserName;
             Description = 'SQL Admin Account';
@@ -201,8 +201,8 @@ Configuration TestLabGuide {
             Ensure      = 'Present';
             DependsOn   = '[xADDomain]ADDomain';
         }
-        
-        xADUser $SBInstallCredential.UserName { 
+
+        xADUser $SBInstallCredential.UserName {
             DomainName  = $Node.DomainName;
             UserName    = $SBInstallCredential.UserName;
             Description = 'Service Bus Install Account';
@@ -212,7 +212,7 @@ Configuration TestLabGuide {
             DependsOn   = '[xADDomain]ADDomain';
         }
 
-        xADUser $SBServiceCredential.UserName { 
+        xADUser $SBServiceCredential.UserName {
             DomainName  = $Node.DomainName;
             UserName    = $SBServiceCredential.UserName;
             Description = 'Service Bus Install Account';
@@ -223,7 +223,7 @@ Configuration TestLabGuide {
         }
 
     } #end nodes DC
-    
+
     node $AllNodes.Where({$_.Role -in 'SQL','SB'}).NodeName {
         ## Flip credential into username@domain.com
         $domainAdministratorUpnCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($DomainAdministratorCredential.UserName)@$($Node.DomainName)", $DomainAdministratorCredential.Password);
@@ -235,7 +235,7 @@ Configuration TestLabGuide {
             DomainUserCredential = $domainAdministratorUpnCredential
         }
 
-        xComputer 'DomainMembership' {
+        Computer 'DomainMembership' {
             Name       = $Node.NodeName;
             DomainName = $Node.DomainName;
             Credential = $domainAdministratorUpnCredential;
@@ -250,17 +250,17 @@ Configuration TestLabGuide {
         $sbInstallLogonCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList ("$($Node.DomainNameShort)\$($SBInstallCredential.UserName)", $SBInstallCredential.Password);
 
         Group ($Node.NodeName+"LocalAdministrators") {
-            DependsOn        = '[xComputer]DomainMembership'
+            DependsOn        = '[Computer]DomainMembership'
             Credential       = $domainAdministratorLogonCredential
             GroupName        = 'Administrators'
             Ensure           = 'Present'
             MembersToInclude = $sqlInstallLogonCredential.UserName,$sqlAdminLogonCredential.UserName
         }
 
-        xSqlServerSetup ($Node.NodeName) {
+        SqlSetup ($Node.NodeName) {
             DependsOn           = ("[Group]" + $Node.NodeName + "LocalAdministrators")
             SourcePath          = $Node.SourcePath
-            SetupCredential     = $sqlInstallLogonCredential
+            SourceCredential    = $sqlInstallLogonCredential
             InstanceName        = $Node.InstanceName
             Features            = $Node.Features
             SQLSysAdminAccounts = $sqlAdminLogonCredential.UserName
@@ -274,119 +274,119 @@ Configuration TestLabGuide {
             SQLTempDBLogDir     = "C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data"
             SQLBackupDir        = "C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Data"
         }
-         
-        xSqlServerFirewall ($Node.NodeName) {
-            DependsOn    = ("[xSqlServerSetup]" + $Node.NodeName)
+
+        SqlServerFirewall ($Node.NodeName) {
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
             SourcePath   = $Node.SourcePath
             InstanceName = $Node.InstanceName
             Features     = $Node.Features
         }
 
-        xPowerPlan ($Node.Nodename) {
+        PowerPlan ($Node.Nodename) {
             IsSingleInstance = 'Yes'
             Name             = 'High Performance'
         }
 
-        xSQLServerMemory ($Node.Nodename) {
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            Ensure          = "Present"
-            DynamicAlloc    = $false
-            SQLInstanceName = $Node.InstanceName
-            MinMemory       = "256"
-            MaxMemory       = "1024"
+        SqlServerMemory ($Node.Nodename) {
+            DependsOn    = ("[xSqlServerSetup]" + $Node.NodeName)
+            Ensure       = "Present"
+            DynamicAlloc = $false
+            InstanceName = $Node.InstanceName
+            MinMemory    = "256"
+            MaxMemory    = "1024"
         }
 
-        xSQLServerMaxDop ($Node.Nodename) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            Ensure          = "Present"
-            DynamicAlloc    = $true
+        SqlServerMaxDop ($Node.Nodename) {
+            ServerName   = $Node.NodeName
+            InstanceName = $Node.InstanceName
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
+            Ensure       = "Present"
+            DynamicAlloc = $true
         }
 
-        xSQLServerLogin ($Node.Nodename+$SQLAdminCredential.UserName) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            Ensure          = "Present"
+        SqlServerLogin ($Node.Nodename+$SQLAdminCredential.UserName) {
+            ServerName   = $Node.NodeName
+            InstanceName = $Node.InstanceName
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
+            Ensure       = "Present"
             Name            = $sqlAdminLogonCredential.UserName
         }
 
-        xSQLServerLogin ($Node.Nodename+$SQLTestUser1Credential.UserName) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
+        SqlServerLogin ($Node.Nodename+$SQLTestUser1Credential.UserName) {
+            ServerName      = $Node.NodeName
+            InstanceName    = $Node.InstanceName
+            DependsOn       = ("[SqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             Name            = $SQLTestUser1Credential.UserName
             LoginCredential = $SQLTestUser1Credential
             LoginType       = "SQLLogin"
         }
 
-        xSQLServerLogin ($Node.Nodename+$SQLTestUser2Credential.UserName) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
+        SqlServerLogin ($Node.Nodename+$SQLTestUser2Credential.UserName) {
+            ServerName      = $Node.NodeName
+            InstanceName    = $Node.InstanceName
+            DependsOn       = ("[SqlServerSetup]" + $Node.NodeName)
             Ensure          = "Present"
             Name            = $SQLTestUser2Credential.UserName
             LoginCredential = $SQLTestUser2Credential
             LoginType       = "SQLLogin"
         }
 
-        xSQLServerLogin ($Node.Nodename+$SBInstallCredential.UserName) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            Ensure          = "Present"
-            Name            = $sbInstallLogonCredential.UserName
+        SqlServerLogin ($Node.Nodename+$SBInstallCredential.UserName) {
+            ServerName   = $Node.NodeName
+            InstanceName = $Node.InstanceName
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
+            Ensure       = "Present"
+            Name         = $sbInstallLogonCredential.UserName
         }
 
-        xSQLServerRole ($Node.Nodename+$SBInstallCredential.UserName) {
-            SQLServer       = $Node.NodeName
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerLogin]" + ($Node.Nodename+$SBInstallCredential.UserName))
-            Name = $sbInstallLogonCredential.UserName
-            ServerRole = 'dbcreator','securityadmin'
-            Ensure = 'Present'
+        SqlServerRole ($Node.Nodename+$SBInstallCredential.UserName) {
+            ServerName     = $Node.NodeName
+            InstanceName   = $Node.InstanceName
+            DependsOn      = ("[SqlServerLogin]" + ($Node.Nodename+$SBInstallCredential.UserName))
+            Members        = $sbInstallLogonCredential.UserName
+            ServerRoleName = 'dbcreator','securityadmin'
+            Ensure         = 'Present'
         }
 
-        xSQLServerDatabaseRole ($Node.Nodename) {
-            SQLServer       = $Node.Nodename
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            Ensure          = "Present"
-            Name            = $SQLTestUser1Credential.UserName
-            Database        = "model"
-            Role            = "db_Datareader"
+        SqlDatabaseRole ($Node.Nodename) {
+            ServerName   = $Node.Nodename
+            InstanceName = $Node.InstanceName
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
+            Ensure       = "Present"
+            Name         = $SQLTestUser1Credential.UserName
+            Database     = "model"
+            Role         = "db_Datareader"
         }
 
-        xSQLServerDatabasePermission ($Node.Nodename) {
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            SQLServer       = $Node.Nodename
-            SQLInstanceName = $Node.InstanceName
+        SqlDatabasePermission ($Node.Nodename) {
+            DependsOn       = ("[SqlServerSetup]" + $Node.NodeName)
+            ServerName      = $Node.Nodename
+            InstanceName    = $Node.InstanceName
             Database        = "Model"
             Name            = $SQLTestUser1Credential.UserName
             Permissions     = "SELECT","DELETE"
             PermissionState = "GRANT"
         }
 
-        xSQLServerDatabase ($Node.Nodename) {
-            DependsOn       = ("[xSqlServerSetup]" + $Node.NodeName)
-            SQLServer       = $Node.Nodename
-            SQLInstanceName = $Node.InstanceName
-            Name            = "TestDB"
-            Ensure          = "Present"
+        SqlDatabase ($Node.Nodename) {
+            DependsOn    = ("[SqlServerSetup]" + $Node.NodeName)
+            ServerName   = $Node.Nodename
+            InstanceName = $Node.InstanceName
+            Name         = "TestDB"
+            Ensure       = "Present"
         }
 
-        xSQLServerDatabaseRecoveryModel ($Node.Nodename) {
-            SQLServer       = $Node.Nodename
-            SQLInstanceName = $Node.InstanceName
-            DependsOn       = ("[xSQLServerDatabase]" + $Node.NodeName)
-            Name            = "TestDB"
-            RecoveryModel   = "Full"  
+        SqlDatabaseRecoveryModel ($Node.Nodename) {
+            ServerName    = $Node.Nodename
+            InstanceName  = $Node.InstanceName
+            DependsOn     = ("[SqlServerDatabase]" + $Node.NodeName)
+            Name          = "TestDB"
+            RecoveryModel = "Full"
         }
 
-        xSQLServerDatabaseOwner ($Node.Nodename) {
-            DependsOn = ("[xSQLServerDatabase]" + $Node.NodeName)
+        SqlDatabaseOwner ($Node.Nodename) {
+            DependsOn = ("[SqlServerDatabase]" + $Node.NodeName)
             Database  = "TestDB"
             Name      = $SQLTestUser2Credential.UserName
         }
@@ -394,6 +394,6 @@ Configuration TestLabGuide {
     } #end nodes SQL
 
     node $AllNodes.Where({$_.Role -in 'SB'}).NodeName {
-        
+
     } #end nodes SB
 } #end Configuration Example
