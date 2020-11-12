@@ -1,0 +1,1 @@
+gci ~/git | %{cd $_.name; git remote -v | ?{$_ -match '^origin.*push\)$'} | %{(($_ -split '\t')[1] -split ' ')[0] | ?{$_ -like 'http*' -and $_ -like '*spletzr*' -and $_ -like '*DirectoryServices-*' -and $_ -notlike '*scripts.git'}} | %{ $remoteUrl = $_ -replace 'spletzr', 'dpe'; git remote add upstream $remoteUrl }; cd ..} | %{$_ }
