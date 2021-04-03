@@ -1,61 +1,57 @@
-$env:VAULT_ADDR = 'https://vault.aws.autodesk.com'
-$env:PACKER_LOG = 1
-$env:PACKER_LOG_PATH = 'packerlog.txt'
-$env:CLOUDPCCOMPUTERNAME = 'CPSCLW10-0081.ads.autodesk.com'
-$env:WORKSTATIONCOMPUTERNAME = 'NOVPC0SWSR3.ads.autodesk.com'
+if ((Get-Location).Path -eq 'C:\Windows\System32') {
+    Set-Location -Path $env:USERPROFILE
+}
+
+if ([string]::IsNullOrEmpty($env:USERNAME)) {
+    $env:USERNAME = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name.Split('\')[1]
+}
+
 Set-PSReadlineOption -BellStyle None
 # Chocolatey profile
 $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
 Import-Module -Name posh-git
 
 $GitPromptSettings.DefaultPromptAbbreviateHomeDirectory = $true
 $GitPromptSettings.DefaultPromptPrefix = @'
-$($env:USERNAME + '@' + $env:COMPUTERNAME + ' ') : 
+$($env:USERNAME + '@' + $env:COMPUTERNAME + ' : ')
 '@
 $GitPromptSettings.DefaultPromptSuffix = @'
-$("`n" + ('>' * ($nestedPromptLevel + 1))) 
+$("`n" + ('>' * ($nestedPromptLevel + 1)) + ' ')
 '@
 $global:GitPromptSettings.BeforeText = ' : ['
 
 function Enter-ElevatedPSSession {
-    #requires -Version 2.0
+#requires -Version 2.0
 
-    <#
-    .SYNOPSIS
-        Enters a new elevated powershell process.
-
-    .DESCRIPTION
-        Enters a new elevated powershell process. You can optionally close your existing session.
-
-    .PARAMETER CloseExisting
-        If specified, the existing powershell session will be closed.
-
-    .NOTES
-        UAC will prompt you if it is enabled.
-
-        Starts new administrative session.
-
-        Will do nothing if you are already running elevated.
-
-    .EXAMPLE
-        # Running as normal user
-        C:\Users\Joe> Enter-ElevatedPSSession
-        # Starts new PowerShell process / session as administrator, keeping current session open.
-
-    .EXAMPLE
-        # Running as normal user
-        C:\Users\Joe> Enter-ElevatedPSSession -CloseExisting
-        # Starts new PowerShell process / session as administrator, exiting the current session.
-
-    .EXAMPLE
-        # Running already as administrator
-        C:\Windows\System32> Enter-ElevatedPSSession
-        Already running as administrator.
-        # Message is written to host.
-    #>
+<#
+.SYNOPSIS
+    Enters a new elevated powershell process.
+.DESCRIPTION
+    Enters a new elevated powershell process. You can optionally close your existing session.
+.PARAMETER CloseExisting
+    If specified, the existing powershell session will be closed.
+.NOTES
+    UAC will prompt you if it is enabled.
+    Starts new administrative session.
+    Will do nothing if you are already running elevated.
+.EXAMPLE
+    # Running as normal user
+    C:\Users\Joe> Enter-ElevatedPSSession
+    # Starts new PowerShell process / session as administrator, keeping current session open.
+.EXAMPLE
+    # Running as normal user
+    C:\Users\Joe> Enter-ElevatedPSSession -CloseExisting
+    # Starts new PowerShell process / session as administrator, exiting the current session.
+.EXAMPLE
+    # Running already as administrator
+    C:\Windows\System32> Enter-ElevatedPSSession
+    Already running as administrator.
+    # Message is written to host.
+#>
     [CmdletBinding()]
     param (
         [Parameter(Mandatory=$false,
@@ -69,6 +65,7 @@ function Enter-ElevatedPSSession {
         if ((Get-Process -Id $pid).Name -eq 'powershell_ise') {
             $runningProcess = 'powershell_ise'
         }
+
         $Identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
         $Principal = New-Object System.Security.Principal.WindowsPrincipal($Identity)
         $isAdmin = $Principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
@@ -78,16 +75,39 @@ function Enter-ElevatedPSSession {
             Write-Host -Object "Already running as administrator."
             return
         }
+
         if ($CloseExisting.IsPresent) {
-            Start-Process $runningProcess -Verb RunAs
+            Start-Process -FilePath $runningProcess -Verb RunAs -WorkingDirectory $pwd.Path
             exit
         } else {
-            Start-Process $runningProcess -Verb RunAs
+            Start-Process -FilePath $runningProcess -Verb RunAs -WorkingDirectory $pwd.Path
         }
     }
 }
 
 New-Alias -Name su -Value Enter-ElevatedPSSession
+
+function Invoke-ElevatedCommand {
+    $runningProcess = 'powershell'
+    if ((Get-Process -Id $pid).Name -eq 'powershell_ise') {
+        $runningProcess = 'powershell_ise'
+    }
+
+    $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+    $principal = New-Object System.Security.Principal.WindowsPrincipal($Identity)
+    $isAdmin = $Principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
+
+    if ($isAdmin) {
+        & $args
+        return
+    }
+
+    Start-Process -FilePath $runningProcess -Verb RunAs -WorkingDirectory $pwd.Path -ArgumentList (
+        @("-NoExit", "-Command") + $args
+    )
+}
+
+New-Alias -Name sudo -Value Invoke-ElevatedCommand
 
 function Invoke-NetView {
     [CmdletBinding()]
@@ -99,7 +119,7 @@ function Invoke-NetView {
     )
     begin { }
     process {
-        [string[]](net view $Path /all | select -Skip 7 | ?{$_ -match 'disk*'} | %{$_ -match '^(.+?)\s+Disk*'|out-null;$matches[1]})
+        [string[]](net view $Path /all | Select-Object -Skip 7 | ?{$_ -match 'disk*'} | %{$_ -match '^(.+?)\s+Disk*'|out-null;$matches[1]})
     }
 }
 
@@ -114,3 +134,62 @@ function Open-GitRemoteUrl {
 }
 
 New-Alias -Name openremote -Value Open-GitRemoteUrl
+
+function Sync-GitOriginRemoteFromUpstream {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $false)]
+        [ValidateNotNullOrEmpty()]
+        [Alias('b')]
+        [string]
+        $Branch,
+
+        [Parameter(Mandatory = $false)]
+        [Alias('f')]
+        [switch]
+        $Force
+    )
+
+    begin {}
+
+    process {
+        $b = git branch --show-current
+        $trunk = $null
+        if ($b -notmatch '(main|master)') {
+            if (git branch | Select-String -Pattern main) {
+                $trunk = 'main'
+                git checkout $trunk
+            } else {
+                $trunk = 'master'
+                git checkout $trunk
+            }
+
+            if ($Force.IsPresent) {
+                git branch -D $b
+            }
+        }
+
+        if ($null -eq $trunk) {
+            if ($null -eq (git branch | Select-String -Pattern 'main')) {
+                $trunk = 'master'
+            } else {
+                $trunk = 'main'
+            }
+        }
+
+        git pull upstream $trunk
+        git push
+        git remote prune origin
+        if (-not [string]::IsNullOrEmpty($Branch)) {
+            git branch -D $branch
+        }
+    }
+
+    end {}
+}
+
+New-Alias -Name syncremote -Value Sync-GitOriginRemoteFromUpstream
+
+function Get-TypeAccelerators {
+    [psobject].Assembly.GetType("System.Management.Automation.TypeAccelerators")::get
+}
