@@ -1,30 +1,30 @@
 ﻿<#PSScriptInfo
-.VERSION 0.1.1 
- 
+.VERSION 0.1.1
+
 .GUID c16ff69d-fe96-421d-b7f8-dfbb46b3e9ec
- 
+
 .AUTHOR Ryan Spletzer
- 
-.COMPANYNAME The Dow Chemical Company
- 
-.COPYRIGHT 
- 
-.TAGS 
- 
-.LICENSEURI 
- 
-.PROJECTURI 
- 
-.ICONURI 
- 
-.EXTERNALMODULEDEPENDENCIES 
- 
-.REQUIREDSCRIPTS 
- 
-.EXTERNALSCRIPTDEPENDENCIES 
- 
+
+.COMPANYNAME
+
+.COPYRIGHT
+
+.TAGS
+
+.LICENSEURI
+
+.PROJECTURI
+
+.ICONURI
+
+.EXTERNALMODULEDEPENDENCIES
+
+.REQUIREDSCRIPTS
+
+.EXTERNALSCRIPTDEPENDENCIES
+
 .RELEASENOTES
- 
+
 #>
 
 <#
@@ -42,7 +42,7 @@ param (
                Position=0)]
     [string]
     $ClientId,
-    
+
     [Parameter(Mandatory=$false,
                Position = 1)]
     [string]
@@ -65,7 +65,7 @@ function Get-ODChildItemsRecurse {
                    Position=0)]
         [string]
         $AccessToken,
-        
+
         [Parameter(Mandatory=$true,
                    Position=1)]
         [string]
@@ -121,7 +121,7 @@ function New-ODItemDownloadUri {
 "@
         $relativeUri = "/drive/items/$ItemId/action.createLink"
         $shortSharingUri = (Invoke-RestMethod -Method POST -Uri ($ODRootURI + $relativeUri) -Body $body -Headers @{
-            Authorization = "Bearer " + $AccessToken 
+            Authorization = "Bearer " + $AccessToken
         } -ContentType "application/json").link.webUrl
         $sharingUri = (Invoke-WebRequest -Uri $shortSharingUri).BaseResponse.ResponseUri.OriginalString
         $base64Value = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($sharingUri))

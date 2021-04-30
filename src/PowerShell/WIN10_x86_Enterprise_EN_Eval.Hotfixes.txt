@@ -1,8 +1,0 @@
-@{
-    Id  = "windows10.0-kb3216755-x86_0706d23dba493b295a32b9b56604aa0b08971ac7.msu"
-    Uri = "http://download.windowsupdate.com/d/msdownload/update/software/crup/2017/01/windows10.0-kb3216755-x86_0706d23dba493b295a32b9b56604aa0b08971ac7.msu"
-}
-@{
-    Id  = "windows10.0-kb3211320-x86_b450a744674c27bf2871f8db28f0e2e13e874582.msu"
-    Uri = "http://download.windowsupdate.com/c/msdownload/update/software/crup/2017/01/windows10.0-kb3211320-x86_b450a744674c27bf2871f8db28f0e2e13e874582.msu"
-}
