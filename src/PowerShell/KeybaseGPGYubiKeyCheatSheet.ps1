@@ -92,6 +92,8 @@ gpg --edit-key ryan.spletzer@autodesk.com
 
 # Upload the contents of your public key to GitHub Enterprise / GitHub etc.
 
+# macOS
+# git config --global gpg.program "/opt/homebrew/bin/gpg"
 git config --global gpg.program "c:\Program Files (x86)\GnuPG\bin\gpg.exe"
 git config --global commit.gpgsign true # leave this off if you don't want to sign by default every time
 git config --global user.signingkey THEKEYIDFORTHE4096BITSIGNINGKEY
